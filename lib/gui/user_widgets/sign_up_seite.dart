@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gym_app/globals/widgets/my_container.dart';
 
 class SignUpWidget extends ConsumerWidget {
   const SignUpWidget({super.key});
@@ -15,17 +16,7 @@ class SignUpWidget extends ConsumerWidget {
         centerTitle: true,
         title: const Text('Sign up'),
       ),
-      body: Container(
-             decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomLeft,
-            colors: [
-              Colors.black,
-              Colors.blue[900]!,
-            ],
-          ),
-        ),
+      body: MyContainer(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -42,12 +33,14 @@ class SignUpWidget extends ConsumerWidget {
                         controller: _firstNameController,
                         decoration: const InputDecoration(
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(40.0)),
                             borderSide:
                                 BorderSide(color: Colors.blue, width: 2.0),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(40.0)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2.0),
                           ),
@@ -65,12 +58,14 @@ class SignUpWidget extends ConsumerWidget {
                         controller: _lastNameController,
                         decoration: const InputDecoration(
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(40.0)),
                             borderSide:
                                 BorderSide(color: Colors.blue, width: 2.0),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(40.0)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2.0),
                           ),
@@ -89,19 +84,17 @@ class SignUpWidget extends ConsumerWidget {
               child: TextFormField(
                 controller: _emailController,
                 decoration: const InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(40.0)),
-                    borderSide: BorderSide(color: Colors.blue, width: 2.0),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(40.0)),
-                    borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                  ),
-                  labelText: 'Email',
-                  labelStyle: TextStyle(color: Colors.white)
-                ),
-                                        style: TextStyle(color: Colors.white),
-
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                      borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                      borderSide: BorderSide(color: Colors.grey, width: 2.0),
+                    ),
+                    labelText: 'Email',
+                    labelStyle: TextStyle(color: Colors.white)),
+                style: TextStyle(color: Colors.white),
               ),
             ),
             Padding(

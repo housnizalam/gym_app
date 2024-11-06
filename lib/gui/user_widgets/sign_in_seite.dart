@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gym_app/generals/extensionen/navigator.dart';
-import 'package:gym_app/gui/home.dart';
-import 'package:gym_app/gui/user/sign_up_seite.dart';
+import 'package:gym_app/globals/extensionen/navigator.dart';
+import 'package:gym_app/globals/widgets/my_container.dart';
+import 'package:gym_app/gui/home_widgets/home.dart';
+import 'package:gym_app/gui/user_widgets/sign_up_seite.dart';
 
 class SignInWidget extends ConsumerWidget {
   const SignInWidget({super.key});
@@ -14,17 +15,7 @@ class SignInWidget extends ConsumerWidget {
         centerTitle: true,
         title: const Text('Sign in'),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomLeft,
-            colors: [
-              Colors.black,
-              Colors.blue[900]!,
-            ],
-          ),
-        ),
+      body: MyContainer(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

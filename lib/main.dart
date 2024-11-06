@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gym_app/gui/user/sign_in_seite.dart';
+import 'package:gym_app/gui/user_widgets/sign_in_seite.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
