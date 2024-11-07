@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gym_app/globals/extensionen/navigator.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
-import 'package:gym_app/gui/home_widgets/calender/calender_widgets/day_widget.dart';
-import 'package:gym_app/gui/home_widgets/calender/calender_widgets/toda_widget.dart';
+import 'package:gym_app/gui/home_widgets/calender_widget/calender_widgets/day_widget.dart';
+import 'package:gym_app/gui/home_widgets/calender_widget/calender_widgets/toda_widget.dart';
+
 import 'package:gym_app/riverpod/calender_providers.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -27,7 +29,7 @@ class CalenderWidget extends ConsumerWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.pop(context);
+                      context.pop();
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(left: 4),

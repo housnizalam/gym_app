@@ -1,14 +1,27 @@
 import 'dart:core';
 
 import 'package:gym_app/models/day.dart';
+import 'package:gym_app/models/saved_trainingsday.dart';
 import 'package:gym_app/models/sub_training.dart';
 import 'package:gym_app/models/training.dart';
 import 'package:gym_app/models/uer.dart';
 
 class AppState {
   final List<Day> days;
+  final List<SavedTrainingsday>? savedTrainingsdays ;
+  final List<SubTraining>? subTrainings;
   final User? user;
-  const AppState({required this.days,this.user});
+  const AppState({required this.days, this.user, this.subTrainings,this.savedTrainingsdays});
+
+  Day? get thisWeakDay {
+    Day? result;
+    for (var day in days) {
+      if(day.date.weekday == DateTime.now().weekday){
+        result=day;
+      }
+    }
+    return result;
+  }
 
 // get allTrainings
   List<Training> get allTrainings {

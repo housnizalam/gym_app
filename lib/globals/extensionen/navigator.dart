@@ -16,7 +16,7 @@ extension EasyNavigator on BuildContext{
     Navigator.of(this).pop();
   }
 
-  void animateToAsPush({required Widget page, AnimationType animationType=AnimationType.open, Duration duration = const Duration(milliseconds: 300)}) {
+  void animateToAsPush({required Widget page, AnimationType animationType=AnimationType.slideUp, Duration duration = const Duration(milliseconds: 300)}) {
     switch (animationType) {
       case AnimationType.slideToLeft:
         AnimatedNavigator.slideToLeft(context: this, page: page, duration: duration);
@@ -44,7 +44,7 @@ extension EasyNavigator on BuildContext{
         break;
     }
   }
-  void animateToAsPushReplacement({required Widget page, AnimationType animationType=AnimationType.open, Duration duration = const Duration(milliseconds: 300)}){
+  void animateToAsPushReplacement({required Widget page, AnimationType animationType=AnimationType.slideUp, Duration duration = const Duration(milliseconds: 300)}){
     switch (animationType) {
       case AnimationType.slideToLeft:
         AnimatedNavigator.slideToLeft(context: this, page: page, naviType: NaviType.replacement, duration: duration);
@@ -72,6 +72,8 @@ extension EasyNavigator on BuildContext{
         break;
     }
   }
+
+  void pop()=>Navigator.of(this).pop();
 
 }
 
