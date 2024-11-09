@@ -14,7 +14,7 @@ abstract class SubTraining {
   });
 }
 
- class ChestSubTraining extends SubTraining {
+class ChestSubTraining extends SubTraining {
   const ChestSubTraining({
     required super.name,
     required super.sets,
@@ -23,7 +23,29 @@ abstract class SubTraining {
   });
 }
 
- class BackSubTraining extends SubTraining {
+class BenshPressSubTraining extends ChestSubTraining {
+  BenshPressSubTraining({
+    required super.sets,
+    required super.date,
+  }) : super(targetetMuscles: [
+          ChestMuscle(traningsdensity: 0.7, recoveryDuration: 3),
+          TricepMuscle(traningsdensity: 0.2, recoveryDuration: 2),
+          ShoulderMuscle(traningsdensity: 0.1, recoveryDuration: 2)
+        ], name: 'Bensh Press');
+
+  factory BenshPressSubTraining.standard(){
+    return BenshPressSubTraining(
+      sets:const [
+        Sets(reps: 10, weight: 20),
+        Sets(reps: 10, weight: 20),
+        Sets(reps: 10, weight: 20),
+      ],
+      date: DateTime.now(),
+    );
+  }
+}
+
+class BackSubTraining extends SubTraining {
   const BackSubTraining({
     required super.name,
     required super.sets,
@@ -32,7 +54,7 @@ abstract class SubTraining {
   });
 }
 
- class ShoulderSubTraining extends SubTraining {
+class ShoulderSubTraining extends SubTraining {
   const ShoulderSubTraining({
     required super.name,
     required super.sets,
@@ -41,7 +63,7 @@ abstract class SubTraining {
   });
 }
 
- class BicepsSubTraining extends SubTraining {
+class BicepsSubTraining extends SubTraining {
   const BicepsSubTraining({
     required super.name,
     required super.sets,
@@ -50,7 +72,7 @@ abstract class SubTraining {
   });
 }
 
- class TricepSubTraining extends SubTraining {
+class TricepSubTraining extends SubTraining {
   const TricepSubTraining({
     required super.name,
     required super.sets,
@@ -59,7 +81,7 @@ abstract class SubTraining {
   });
 }
 
- class ForArmSubTraining extends SubTraining {
+class ForArmSubTraining extends SubTraining {
   const ForArmSubTraining({
     required super.name,
     required super.sets,
@@ -68,7 +90,7 @@ abstract class SubTraining {
   });
 }
 
- class LegSubTraining extends SubTraining {
+class LegSubTraining extends SubTraining {
   const LegSubTraining({
     required super.name,
     required super.sets,
@@ -77,7 +99,7 @@ abstract class SubTraining {
   });
 }
 
- class AbbsSubTraining extends SubTraining {
+class AbbsSubTraining extends SubTraining {
   const AbbsSubTraining({
     required super.name,
     required super.sets,

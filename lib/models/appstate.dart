@@ -1,23 +1,144 @@
 import 'dart:core';
 
+import 'package:gym_app/globals/extensionen/date_time.dart';
 import 'package:gym_app/models/day.dart';
 import 'package:gym_app/models/saved_trainingsday.dart';
 import 'package:gym_app/models/sub_training.dart';
 import 'package:gym_app/models/training.dart';
 import 'package:gym_app/models/uer.dart';
 
+// enum TrainingType {
+//   chest(name: 'Chest',subTrainings: []),
+//   back(name: 'Back',subTrainings: []),
+//   shoulder (name: 'Shoulder',subTrainings: []),
+//   biceps (name: 'Biceps',subTrainings: []),
+//   triceps (name: 'Triceps',subTrainings: []),
+//   forArm (name: 'ForArm',subTrainings: []),
+//   leg (name: 'Leg',subTrainings: []),
+//   abbs (name: 'Abbs',subTrainings: []),;
+//   final String name;
+//   final List<SubTraining> subTrainings;
+//  const TrainingType({ required this.name, required this.subTrainings});
+// }
+
 class AppState {
+  static const List<String> trainingTypes = [
+    'Chest',
+    'Back',
+    'Shoulder',
+    'Biceps',
+    'Triceps',
+    'ForArm',
+    'Leg',
+    'Abbs',
+  ];
+
   final List<Day> days;
-  final List<SavedTrainingsday>? savedTrainingsdays ;
+  final List<SavedTrainingsday>? savedTrainingsdays;
   final List<SubTraining>? subTrainings;
   final User? user;
-  const AppState({required this.days, this.user, this.subTrainings,this.savedTrainingsdays});
+  final List<String> allChestTrainingNames;
+  final List<String> allBackTrainingNames;
+  final List<String> allShoulderTrainingNames;
+  final List<String> allBicepsTrainingNames;
+  final List<String> allTricepsTrainingNames;
+  final List<String> allForArmTrainingNames;
+  final List<String> allLegTrainingNames;
+  final List<String> allAbbsTrainingNames;
+
+  const AppState({
+    required this.days,
+    this.user,
+    this.subTrainings,
+    this.savedTrainingsdays,
+    this.allChestTrainingNames = const [
+      'BenshPress',
+      'Incline Bench Press',
+      'Decline Bench Press',
+      'Dumbbell Fly',
+      'Cable Fly',
+      'Dips'
+    ],
+    this.allBackTrainingNames = const [
+      'Deadlift',
+      'Pull Ups',
+      'Chin Ups',
+      'Lat Pulldown',
+      'Seated Row',
+      'Bent Over Row',
+      'T-Bar Row',
+      'Face Pull',
+      'Shrugs'
+    ],
+    this.allShoulderTrainingNames = const [
+      'Military Press',
+      'Arnold Press',
+      'Lateral Raise',
+      'Front Raise',
+      'Rear Delt Fly',
+      'Upright Row',
+      'Shrugs'
+    ],
+    this.allBicepsTrainingNames = const [
+      'Barbell Curl',
+      'Dumbbell Curl',
+      'Preacher Curl',
+      'Hammer Curl',
+      'Concentration Curl',
+      'Reverse Curl'
+    ],
+    this.allTricepsTrainingNames = const [
+      'Close Grip Bench Press',
+      'Skull Crusher',
+      'Tricep Dip',
+      'Tricep Pushdown',
+      'Overhead Extension',
+      'Kickback'
+    ],
+    this.allForArmTrainingNames = const [
+      'Wrist Curl',
+      'Reverse Wrist Curl',
+      'Hammer Curl',
+      'Reverse Curl',
+      'Zottman Curl',
+      'Reverse Curl'
+    ],
+    this.allLegTrainingNames = const [
+      'Squat',
+      'Leg Press',
+      'Lunges',
+      'Leg Curl',
+      'Leg Extension',
+      'Calf Raise'
+    ],
+    this.allAbbsTrainingNames = const [
+      'Crunch',
+      'Leg Raise',
+      'Plank',
+      'Russian Twist',
+      'Bicycle Crunch',
+      'Mountain Climber'
+    ],
+  });
+
+  SavedTrainingsday? get todaysTraining {
+    if (days.isEmpty) {
+      return null;
+    }
+    SavedTrainingsday? result;
+    for (var day in days) {
+      if (day.date.isSameDay(DateTime.now())) {
+        result = SavedTrainingsday(name: 'Todays Training', day: day);
+      }
+    }
+    return result;
+  }
 
   Day? get thisWeakDay {
     Day? result;
     for (var day in days) {
-      if(day.date.weekday == DateTime.now().weekday){
-        result=day;
+      if (day.date.weekday == DateTime.now().weekday) {
+        result = day;
       }
     }
     return result;

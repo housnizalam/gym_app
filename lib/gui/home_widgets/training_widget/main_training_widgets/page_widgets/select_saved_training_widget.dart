@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gym_app/globals/extensionen/navigator.dart';
 import 'package:gym_app/globals/extensionen/size_extension.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
 import 'package:gym_app/globals/widgets/my_inkwell.dart';
+import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/sub_training_widget/sub_training_widget.dart';
 import 'package:gym_app/models/saved_trainingsday.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
 
@@ -36,7 +38,14 @@ class _SelectSavedTrainingWidgetState
       child: SingleChildScrollView(
         child: Column(
           children: [
-            for (var trainingsday in savedTrainingsDays) MyInkwell(),
+            for (var trainingsday in savedTrainingsDays)
+              MyInkwell(
+                child: Text(trainingsday.name),
+                onTap: () {
+                  ref.read(selectedSavedTraining.notifier).state = trainingsday;
+                  context.animateToAsPush(page: SubTrainingWidget());
+                },
+              ),
           ],
         ),
       ),

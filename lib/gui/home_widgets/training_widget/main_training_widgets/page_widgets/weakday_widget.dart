@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gym_app/globals/extensionen/date_time.dart';
 import 'package:gym_app/globals/extensionen/navigator.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
-import 'package:gym_app/globals/widgets/training_widget.dart';
+import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/sub_training_widget/sub_training_widget.dart';
 import 'package:gym_app/models/saved_trainingsday.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
 
@@ -47,6 +47,7 @@ class WeakdayWidget extends ConsumerWidget {
 
     final SavedTrainingsday trainingsday = SavedTrainingsday(
         name: '${now.todayAsWeakday}s Trainings', day: thisWeakDay);
-    return TrainingWidget(trainingsday: trainingsday);
+    ref.read(selectedSavedTraining.notifier).state = trainingsday;
+    return SubTrainingWidget();
   }
 }
