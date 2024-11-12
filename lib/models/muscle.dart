@@ -1,92 +1,144 @@
 abstract class Muscle {
   String name;
   double traningsdensity;
-  double recoveryDuration;
-  DateTime? lastTrained;
   Muscle({
     required this.name,
     required this.traningsdensity,
-    required this.recoveryDuration,
-     this.lastTrained,
+
   });
 }
 
-class ChestMuscle extends Muscle {
-  ChestMuscle({
+class UpperChestMuscle extends Muscle {
+  UpperChestMuscle({
     required super.traningsdensity,
-    required super.recoveryDuration,
-     super.lastTrained,
-  }) : super(name: 'Chest');
+
+  }) : super(name: 'Upper chest');
 }
 
-class BackMuscle extends Muscle {
-  BackMuscle({
+class LowerChestMuscle extends Muscle {
+  LowerChestMuscle({
     required super.traningsdensity,
-    required super.recoveryDuration,
-     super.lastTrained,
-  }) : super(name: 'Back');
+
+  }) : super(name: 'Lower chest');
 }
 
-class ShoulderMuscle extends Muscle {
-  ShoulderMuscle({
+class MiddleChestMuscle extends Muscle {
+  MiddleChestMuscle({
     required super.traningsdensity,
-    required super.recoveryDuration,
-     super.lastTrained,
-  }) : super(name: 'Shoulder');
+
+  }) : super(name: 'Middle chest');
 }
 
-class BicepMuscle extends Muscle {
-  BicepMuscle({
+class LowerBackMuscle extends Muscle {
+  LowerBackMuscle({
     required super.traningsdensity,
-    required super.recoveryDuration,
-     super.lastTrained,
+
+  }) : super(name: 'Lower back');
+}
+
+class UpperBackMuscle extends Muscle {
+  UpperBackMuscle({
+    required super.traningsdensity,
+
+  }) : super(name: 'Upper back');
+}
+
+class MiddleBackMuscle extends Muscle {
+  MiddleBackMuscle({
+    required super.traningsdensity,
+
+  }) : super(name: 'Middle back');
+}
+
+class Lats extends Muscle {
+  Lats({
+    required super.traningsdensity,
+
+  }) : super(name: 'Lats');
+}
+
+
+class FrontShoulderMuscle extends Muscle {
+  FrontShoulderMuscle({
+    required super.traningsdensity,
+
+  }) : super(name: 'Front shoulder');
+}
+
+class SideShoulderMuscle extends Muscle {
+  SideShoulderMuscle({
+    required super.traningsdensity,
+
+  }) : super(name: 'Side shoulder');
+}
+
+class RearShoulderMuscle extends Muscle {
+  RearShoulderMuscle({
+    required super.traningsdensity,
+
+  }) : super(name: 'Rear shoulder');
+}
+
+class BicepsMuscle extends Muscle {
+  BicepsMuscle({
+    required super.traningsdensity,
+
   }) : super(name: 'Bicep');
 }
 
 class TricepMuscle extends Muscle {
   TricepMuscle({
     required super.traningsdensity,
-    required super.recoveryDuration,
-     super.lastTrained,
+
   }) : super(name: 'Tricep');
 }
 
-class FrontLegMuscle extends Muscle {
-  FrontLegMuscle({
+class Glutes extends Muscle {
+  Glutes({
     required super.traningsdensity,
-    required super.recoveryDuration,
-     super.lastTrained,
-  }) : super(name: 'FrontLeg');
+
+  }) : super(name: 'Glutes');
 }
 
-class BackLegMuscle extends Muscle {
-  BackLegMuscle({
+class Hamstring extends Muscle {
+  Hamstring({
     required super.traningsdensity,
-    required super.recoveryDuration,
-     super.lastTrained,
-  }) : super(name: 'BackLeg');
+  
+  }) : super(name: 'Hamstring');
 }
 
-class CalfMuscle extends Muscle {
-  CalfMuscle({
+class Quads extends Muscle {
+  Quads({
     required super.traningsdensity,
-    required super.recoveryDuration,
-     super.lastTrained,
-  }) : super(name: 'Calf');
+  
+  }) : super(name: 'Quads');
 }
+
+class Calves extends Muscle {
+  Calves({
+    required super.traningsdensity,
+
+  }) : super(name: 'Calves');
+}
+
 
 class AbsMuscle extends Muscle {
   AbsMuscle({
     required super.traningsdensity,
-    required super.recoveryDuration,
-     super.lastTrained,
+
   }) : super(name: 'Abs');
 }
 
-class HipsMuscle extends Muscle {
-  HipsMuscle({
+class Core extends Muscle {
+  Core({
     required super.traningsdensity,
-    required super.recoveryDuration,
-     super.lastTrained,
-  }) : super(name: 'Hips');
+
+  }) : super(name: 'Core');
+}
+
+class ForArm extends Muscle {
+  ForArm({
+    required super.traningsdensity,
+
+  }) : super(name: 'ForArm');
 }
