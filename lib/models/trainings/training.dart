@@ -34,6 +34,24 @@ class Training {
     }
     return result;
   }
+
+  Training copyWith({
+    int? bodyWeight,
+    String? name,
+    String? maintargetetMuscle,
+    List<Sets>? sets,
+    List<Muscle>? targetetMuscles,
+    DateTime? date,
+  }) {
+    return Training(
+      bodyWeight: bodyWeight ?? this.bodyWeight,
+      name: name ?? this.name,
+      maintargetetMuscle: maintargetetMuscle ?? this.maintargetetMuscle,
+      sets: sets ?? this.sets,
+      targetetMuscles: targetetMuscles ?? this.targetetMuscles,
+      date: date ?? this.date,
+    );
+  }
 }
 
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gym_app/globals/extensionen/navigator.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
+import 'package:gym_app/globals/widgets/my_inkwell.dart';
 import 'package:gym_app/gui/home_widgets/home.dart';
 import 'package:gym_app/gui/user_widgets/sign_up_seite.dart';
 
@@ -11,9 +12,24 @@ class SignInWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Sign in'),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Colors.blue[900]!, Colors.black]),
+          ),
+          child: AppBar(
+            // iconTheme: const IconThemeData(color: Colors.white),
+            backgroundColor: Colors.transparent,
+            centerTitle: true,
+            title: Text('Sign in',
+                style: const TextStyle(
+                    color: Colors.white, fontWeight: FontWeight.bold)),
+          ),
+        ),
       ),
       body: MyContainer(
         child: Column(
@@ -86,8 +102,9 @@ class SignInWidget extends ConsumerWidget {
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.3),
-              child: ElevatedButton(
-                onPressed: () {
+              child: MyInkwell(
+                height: 50,
+                onTap: () {
                   context.animateToAsPushReplacement(
                       page: const HomeWidget(),
                       animationType: AnimationType.slideUp);
@@ -95,7 +112,11 @@ class SignInWidget extends ConsumerWidget {
                   //    date: DateTime.now(),
                   //    subTrainings: [benchPress]));
                 },
-                child: const FittedBox(child: Text('Sign in')),
+                child: const FittedBox(
+                    child: Text(
+                  'Sign in',
+                  style: TextStyle(color: Colors.white),
+                )),
               ),
             ),
             TextButton(

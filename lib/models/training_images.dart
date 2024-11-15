@@ -1,7 +1,7 @@
 
 
 class TrainingImages{
-  static const String pullUps = 'assets/images/pullUps.png';
+  static const String pullUps = 'assets/images/pullUps.jpeg';
   static const String chinUps = 'assets/images/chinUps.png';
   static const String latPullDown = 'assets/images/latPullDown.png';
   static const String seatedRow = 'assets/images/seatedRow.png';
@@ -14,7 +14,7 @@ class TrainingImages{
   static const String hammerCurl = 'assets/images/hammerCurl.png';
   static const String concentrationCurl = 'assets/images/concentrationCurl.png';
   static const String zottmanCurl = 'assets/images/zottmanCurl.png';
-  static const String benshPress = 'assets/images/benshPress.png';
+  static const String benshPress = 'assets/images/benshPress.jpeg';
   static const String inclineBenchPress = 'assets/images/inclineBenchPress.png';
   static const String declineBenchPress = 'assets/images/declineBenchPress.png';
   static const String dumbbellFly = 'assets/images/dumbbellFly.png';

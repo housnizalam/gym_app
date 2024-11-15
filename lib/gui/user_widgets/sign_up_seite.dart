@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
+import 'package:gym_app/globals/widgets/my_inkwell.dart';
 
 class SignUpWidget extends ConsumerWidget {
   const SignUpWidget({super.key});
@@ -12,9 +13,24 @@ class SignUpWidget extends ConsumerWidget {
     final TextEditingController _firstNameController = TextEditingController();
     final TextEditingController _lastNameController = TextEditingController();
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Sign up'),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Colors.blue[900]!, Colors.black]),
+          ),
+          child: AppBar(
+            iconTheme: const IconThemeData(color: Colors.white),
+            backgroundColor: Colors.transparent,
+            centerTitle: true,
+            title: Text('Sign up',
+                style: const TextStyle(
+                    color: Colors.white, fontWeight: FontWeight.bold)),
+          ),
+        ),
       ),
       body: MyContainer(
         child: Column(
@@ -118,8 +134,9 @@ class SignUpWidget extends ConsumerWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                onPressed: () {
+              child: MyInkwell(
+                height: 50,
+                onTap: () {
                   // ref.read(userProvider).signIn(
                   //       _emailController.text,
                   //       _passwordController.text,
@@ -127,7 +144,10 @@ class SignUpWidget extends ConsumerWidget {
                   //       _lastNameController.text,
                   //     );
                 },
-                child: const Text('Sign up'),
+                child: const Text(
+                  'Sign up',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
             SizedBox(),

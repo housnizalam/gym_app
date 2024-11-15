@@ -27,8 +27,8 @@ class ChooseSubTrainingWidget extends ConsumerWidget {
                   child: Text(training.name,
                       style: const TextStyle(color: Colors.white)),
                   onTap: () {
-                    ref.read(selectedTrainingsName.notifier).state = training;
                     ref.read(tempDayProvider.notifier).addTraining(training);
+                    // ref.read(selectedTraining.notifier).state = training;
                     context.pop();
                   },
                 ),
