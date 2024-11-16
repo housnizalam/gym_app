@@ -1,5 +1,6 @@
 import 'package:gym_app/models/muscle.dart';
 import 'package:gym_app/models/sets.dart';
+import 'package:gym_app/models/training_images.dart';
 import 'package:gym_app/models/trainings/training.dart';
 
 class CloseGripBenchPress extends Training {
@@ -7,6 +8,7 @@ class CloseGripBenchPress extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.closeGripBenchPress,
           bodyWeight: 0,
           targetetMuscles: [
             TricepMuscle(traningsdensity: 0.6),
@@ -35,6 +37,7 @@ class SkullCrusher extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.skullCrusher,
             bodyWeight: 0,
             targetetMuscles: [
               TricepMuscle(traningsdensity: 0.6),
@@ -62,6 +65,7 @@ class TricepPushdown extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.tricepsPushdown,
           bodyWeight: 0,
           targetetMuscles: [
             TricepMuscle(traningsdensity: 0.8),
@@ -84,38 +88,12 @@ class TricepPushdown extends Training {
   }
 }
 
-class TricepExtension extends Training {
-  TricepExtension({
-    required super.sets,
-    required super.date,
-  }) : super(
-          bodyWeight: 0,
-          targetetMuscles: [
-            TricepMuscle(traningsdensity: 0.85),
-            FrontShoulderMuscle(traningsdensity: 0.1),
-            ForArm(traningsdensity: 0.05),
-          ],
-          name: 'Tricep Extension',
-          maintargetetMuscle: 'Triceps',
-        );
-
-  factory TricepExtension.standard() {
-    return TricepExtension(
-      sets: const [
-        Sets(reps: 0, weight: 20),
-        Sets(reps: 0, weight: 20),
-        Sets(reps: 0, weight: 20),
-      ],
-      date: DateTime.now(),
-    );
-  }
-}
-
 class OverheadTricepExtension extends Training {
   OverheadTricepExtension({
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.tricepsOverheadExtension,
           bodyWeight: 0,
           targetetMuscles: [
             TricepMuscle(traningsdensity: 0.8),
@@ -143,6 +121,7 @@ class TricepKickback extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.kickBack,
           bodyWeight: 0,
           targetetMuscles: [
             TricepMuscle(traningsdensity: 0.85),

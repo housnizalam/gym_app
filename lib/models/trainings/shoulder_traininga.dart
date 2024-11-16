@@ -1,5 +1,6 @@
 import 'package:gym_app/models/muscle.dart';
 import 'package:gym_app/models/sets.dart';
+import 'package:gym_app/models/training_images.dart';
 import 'package:gym_app/models/trainings/training.dart';
 
 class FacePull extends Training {
@@ -7,6 +8,7 @@ class FacePull extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.facePull,
           bodyWeight: 0,
           targetetMuscles: [
             RearShoulderMuscle(traningsdensity: 0.4),
@@ -36,6 +38,7 @@ class MilitaryPress extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.militaryPress,
           bodyWeight: 0,
           targetetMuscles: [
             FrontShoulderMuscle(traningsdensity: 0.4),
@@ -65,6 +68,7 @@ class ArnoldPress extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.arnoldPress,
           bodyWeight: 0,
           targetetMuscles: [
             FrontShoulderMuscle(traningsdensity: 0.35),
@@ -95,6 +99,7 @@ class LateralRaise extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.lateralRaise,
           bodyWeight: 0,
           targetetMuscles: [
             SideShoulderMuscle(traningsdensity: 0.7),
@@ -123,6 +128,7 @@ class FrontRaise extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.frontRaise,
           bodyWeight: 0,
           targetetMuscles: [
             FrontShoulderMuscle(traningsdensity: 0.7),
@@ -151,6 +157,7 @@ class RearDeltFly extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.rearDeltFly,
           bodyWeight: 0,
           targetetMuscles: [
             RearShoulderMuscle(traningsdensity: 0.6),
@@ -179,6 +186,7 @@ class UprightRow extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.uprightRow,
           bodyWeight: 0,
           targetetMuscles: [
             SideShoulderMuscle(traningsdensity: 0.4),
@@ -189,6 +197,8 @@ class UprightRow extends Training {
           name: 'Upright Row',
           maintargetetMuscle: 'Shoulder',
         );
+
+        
 
   factory UprightRow.standard() {
     return UprightRow(

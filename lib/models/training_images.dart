@@ -1,25 +1,48 @@
-
-
-class TrainingImages{
-  static const String pullUps = 'assets/images/pullUps.jpeg';
-  static const String chinUps = 'assets/images/chinUps.png';
-  static const String latPullDown = 'assets/images/latPullDown.png';
-  static const String seatedRow = 'assets/images/seatedRow.png';
-  static const String bentOverRow = 'assets/images/bentOverRow.png';
-  static const String tBarRow = 'assets/images/tBarRow.png';
-  static const String shrugs = 'assets/images/shrugs.png';
+class TrainingImages {
+  static const String arnoldPress = 'assets/images/arnoldPress.jpg';
+  static const String backLegExtension = 'assets/images/backLegExtension.jpg';
   static const String barbellCurl = 'assets/images/barbellCurl.png';
-  static const String dumbbellCurl = 'assets/images/dumbbellCurl.png';
-  static const String preacherCurl = 'assets/images/preacherCurl.png';
-  static const String hammerCurl = 'assets/images/hammerCurl.png';
+  static const String benchPress = 'assets/images/benchPress.jpg';
+  static const String bentOverRow = 'assets/images/bentOverRow.jpg';
+  static const String bicycleCrunch = 'assets/images/bentOverRow.jpg';
+  static const String cableFly = 'assets/images/cableFly.jpg';
+  static const String calfRaise = 'assets/images/calfRaise.jpg';
+  static const String chinUps = 'assets/images/chinUps.jpg';
+  static const String closeGripBenchPress = 'assets/images/closeGripBenchPress.jpg';
   static const String concentrationCurl = 'assets/images/concentrationCurl.png';
-  static const String zottmanCurl = 'assets/images/zottmanCurl.png';
-  static const String benshPress = 'assets/images/benshPress.jpeg';
-  static const String inclineBenchPress = 'assets/images/inclineBenchPress.png';
-  static const String declineBenchPress = 'assets/images/declineBenchPress.png';
-  static const String dumbbellFly = 'assets/images/dumbbellFly.png';
-  static const String cableFly = 'assets/images/cableFly.png';
+  static const String crunch = 'assets/images/crunch.jpg';
+  static const String deadlift = 'assets/images/deadlift.jpg';
+  static const String declineBenchPress = 'assets/images/declineBenchPress.jpg';
   static const String dips = 'assets/images/dips.png';
-  
-
+  static const String dumbbellCurl = 'assets/images/dumbbellCurl.jpg';
+  static const String dumbbellFly = 'assets/images/dumbbellFly.png';
+  static const String facePull = 'assets/images/facePull.jpg';
+  static const String frontLegExtension = 'assets/images/frontLegExtension.jpg';
+  static const String frontRaise = 'assets/images/frontRaise.jpg';
+  static const String hammerCurl = 'assets/images/hammerCurl.jpg';
+  static const String inclineBenchPress = 'assets/images/inclineBenchPress.jpg';
+  static const String kickBack = 'assets/images/kickBack.jpg';
+  static const String lateralRaise = 'assets/images/lateralRaise.jpg';
+  static const String latPulldown = 'assets/images/latPulldown.jpg';
+  static const String legPress = 'assets/images/legPress.jpg';
+  static const String legRaise = 'assets/images/legRaise.jpg';
+  static const String lunges = 'assets/images/lunges.jpg';
+  static const String militaryPress = 'assets/images/militaryPress.jpg';
+  static const String mountainClimber = 'assets/images/mountainClimber.jpg';
+  static const String preacherCurl = 'assets/images/preacherCurl.jpg';
+  static const String pullUps = 'assets/images/pullUps.jpg';
+  static const String rearDeltFly = 'assets/images/rearDeltFly.jpg';
+  static const String reverseCurl = 'assets/images/reverseCurl.jpg';
+  static const String reverseWristCurl = 'assets/images/reverseWristCurl.jpg';
+  static const String russianTwist = 'assets/images/russianTwist.jpg';
+  static const String seatedRow = 'assets/images/seatedRow.jpg';
+  static const String shrugs = 'assets/images/shrugs.jpg';
+  static const String skullCrusher = 'assets/images/skullCrusher.jpg';
+  static const String squat = 'assets/images/squat.jpg';
+  static const String tBarRow = 'assets/images/tBarRow.png';
+  static const String tricepsOverheadExtension = 'assets/images/tricepsOverheadExtension.jpg';
+  static const String tricepsPushdown = 'assets/images/tricepsPushdown.jpg';
+  static const String uprightRow = 'assets/images/uprightRow.jpeg';
+  static const String wristCurl = 'assets/images/wristCurl.jpg';
+  static const String zottmanCurl = 'assets/images/zottmanCurl.jpg';
 }

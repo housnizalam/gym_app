@@ -1,5 +1,6 @@
 import 'package:gym_app/models/muscle.dart';
 import 'package:gym_app/models/sets.dart';
+import 'package:gym_app/models/training_images.dart';
 import 'package:gym_app/models/trainings/training.dart';
 
 class Deadlift extends Training {
@@ -7,7 +8,10 @@ class Deadlift extends Training {
     required super.bodyWeight,
     required super.sets,
     required super.date,
-  }) : super(targetetMuscles: [
+  }) : super(
+    image: TrainingImages.deadlift,
+        
+    targetetMuscles: [
           LowerBackMuscle(traningsdensity: 0.25),
           Glutes(traningsdensity: 0.2),
           Hamstring(traningsdensity: 0.2),
@@ -35,7 +39,10 @@ class Squat extends Training {
     required super.bodyWeight,
     required super.sets,
     required super.date,
-  }) : super(targetetMuscles: [
+  }) : super(
+    
+    image: TrainingImages.squat,
+    targetetMuscles: [
           Quads(traningsdensity: 0.35),
           Glutes(traningsdensity: 0.25),
           Hamstring(traningsdensity: 0.15),
@@ -62,6 +69,7 @@ class LegPress extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.legPress,
             bodyWeight: 0,
             targetetMuscles: [
               Quads(traningsdensity: 0.4),
@@ -89,7 +97,9 @@ class Lunges extends Training {
     required super.bodyWeight,
     required super.sets,
     required super.date,
-  }) : super(targetetMuscles: [
+  }) : super(
+    image: TrainingImages.lunges,
+    targetetMuscles: [
           Quads(traningsdensity: 0.4),
           Glutes(traningsdensity: 0.25),
           Hamstring(traningsdensity: 0.2),
@@ -123,6 +133,7 @@ class FrontLegExtension extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.frontLegExtension,
             bodyWeight: 0,
             targetetMuscles: [
               Quads(traningsdensity: 0.85),
@@ -148,6 +159,7 @@ class BackLegExtension extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.backLegExtension,
             bodyWeight: 0,
             targetetMuscles: [
               Hamstring(traningsdensity: 0.6),
@@ -174,7 +186,9 @@ class CalfRaise extends Training {
     required super.bodyWeight,
     required super.sets,
     required super.date,
-  }) : super(targetetMuscles: [
+  }) : super(
+    image: TrainingImages.calfRaise,
+    targetetMuscles: [
           Calves(traningsdensity: 0.9),
           Hamstring(traningsdensity: 0.1),
         ], name: 'Calf Raise', maintargetetMuscle: 'Legs');

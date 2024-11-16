@@ -86,7 +86,6 @@ class AppState {
     CloseGripBenchPress.standard(),
     SkullCrusher.standard(),
     TricepPushdown.standard(),
-    TricepExtension.standard(),
     OverheadTricepExtension.standard(),
     TricepKickback.standard(),
     WristCurl.standard(),

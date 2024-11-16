@@ -36,17 +36,17 @@ class _TrainingWidgetState extends ConsumerState<SubTrainingWidget> {
             for (var training in trainingsDay)
               Padding(
                 padding: EdgeInsets.only(
-                    top: 8.0, right: context.width * 0.3, left: 8),
+                    top: 8.0, right: context.width * 0.25, left: 8),
                 child: MyInkwell(
                   height: 50,
-                  onTap: () {
+                  onTap: () async {
                     ref.read(selectedTraining.notifier).state = training;
                     context.navigatePushTo(EditTrainingWidget());
                   },
                   child: Row(
                     children: [
                       Hero(
-                        tag: AssetImage(TrainingImages.benshPress),
+                        tag: training.image,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 8.0, left: 8.0),
                           child: Container(
@@ -55,16 +55,20 @@ class _TrainingWidgetState extends ConsumerState<SubTrainingWidget> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
                               image: DecorationImage(
-                                image: AssetImage(TrainingImages.benshPress),
+                                image: AssetImage(training.image),
                                 fit: BoxFit.fill,
                               ),
                             ),
                           ),
                         ),
                       ),
-                      Text(
-                        training.name,
-                        style: const TextStyle(color: Colors.white),
+                      SizedBox(
+                        width: context.width * 0.5,
+                        child: Text(
+                          training.name,
+                          overflow: TextOverflow.clip,
+                          style: const TextStyle(color: Colors.white),
+                        ),
                       ),
                       Expanded(child: SizedBox()),
                     ],

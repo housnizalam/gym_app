@@ -1,5 +1,6 @@
 import 'package:gym_app/models/muscle.dart';
 import 'package:gym_app/models/sets.dart';
+import 'package:gym_app/models/training_images.dart';
 import 'package:gym_app/models/trainings/training.dart';
 
 class Crunch extends Training {
@@ -8,6 +9,7 @@ class Crunch extends Training {
     required super.sets,
     required super.date,
   }) : super(
+          image: TrainingImages.crunch,
           targetetMuscles: [
             Core(traningsdensity: 0.75),
             LowerBackMuscle(traningsdensity: 0.15),
@@ -45,6 +47,7 @@ class LegRaise extends Training {
     required super.sets,
     required super.date,
   }) : super(
+          image: TrainingImages.legRaise,
           targetetMuscles: [
             Core(traningsdensity: 0.6),
             Glutes(traningsdensity: 0.2),
@@ -66,7 +69,7 @@ class LegRaise extends Training {
       date: DateTime.now(),
     );
   }
-    @override
+  @override
   double get totaldensity {
     double result = 0;
     for (var set in sets) {
@@ -75,8 +78,6 @@ class LegRaise extends Training {
     return result;
   }
 }
-  
-
 
 class RussianTwist extends Training {
   RussianTwist({
@@ -84,6 +85,7 @@ class RussianTwist extends Training {
     required super.sets,
     required super.date,
   }) : super(
+          image: TrainingImages.russianTwist,
           targetetMuscles: [
             Core(traningsdensity: 0.8),
             Glutes(traningsdensity: 0.1),
@@ -103,7 +105,7 @@ class RussianTwist extends Training {
       date: DateTime.now(),
     );
   }
-      @override
+  @override
   double get totaldensity {
     double result = 0;
     for (var set in sets) {
@@ -118,11 +120,15 @@ class BicycleCrunch extends Training {
     required super.bodyWeight,
     required super.sets,
     required super.date,
-  }) : super(targetetMuscles: [
-          Core(traningsdensity: 0.75),
-          LowerBackMuscle(traningsdensity: 0.1),
-          Glutes(traningsdensity: 0.15),
-        ], name: 'Bicycle Crunch', maintargetetMuscle: 'Core');
+  }) : super(
+            image: TrainingImages.bicycleCrunch,
+            targetetMuscles: [
+              Core(traningsdensity: 0.75),
+              LowerBackMuscle(traningsdensity: 0.1),
+              Glutes(traningsdensity: 0.15),
+            ],
+            name: 'Bicycle Crunch',
+            maintargetetMuscle: 'Core');
 
   factory BicycleCrunch.standard() {
     return BicycleCrunch(
@@ -136,7 +142,7 @@ class BicycleCrunch extends Training {
     );
   }
 
-      @override
+  @override
   double get totaldensity {
     double result = 0;
     for (var set in sets) {
@@ -152,6 +158,7 @@ class MountainClimber extends Training {
     required super.sets,
     required super.date,
   }) : super(
+          image: TrainingImages.mountainClimber,
           targetetMuscles: [
             Core(traningsdensity: 0.6),
             Glutes(traningsdensity: 0.2),
@@ -175,7 +182,7 @@ class MountainClimber extends Training {
     );
   }
 
-      @override
+  @override
   double get totaldensity {
     double result = 0;
     for (var set in sets) {

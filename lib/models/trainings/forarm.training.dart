@@ -1,5 +1,6 @@
 import 'package:gym_app/models/muscle.dart';
 import 'package:gym_app/models/sets.dart';
+import 'package:gym_app/models/training_images.dart';
 import 'package:gym_app/models/trainings/training.dart';
 
 class ReverseCurl extends Training {
@@ -7,6 +8,7 @@ class ReverseCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.reverseCurl,
           bodyWeight: 0,
           targetetMuscles: [
             ForArm(traningsdensity: 0.6),
@@ -34,6 +36,7 @@ class WristCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.wristCurl,
           bodyWeight: 0,
           targetetMuscles: [
             ForArm(traningsdensity: 0.9),
@@ -60,6 +63,7 @@ class ReverseWristCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.reverseWristCurl,
           bodyWeight: 0,
           targetetMuscles: [
             ForArm(traningsdensity: 0.9),

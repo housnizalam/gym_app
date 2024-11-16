@@ -1,5 +1,6 @@
 import 'package:gym_app/models/muscle.dart';
 import 'package:gym_app/models/sets.dart';
+import 'package:gym_app/models/training_images.dart';
 import 'package:gym_app/models/trainings/training.dart';
 
 class BarbellCurl extends Training {
@@ -7,6 +8,7 @@ class BarbellCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.barbellCurl,
           bodyWeight: 0,
           targetetMuscles: [
             BicepsMuscle(traningsdensity: 0.7),
@@ -35,6 +37,7 @@ class DumbbellCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.dumbbellCurl,
           bodyWeight: 0,
           targetetMuscles: [
             BicepsMuscle(traningsdensity: 0.75),
@@ -63,6 +66,7 @@ class PreacherCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.preacherCurl,
           bodyWeight: 0,
           targetetMuscles: [
             BicepsMuscle(traningsdensity: 0.85),
@@ -90,6 +94,7 @@ class HammerCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.hammerCurl,
           bodyWeight: 0,
           targetetMuscles: [
             BicepsMuscle(traningsdensity: 0.6),
@@ -117,6 +122,7 @@ class ConcentrationCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.concentrationCurl,
           bodyWeight: 0,
           targetetMuscles: [
             BicepsMuscle(traningsdensity: 0.9),
@@ -143,6 +149,7 @@ class ZottmanCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.zottmanCurl,
           bodyWeight: 0,
           targetetMuscles: [
             BicepsMuscle(traningsdensity: 0.6),

@@ -1,5 +1,6 @@
 import 'package:gym_app/models/muscle.dart';
 import 'package:gym_app/models/sets.dart';
+import 'package:gym_app/models/training_images.dart';
 import 'package:gym_app/models/trainings/training.dart';
 
 class BenshPressSubTraining extends Training {
@@ -7,6 +8,7 @@ class BenshPressSubTraining extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.benchPress,
         bodyWeight: 0,
 
           targetetMuscles: [
@@ -15,7 +17,7 @@ class BenshPressSubTraining extends Training {
             TricepMuscle(traningsdensity: 0.15),
             FrontShoulderMuscle(traningsdensity: 0.2),
           ],
-          name: 'Bensh Press',
+          name: 'Bench Press',
           maintargetetMuscle: 'Chest',
         );
 
@@ -36,6 +38,7 @@ class InclineBenchPress extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.inclineBenchPress,
         bodyWeight: 0,
 
           targetetMuscles: [
@@ -65,6 +68,7 @@ class DeclineBenchPress extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.declineBenchPress,
         bodyWeight: 0,
 
           targetetMuscles: [
@@ -94,6 +98,7 @@ class DumbbellFly extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.dumbbellFly,
         bodyWeight: 0,
 
           targetetMuscles: [
@@ -122,6 +127,7 @@ class CableFly extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.cableFly,
         bodyWeight: 0,
 
           targetetMuscles: [
@@ -151,6 +157,7 @@ class Dips extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.dips,
         bodyWeight: 0,
 
           targetetMuscles: [

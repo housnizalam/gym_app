@@ -2,6 +2,7 @@ import 'package:gym_app/models/muscle.dart';
 import 'package:gym_app/models/sets.dart';
 
 class Training {
+  final String image;
   final int bodyWeight;
   final String name;
   final String maintargetetMuscle;
@@ -15,6 +16,7 @@ class Training {
     required this.sets,
     required this.targetetMuscles,
     required this.date,
+    required this.image,
   });
 
   double get totaldensity {
@@ -29,8 +31,8 @@ class Training {
     Map<String, double> result = {};
     for (var muscle in targetetMuscles) {
       double muscleDensity = muscle.traningsdensity * totaldensity;
-  
-      result.addAll({muscle.name: muscleDensity/2});
+
+      result.addAll({muscle.name: muscleDensity / 2});
     }
     return result;
   }
@@ -50,8 +52,11 @@ class Training {
       sets: sets ?? this.sets,
       targetetMuscles: targetetMuscles ?? this.targetetMuscles,
       date: date ?? this.date,
+      image: image,
     );
   }
+
+  String get id => name + date.toString();
 }
 
 

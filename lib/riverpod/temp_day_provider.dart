@@ -15,11 +15,11 @@ class TempDayNotifier extends StateNotifier<Day> {
 
   void saveTraining(Training training) {
     int index =
-        state.trainings.indexWhere((element) => element.name == training.name);
+        state.trainings.indexWhere((element) => element.id == training.id);
     state = Day(
       date: state.date,
       trainings: [...state.trainings]
-        ..removeWhere((element) => element.name == training.name)
+        ..removeWhere((element) => element.id == training.id)
         ..insert(index, training),
     );
   }

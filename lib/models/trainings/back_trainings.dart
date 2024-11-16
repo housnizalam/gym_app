@@ -1,5 +1,6 @@
 import 'package:gym_app/models/muscle.dart';
 import 'package:gym_app/models/sets.dart';
+import 'package:gym_app/models/training_images.dart';
 import 'package:gym_app/models/trainings/training.dart';
 
 class PullUps extends Training {
@@ -8,6 +9,7 @@ class PullUps extends Training {
     required super.date,
     required super.bodyWeight,
   }) : super(
+    image: TrainingImages.pullUps,
           targetetMuscles: [
             Lats(traningsdensity: 0.45),
             BicepsMuscle(traningsdensity: 0.2),
@@ -38,6 +40,7 @@ class ChinUps extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.chinUps,
           targetetMuscles: [
             Lats(traningsdensity: 035),
             BicepsMuscle(traningsdensity: 0.3),
@@ -67,6 +70,7 @@ class LatPulldown extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.latPulldown,
     bodyWeight: 0,
           targetetMuscles: [
             Lats(traningsdensity: 0.5),
@@ -96,6 +100,7 @@ class SeatedRow extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.seatedRow,
     bodyWeight: 0,
           targetetMuscles: [
             Lats(traningsdensity: 0.3),
@@ -126,6 +131,7 @@ class BentOverRow extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.bentOverRow,
     bodyWeight: 0,
           targetetMuscles: [
             Lats(traningsdensity: 0.35),
@@ -156,6 +162,7 @@ class TBarRow extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.tBarRow,
     bodyWeight: 0,
           targetetMuscles: [
             Lats(traningsdensity: 0.4),
@@ -186,6 +193,7 @@ class Shrugs extends Training {
     required super.sets,
     required super.date,
   }) : super(
+    image: TrainingImages.shrugs,
     bodyWeight: 0,
           targetetMuscles: [
             UpperBackMuscle(traningsdensity: 0.7),

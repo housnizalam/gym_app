@@ -39,13 +39,13 @@ class EditTrainingWidget extends ConsumerWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Hero(
-                      tag: AssetImage(TrainingImages.benshPress),
+                      tag: AssetImage(training.image),
                       child: Container(
                         height: 200,
                         width: 200,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(TrainingImages.benshPress),
+                            image: AssetImage(training.image),
                             fit: BoxFit.fill,
                           ),
                         ),
