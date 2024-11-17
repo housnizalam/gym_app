@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gym_app/globals/extensionen/size_extension.dart';
 import 'package:gym_app/globals/widgets/my_inkwell.dart';
-import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/sub_training_widget/add_traininig_widget/choose_training_widget/choose_training_widget.dart';
+import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/add_traininig_widget/choose_training_widget/choose_training_widget.dart';
 
 class AddTrainingWidget extends ConsumerStatefulWidget {
   const AddTrainingWidget({super.key});

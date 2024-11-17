@@ -3,8 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gym_app/globals/extensionen/date_time.dart';
 import 'package:gym_app/globals/extensionen/navigator.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
-import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/sub_training_widget/sub_training_widget.dart';
-import 'package:gym_app/models/saved_trainingsday.dart';
+import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/weak_day_widget/add_weak_day_widget.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
 
 class WeakdayWidget extends ConsumerWidget {
@@ -12,8 +11,7 @@ class WeakdayWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final thisWeakDay =
-        ref.watch(appStateProvider.select((value) => value.thisWeakDay));
+    final thisWeakDay = ref.watch(appStateProvider).thisWeakDay;
     final now = DateTime.now();
     if (thisWeakDay == null) {
       return MyContainer(
@@ -44,10 +42,10 @@ class WeakdayWidget extends ConsumerWidget {
         ),
       );
     }
-
-    final SavedTrainingsday trainingsday = SavedTrainingsday(
-        name: '${now.todayAsWeakday}s Trainings', day: thisWeakDay);
-    ref.read(selectedSavedTraining.notifier).state = trainingsday;
-    return SubTrainingWidget();
+    // final SavedTrainingsday trainingsday = SavedTrainingsday(
+    //     name: '${now.todayAsWeakday}s Trainings', day: thisWeakDay);
+    // ref.read(selectedSavedTraining.notifier).state = trainingsday;
+    return EditWeakDayWidget();
+    //
   }
 }

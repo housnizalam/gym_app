@@ -5,7 +5,6 @@ import 'package:gym_app/globals/widgets/my_container.dart';
 import 'package:gym_app/globals/widgets/my_inkwell.dart';
 import 'package:gym_app/globals/widgets/wheal_scroller.dart';
 import 'package:gym_app/models/sets.dart';
-import 'package:gym_app/models/training_images.dart';
 import 'package:gym_app/models/trainings/training.dart';
 import 'package:gym_app/riverpod/temp_day_provider.dart';
 
@@ -217,36 +216,6 @@ class EditTrainingWidget extends ConsumerWidget {
                       ],
                     ),
                   ),
-
-                  // Column(
-                  //   crossAxisAlignment: CrossAxisAlignment.start,
-                  //   children: [
-                  //     Padding(
-                  //       padding: const EdgeInsets.only(bottom: 8.0, left: 8.0),
-                  //       child: Text('Total density: ${training.totaldensity}',
-                  //           style: const TextStyle(
-                  //               color: Colors.white, fontSize: 20)),
-                  //     ),
-                  //     Padding(
-                  //       padding: const EdgeInsets.only(left: 8.0),
-                  //       child: Text('Targete Muscles:',
-                  //           style: const TextStyle(
-                  //               color: Colors.white, fontSize: 17)),
-                  //     ),
-                  //     for (var key in training.musclsDensity.keys)
-                  //       Padding(
-                  //         padding: const EdgeInsets.only(left: 8.0),
-                  //         child: Text(
-                  //           '$key: ${training.musclsDensity[key]} Kg',
-                  //           style: const TextStyle(color: Colors.white),
-                  //           textAlign: TextAlign.start,
-                  //         ),
-                  //       ),
-                  //     SizedBox(
-                  //       height: 20,
-                  //     )
-                  //   ],
-                  // )
                 ],
               ),
             ),
@@ -259,7 +228,9 @@ class EditTrainingWidget extends ConsumerWidget {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  ref.read(tempDayProvider.notifier).saveTraining(training);
+                  ref
+                      .read(creatTempDayProvider.notifier)
+                      .saveTraining(training);
                   Navigator.pop(context);
                 },
               ),

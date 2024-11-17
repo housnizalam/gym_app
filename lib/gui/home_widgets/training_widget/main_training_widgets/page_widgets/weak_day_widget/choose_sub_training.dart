@@ -8,13 +8,13 @@ import 'package:gym_app/models/trainings/training.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
 import 'package:gym_app/riverpod/temp_day_provider.dart';
 
-class ChooseSubTrainingWidget extends ConsumerWidget {
-  const ChooseSubTrainingWidget({super.key});
+class ChooseSubTrainingWeakdayWidget extends ConsumerWidget {
+  const ChooseSubTrainingWeakdayWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final trainingsList = ref.watch(selectedStandardTrainingsList);
-    final tempdayTrainings = ref.watch(tempDayProvider).trainings;
+    final tempdayTrainings = ref.watch(weakdayTempDayProvider).trainings;
     return MyContainer(
       child: SingleChildScrollView(
         child: Column(
@@ -32,7 +32,9 @@ class ChooseSubTrainingWidget extends ConsumerWidget {
                     child: Text(training.name,
                         style: const TextStyle(color: Colors.white)),
                     onTap: () {
-                      ref.read(tempDayProvider.notifier).addTraining(training);
+                      ref
+                          .read(weakdayTempDayProvider.notifier)
+                          .addTraining(training);
                       // ref.read(selectedTraining.notifier).state = training;
                       context.pop();
                     },

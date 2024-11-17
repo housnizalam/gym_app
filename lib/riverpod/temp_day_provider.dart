@@ -2,9 +2,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gym_app/models/day.dart';
 import 'package:gym_app/models/trainings/chest_trainings.dart';
 import 'package:gym_app/models/trainings/training.dart';
+import 'package:gym_app/riverpod/appstate_provider.dart';
 
 class TempDayNotifier extends StateNotifier<Day> {
-  TempDayNotifier() : super(Day(date: DateTime.now(), trainings: []));
+  TempDayNotifier([Day? day]) : super(Day(date: DateTime.now(), trainings:day?.trainings?? []));
 
   void addTraining(Training training) {
     state = Day(
@@ -32,8 +33,13 @@ class TempDayNotifier extends StateNotifier<Day> {
   }
 }
 
-final tempDayProvider = StateNotifierProvider<TempDayNotifier, Day>((ref) {
+final creatTempDayProvider = StateNotifierProvider<TempDayNotifier, Day>((ref) {
   return TempDayNotifier();
+});
+final weakdayTempDayProvider =
+    StateNotifierProvider<TempDayNotifier, Day>((ref) {
+      final day=ref.watch(appStateProvider).thisWeakDay;
+  return TempDayNotifier(day);
 });
 
 final selectedTraining =
