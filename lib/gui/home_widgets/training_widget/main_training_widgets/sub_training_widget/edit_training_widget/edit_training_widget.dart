@@ -32,7 +32,8 @@ class EditTrainingWidget extends ConsumerWidget {
                     child: Center(
                       child: Text(
                         training.name,
-                        style: TextStyle(fontSize: 20, color: Colors.white),
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.white),
                       ),
                     ),
                   ),
@@ -58,12 +59,12 @@ class EditTrainingWidget extends ConsumerWidget {
                         ListTile(
                           title: Text(
                             'Set ${i + 1}',
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                           subtitle: Row(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 4.0),
+                              const Padding(
+                                padding: EdgeInsets.only(right: 4.0),
                                 child: Text(
                                   'Weight:',
                                   style: TextStyle(color: Colors.white),
@@ -89,8 +90,8 @@ class EditTrainingWidget extends ConsumerWidget {
                                 },
                               ),
                               const SizedBox(width: 20),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 4.0),
+                              const Padding(
+                                padding: EdgeInsets.only(right: 4.0),
                                 child: Text(
                                   'Reps:',
                                   style: TextStyle(color: Colors.white),
@@ -113,25 +114,26 @@ class EditTrainingWidget extends ConsumerWidget {
                                   );
                                 },
                               ),
-                              Expanded(child: SizedBox()),
-                              InkWell(
-                                onTap: () {
-                                  if (sets.length == 1) return;
+                              const Expanded(child: SizedBox()),
+                              if (sets.length > 1)
+                                InkWell(
+                                  onTap: () {
+                                    if (sets.length == 1) return;
 
-                                  ref.read(selectedTraining.notifier).state =
-                                      training.copyWith(
-                                    sets: [...sets]..removeAt(i),
-                                  );
-                                },
-                                child: const Icon(
-                                  Icons.delete,
-                                  color: Colors.red,
+                                    ref.read(selectedTraining.notifier).state =
+                                        training.copyWith(
+                                      sets: [...sets]..removeAt(i),
+                                    );
+                                  },
+                                  child: const Icon(
+                                    Icons.delete,
+                                    color: Colors.red,
+                                  ),
                                 ),
-                              ),
                             ],
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           color: Colors.white,
                         ),
                       ],
@@ -161,7 +163,90 @@ class EditTrainingWidget extends ConsumerWidget {
                         ),
                       ),
                     ],
-                  )
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 8.0, bottom: 20.0, right: 8.0),
+                    child: Table(
+                      border: TableBorder.all(color: Colors.white),
+                      columnWidths: const {
+                        0: IntrinsicColumnWidth(),
+                        1: FlexColumnWidth(),
+                      },
+                      children: [
+                        // الصف الخاص بـ Total density
+                        TableRow(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text(
+                                'Total density',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text(
+                                '${training.totaldensity}',
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
+                        // الصفوف الخاصة بـ العضلات والكثافة
+                        ...training.musclsDensity.entries.map(
+                          (entry) => TableRow(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  entry.key,
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  '${entry.value} Kg',
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Padding(
+                  //       padding: const EdgeInsets.only(bottom: 8.0, left: 8.0),
+                  //       child: Text('Total density: ${training.totaldensity}',
+                  //           style: const TextStyle(
+                  //               color: Colors.white, fontSize: 20)),
+                  //     ),
+                  //     Padding(
+                  //       padding: const EdgeInsets.only(left: 8.0),
+                  //       child: Text('Targete Muscles:',
+                  //           style: const TextStyle(
+                  //               color: Colors.white, fontSize: 17)),
+                  //     ),
+                  //     for (var key in training.musclsDensity.keys)
+                  //       Padding(
+                  //         padding: const EdgeInsets.only(left: 8.0),
+                  //         child: Text(
+                  //           '$key: ${training.musclsDensity[key]} Kg',
+                  //           style: const TextStyle(color: Colors.white),
+                  //           textAlign: TextAlign.start,
+                  //         ),
+                  //       ),
+                  //     SizedBox(
+                  //       height: 20,
+                  //     )
+                  //   ],
+                  // )
                 ],
               ),
             ),
@@ -169,7 +254,7 @@ class EditTrainingWidget extends ConsumerWidget {
               top: 3,
               left: 3,
               child: IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_back,
                   color: Colors.white,
                 ),

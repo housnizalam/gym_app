@@ -8,9 +8,8 @@ class BenshPressSubTraining extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.benchPress,
-        bodyWeight: 0,
-
+          image: TrainingImages.benchPress,
+          bodyWeight: 0,
           targetetMuscles: [
             UpperChestMuscle(traningsdensity: 0.5),
             LowerChestMuscle(traningsdensity: 0.15),
@@ -38,9 +37,8 @@ class InclineBenchPress extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.inclineBenchPress,
-        bodyWeight: 0,
-
+          image: TrainingImages.inclineBenchPress,
+          bodyWeight: 0,
           targetetMuscles: [
             UpperChestMuscle(traningsdensity: 0.5),
             LowerChestMuscle(traningsdensity: 0.15),
@@ -68,9 +66,8 @@ class DeclineBenchPress extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.declineBenchPress,
-        bodyWeight: 0,
-
+          image: TrainingImages.declineBenchPress,
+          bodyWeight: 0,
           targetetMuscles: [
             LowerChestMuscle(traningsdensity: 0.5),
             MiddleBackMuscle(traningsdensity: 0.25),
@@ -84,9 +81,9 @@ class DeclineBenchPress extends Training {
   factory DeclineBenchPress.standard() {
     return DeclineBenchPress(
       sets: const [
-        Sets(reps:0, weight: 20),
-        Sets(reps:0, weight: 20),
-        Sets(reps:0, weight: 20),
+        Sets(reps: 0, weight: 20),
+        Sets(reps: 0, weight: 20),
+        Sets(reps: 0, weight: 20),
       ],
       date: DateTime.now(),
     );
@@ -98,9 +95,8 @@ class DumbbellFly extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.dumbbellFly,
-        bodyWeight: 0,
-
+          image: TrainingImages.dumbbellFly,
+          bodyWeight: 0,
           targetetMuscles: [
             MiddleBackMuscle(traningsdensity: 0.6),
             UpperBackMuscle(traningsdensity: 0.25),
@@ -127,9 +123,8 @@ class CableFly extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.cableFly,
-        bodyWeight: 0,
-
+          image: TrainingImages.cableFly,
+          bodyWeight: 0,
           targetetMuscles: [
             MiddleBackMuscle(traningsdensity: 0.5),
             UpperBackMuscle(traningsdensity: 0.25),
@@ -157,9 +152,8 @@ class Dips extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.dips,
-        bodyWeight: 0,
-
+          image: TrainingImages.dips,
+          bodyWeight: 80,
           targetetMuscles: [
             LowerChestMuscle(traningsdensity: 0.5),
             TricepMuscle(traningsdensity: 0.3),
@@ -172,9 +166,9 @@ class Dips extends Training {
   factory Dips.standard() {
     return Dips(
       sets: const [
-        Sets(reps: 0, weight: 80),
-        Sets(reps: 0, weight: 80),
-        Sets(reps: 0, weight: 80),
+        Sets(reps: 0, weight: 0),
+        Sets(reps: 0, weight: 0),
+        Sets(reps: 0, weight: 0),
       ],
       date: DateTime.now(),
     );

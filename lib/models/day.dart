@@ -1,9 +1,36 @@
+import 'package:gym_app/globals/extensionen/map_extension.dart';
+import 'package:gym_app/models/muscle.dart';
 import 'package:gym_app/models/trainings/training.dart';
 
 class Day {
   final DateTime date;
   final List<Training> trainings;
   const Day({required this.date, required this.trainings});
+
+  //#############################################################All#############################################################
+  double get totalDensity {
+    double result = 0;
+    for (var training in trainings) {
+      result += training.totaldensity;
+    }
+    return result;
+  }
+
+  Map<String, double> get totalMuscleDensityMap {
+    Map<String, double> result = {};
+    for (var training in trainings) {
+      for (var muscleDensity in training.musclsDensity.keys) {
+        if (result.containsKey(muscleDensity)) {
+          result[muscleDensity] =
+              result[muscleDensity]! + training.musclsDensity[muscleDensity]!;
+        } else {
+          result
+              .addAll({muscleDensity: training.musclsDensity[muscleDensity]!});
+        }
+      }
+    }
+    return result.sortByValue();
+  }
 
 // get all Sub Trainings
   //   List<SubTraining> get allSubTrainings {

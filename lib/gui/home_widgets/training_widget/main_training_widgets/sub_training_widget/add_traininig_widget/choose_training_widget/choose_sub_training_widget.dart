@@ -14,25 +14,30 @@ class ChooseSubTrainingWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final trainingsList = ref.watch(selectedStandardTrainingsList);
+    final tempdayTrainings = ref.watch(tempDayProvider).trainings;
     return MyContainer(
       child: SingleChildScrollView(
         child: Column(
           children: [
             for (Training training in trainingsList)
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: context.width * 0.15, vertical: 2),
-                child: MyInkwell(
-                  height: 50,
-                  child: Text(training.name,
-                      style: const TextStyle(color: Colors.white)),
-                  onTap: () {
-                    ref.read(tempDayProvider.notifier).addTraining(training);
-                    // ref.read(selectedTraining.notifier).state = training;
-                    context.pop();
-                  },
+              if (!tempdayTrainings
+                  .map((e) => e.id)
+                  .toList()
+                  .contains(training.id))
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: context.width * 0.15, vertical: 2),
+                  child: MyInkwell(
+                    height: 50,
+                    child: Text(training.name,
+                        style: const TextStyle(color: Colors.white)),
+                    onTap: () {
+                      ref.read(tempDayProvider.notifier).addTraining(training);
+                      // ref.read(selectedTraining.notifier).state = training;
+                      context.pop();
+                    },
+                  ),
                 ),
-              ),
           ],
         ),
       ),

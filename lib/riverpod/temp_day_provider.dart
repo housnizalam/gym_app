@@ -23,6 +23,13 @@ class TempDayNotifier extends StateNotifier<Day> {
         ..insert(index, training),
     );
   }
+
+  void removeTraining(Training training) {
+    state = Day(
+      date: state.date,
+      trainings: [...state.trainings]..remove(training),
+    );
+  }
 }
 
 final tempDayProvider = StateNotifierProvider<TempDayNotifier, Day>((ref) {
