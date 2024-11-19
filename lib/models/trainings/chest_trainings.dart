@@ -126,9 +126,9 @@ class CableFly extends Training {
           image: TrainingImages.cableFly,
           bodyWeight: 0,
           targetetMuscles: [
-            MiddleBackMuscle(traningsdensity: 0.5),
-            UpperBackMuscle(traningsdensity: 0.25),
-            LowerBackMuscle(traningsdensity: 0.15),
+            MiddleChestMuscle(traningsdensity: 0.5),
+            UpperChestMuscle(traningsdensity: 0.25),
+            LowerChestMuscle(traningsdensity: 0.15),
             FrontShoulderMuscle(traningsdensity: 0.15),
           ],
           name: 'Cable Fly',

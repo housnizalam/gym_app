@@ -31,11 +31,16 @@ class TempDayNotifier extends StateNotifier<Day> {
       trainings: [...state.trainings]..remove(training),
     );
   }
+
+  void replaceAll(Day day){
+    state=day;
+  }
 }
 
 final creatTempDayProvider = StateNotifierProvider<TempDayNotifier, Day>((ref) {
   return TempDayNotifier();
 });
+
 final weakdayTempDayProvider =
     StateNotifierProvider<TempDayNotifier, Day>((ref) {
       final day=ref.watch(appStateProvider).thisWeakDay;

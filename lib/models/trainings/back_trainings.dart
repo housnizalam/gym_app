@@ -9,7 +9,7 @@ class PullUps extends Training {
     required super.date,
     required super.bodyWeight,
   }) : super(
-    image: TrainingImages.pullUps,
+          image: TrainingImages.pullUps,
           targetetMuscles: [
             Lats(traningsdensity: 0.45),
             BicepsMuscle(traningsdensity: 0.2),
@@ -40,9 +40,9 @@ class ChinUps extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.chinUps,
+          image: TrainingImages.chinUps,
           targetetMuscles: [
-            Lats(traningsdensity: 035),
+            Lats(traningsdensity: 0.35),
             BicepsMuscle(traningsdensity: 0.3),
             MiddleBackMuscle(traningsdensity: 0.15),
             ForArm(traningsdensity: 0.1),
@@ -70,8 +70,8 @@ class LatPulldown extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.latPulldown,
-    bodyWeight: 0,
+          image: TrainingImages.latPulldown,
+          bodyWeight: 0,
           targetetMuscles: [
             Lats(traningsdensity: 0.5),
             MiddleBackMuscle(traningsdensity: 0.2),
@@ -100,8 +100,8 @@ class SeatedRow extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.seatedRow,
-    bodyWeight: 0,
+          image: TrainingImages.seatedRow,
+          bodyWeight: 0,
           targetetMuscles: [
             Lats(traningsdensity: 0.3),
             MiddleBackMuscle(traningsdensity: 0.25),
@@ -131,8 +131,8 @@ class BentOverRow extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.bentOverRow,
-    bodyWeight: 0,
+          image: TrainingImages.bentOverRow,
+          bodyWeight: 0,
           targetetMuscles: [
             Lats(traningsdensity: 0.35),
             MiddleBackMuscle(traningsdensity: 0.25),
@@ -162,8 +162,8 @@ class TBarRow extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.tBarRow,
-    bodyWeight: 0,
+          image: TrainingImages.tBarRow,
+          bodyWeight: 0,
           targetetMuscles: [
             Lats(traningsdensity: 0.4),
             MiddleBackMuscle(traningsdensity: 0.25),
@@ -193,8 +193,8 @@ class Shrugs extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.shrugs,
-    bodyWeight: 0,
+          image: TrainingImages.shrugs,
+          bodyWeight: 0,
           targetetMuscles: [
             UpperBackMuscle(traningsdensity: 0.7),
             RearShoulderMuscle(traningsdensity: 0.2),

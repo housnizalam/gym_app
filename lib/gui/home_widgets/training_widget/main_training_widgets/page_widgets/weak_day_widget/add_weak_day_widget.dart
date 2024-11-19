@@ -6,6 +6,7 @@ import 'package:gym_app/globals/extensionen/size_extension.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
 import 'package:gym_app/globals/widgets/my_inkwell.dart';
 import 'package:gym_app/globals/widgets/my_scafold.dart';
+import 'package:gym_app/globals/widgets/my_table.dart';
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/weak_day_widget/choose_training_widget.dart';
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/weak_day_widget/edit_training_widget.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
@@ -174,60 +175,8 @@ class EditWeakDayWidget extends ConsumerWidget {
                     ],
                   ),
                 ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 8.0, bottom: 20.0, right: 8.0, top: 08.0),
-                child: Table(
-                  border: TableBorder.all(color: Colors.white),
-                  columnWidths: const {
-                    0: IntrinsicColumnWidth(),
-                    1: FlexColumnWidth(),
-                  },
-                  children: [
-                    // الصف الخاص بـ Total density
-                    TableRow(
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            'Total density',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            '${day.totalDensity} Kg',
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ],
-                    ),
-                    // الصفوف الخاصة بـ العضلات والكثافة
-                    ...musclDensity.entries.map(
-                      (entry) => TableRow(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              entry.key,
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              '${entry.value} Kg',
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
+                MyTable(musclDensity: musclDensity, totalDensity: day.totalDensity),
+                           SizedBox(
                 height: context.height * 0.13,
               )
             ],

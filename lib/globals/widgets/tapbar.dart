@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/creat_training_widget.dart';
+import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/select_saved_training_widget.dart';
+import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/weakday_widget.dart';
 
 class AmazingTabBarView extends StatefulWidget {
   final Duration? duration;
@@ -6,7 +9,7 @@ class AmazingTabBarView extends StatefulWidget {
   final int pageHeitToBar;
   final double indikatorWeight;
   final List<Widget> labelWidgets;
-  final List<Widget> pageWidgets;
+  final List<Widget>? pageWidgets;
   final Color? unselectedLabelColor;
   final Color? selectedLabelColor;
   final Color? indikatorColor;
@@ -25,7 +28,7 @@ class AmazingTabBarView extends StatefulWidget {
     this.unselectedLabelStyle,
     this.selectedLabelStyle,
     required this.labelWidgets,
-    required this.pageWidgets,
+    this.pageWidgets,
     super.key,
   });
 
@@ -40,7 +43,7 @@ class _AmazingTabBarViewState extends State<AmazingTabBarView>
     TabController tabController = TabController(
       animationDuration: widget.duration ?? const Duration(milliseconds: 400),
       initialIndex: widget.initialSeite,
-      length: widget.pageWidgets.length,
+      length: widget.pageWidgets?.length ?? 3,
       vsync: this,
     );
     return Material(
@@ -51,7 +54,14 @@ class _AmazingTabBarViewState extends State<AmazingTabBarView>
               flex: widget.pageHeitToBar,
               child: TabBarView(
                 controller: tabController,
-                children: widget.pageWidgets,
+                children: widget.pageWidgets ??
+                    [
+                      WeakdayWidget(),
+                      SelectSavedTrainingWidget(
+                        controller: tabController,
+                      ),
+                      CreatTrainingWidget()
+                    ],
               ),
             ),
           Expanded(
@@ -85,7 +95,14 @@ class _AmazingTabBarViewState extends State<AmazingTabBarView>
               flex: widget.pageHeitToBar,
               child: TabBarView(
                 controller: tabController,
-                children: widget.pageWidgets,
+                children: widget.pageWidgets ??
+                    [
+                      WeakdayWidget(),
+                      SelectSavedTrainingWidget(
+                        controller: tabController,
+                      ),
+                      CreatTrainingWidget()
+                    ],
               ),
             ),
         ],

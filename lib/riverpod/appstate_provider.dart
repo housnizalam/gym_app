@@ -19,6 +19,24 @@ class AppStateNotifier extends StateNotifier<AppState> {
       days: [...state.days].replaceAt(state.days.length - 1, day),
     );
   }
+
+  void addSavedDay(SavedTrainingsday savedTrainingsday) {
+    state = AppState(
+      days: state.days,
+      savedTrainingsdays: [
+        ...state.savedTrainingsdays ?? [],
+        savedTrainingsday
+      ],
+    );
+  }
+
+  void deleteSavedDay(SavedTrainingsday savedTrainingsday) {
+    state = AppState(
+      days: state.days,
+      savedTrainingsdays: [...state.savedTrainingsdays ?? []]
+        ..removeWhere((element) => element.name == savedTrainingsday.name),
+    );
+  }
 }
 
 final appStateProvider =

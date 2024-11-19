@@ -4,12 +4,13 @@ import 'package:gym_app/globals/extensionen/navigator.dart';
 import 'package:gym_app/globals/extensionen/size_extension.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
 import 'package:gym_app/globals/widgets/my_inkwell.dart';
-import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/creat_training_widget.dart';
 import 'package:gym_app/models/saved_trainingsday.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
+import 'package:gym_app/riverpod/temp_day_provider.dart';
 
 class SelectSavedTrainingWidget extends ConsumerStatefulWidget {
-  const SelectSavedTrainingWidget({super.key});
+  const SelectSavedTrainingWidget({super.key, required this.controller});
+  final TabController controller;
 
   @override
   ConsumerState<SelectSavedTrainingWidget> createState() =>
@@ -22,33 +23,102 @@ class _SelectSavedTrainingWidgetState
   Widget build(BuildContext context) {
     final List<SavedTrainingsday>? savedTrainingsDays =
         ref.watch(appStateProvider.select((value) => value.savedTrainingsdays));
-    if (savedTrainingsDays == null || savedTrainingsDays.isEmpty) {
-      return MyContainer(
-        child: Center(
-          child: Text(
-            'You have no saved Trainings',
-            style: const TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold),
+    return Stack(
+      children: [
+        if (savedTrainingsDays == null || savedTrainingsDays.isEmpty)
+          MyContainer(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
+                Center(
+                  child: Text(
+                    'You have no saved Trainings',
+                    style: const TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      );
-    }
-    return MyContainer(
-      height: context.height,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            for (var trainingsday in savedTrainingsDays)
-              MyInkwell(
-                child: Text(trainingsday.name),
-                onTap: () {
-                  ref.read(selectedSavedTraining.notifier).state = trainingsday;
-                  context.animateToAsPush(page: CreatTrainingWidget());
-                },
+        if (savedTrainingsDays != null && savedTrainingsDays.isNotEmpty)
+          MyContainer(
+            width: context.width,
+            height: context.height,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: context.height * 0.02,
+                  ),
+                  Text(
+                    'Select a saved Training',
+                    style: const TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: context.height * 0.02,
+                  ),
+                  for (var trainingsday in savedTrainingsDays)
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        MyInkwell(
+                          height: context.height * 0.1,
+                          width: context.width * 0.6,
+                          child: Text(trainingsday.name,
+                              style: const TextStyle(color: Colors.white)),
+                          onTap: () {
+                            ref
+                                .read(creatTempDayProvider.notifier)
+                                .replaceAll(trainingsday.day);
+                            widget.controller.animateTo(2);
+                            // context.animateToAsPush(page: CreatTrainingWidget());
+                          },
+                        ),
+                        Expanded(
+                          child: SizedBox(),
+                        ),
+                        InkWell(
+                          child: const Icon(
+                            Icons.delete,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                          onTap: () {
+                            ref
+                                .read(appStateProvider.notifier)
+                                .deleteSavedDay(trainingsday);
+                          },
+                        ),
+                        SizedBox(
+                          width: 10,
+                        )
+                      ],
+                    ),
+                ],
               ),
-          ],
-        ),
-      ),
+            ),
+          ),
+        Positioned(
+          left: 5,
+          top: 5,
+          child: MyInkwell(
+            height: 30,
+            width: 30,
+            child: const Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onTap: () {
+              context.pop();
+            },
+          ),
+        )
+      ],
     );
   }
 }
