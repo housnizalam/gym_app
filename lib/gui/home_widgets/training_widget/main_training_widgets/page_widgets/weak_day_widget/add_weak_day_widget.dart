@@ -6,7 +6,7 @@ import 'package:gym_app/globals/extensionen/size_extension.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
 import 'package:gym_app/globals/widgets/my_inkwell.dart';
 import 'package:gym_app/globals/widgets/my_scafold.dart';
-import 'package:gym_app/globals/widgets/my_table.dart';
+import 'package:gym_app/globals/widgets/density_table.dart';
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/weak_day_widget/choose_training_widget.dart';
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/weak_day_widget/edit_training_widget.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
@@ -175,8 +175,9 @@ class EditWeakDayWidget extends ConsumerWidget {
                     ],
                   ),
                 ),
-                MyTable(musclDensity: musclDensity, totalDensity: day.totalDensity),
-                           SizedBox(
+              DensityTable(
+                  musclDensity: musclDensity, totalDensity: day.totalDensity),
+              SizedBox(
                 height: context.height * 0.13,
               )
             ],

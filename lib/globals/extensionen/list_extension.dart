@@ -4,7 +4,7 @@ extension ListExtension<T> on List<T> {
     if (index < 0 || index >= length) {
       throw RangeError.index(index, this, 'index', null, length);
     }
-    final List<T> copy = List<T>.from(this);
+    final List<T> copy = [...this];
     copy[index] = element;
     return copy;
   }

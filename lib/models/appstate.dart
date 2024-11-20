@@ -45,67 +45,67 @@ class AppState {
   final List<SavedTrainingsday>? savedTrainingsdays;
   final List<Training>? subTrainings;
   final User? user;
-    final List<Training> allStandardTraining;
+  final List<Training> allStandardTraining;
 
-  
-
-   AppState({
+  AppState({
     required this.days,
     this.user,
     this.subTrainings,
     this.savedTrainingsdays,
-  }): allStandardTraining = [
-    ArnoldPress.standard(),
-    BackLegExtension.standard(),
-    BarbellCurl.standard(),
-    BenshPressSubTraining.standard(),
-    BentOverRow.standard(),
-    BicycleCrunch.standard(),
-    CableFly.standard(),
-    CalfRaise.standard(),
-    ChinUps.standard(),
-    CloseGripBenchPress.standard(),
-    ConcentrationCurl.standard(),
-    Crunch.standard(),
-    Deadlift.standard(),
-    DeclineBenchPress.standard(),
-    Dips.standard(),
-    DumbbellCurl.standard(),
-    DumbbellFly.standard(),
-    FacePull.standard(),
-    FrontLegExtension.standard(),
-    FrontRaise.standard(),
-    HammerCurl.standard(),
-    InclineBenchPress.standard(),
-    LateralRaise.standard(),
-    LatPulldown.standard(),
-    LegPress.standard(),
-    LegRaise.standard(),
-    Lunges.standard(),
-    MilitaryPress.standard(),
-    MountainClimber.standard(),
-    OverheadTricepExtension.standard(),
-    PreacherCurl.standard(),
-    PullUps.standard(),
-    RearDeltFly.standard(),
-    ReverseCurl.standard(),
-    ReverseWristCurl.standard(),
-    RussianTwist.standard(),
-    SeatedRow.standard(),
-    Shrugs.standard(),
-    SkullCrusher.standard(),
-    Squat.standard(),
-    TBarRow.standard(),
-    TricepKickback.standard(),
-    TricepPushdown.standard(),
-    UprightRow.standard(),
-    WristCurl.standard(),
-    ZottmanCurl.standard(),
-  ];
-  
+  }) : allStandardTraining = [
+          ArnoldPress.standard(),
+          BackLegExtension.standard(),
+          BarbellCurl.standard(),
+          BenshPressSubTraining.standard(),
+          BentOverRow.standard(),
+          BicycleCrunch.standard(),
+          CableFly.standard(),
+          CalfRaise.standard(),
+          ChinUps.standard(),
+          CloseGripBenchPress.standard(),
+          ConcentrationCurl.standard(),
+          Crunch.standard(),
+          Deadlift.standard(),
+          DeclineBenchPress.standard(),
+          Dips.standard(),
+          DumbbellCurl.standard(),
+          DumbbellFly.standard(),
+          FacePull.standard(),
+          FrontLegExtension.standard(),
+          FrontRaise.standard(),
+          HammerCurl.standard(),
+          InclineBenchPress.standard(),
+          LateralRaise.standard(),
+          LatPulldown.standard(),
+          LegPress.standard(),
+          LegRaise.standard(),
+          Lunges.standard(),
+          MilitaryPress.standard(),
+          MountainClimber.standard(),
+          OverheadTricepExtension.standard(),
+          PreacherCurl.standard(),
+          PullUps.standard(),
+          RearDeltFly.standard(),
+          ReverseCurl.standard(),
+          ReverseWristCurl.standard(),
+          RussianTwist.standard(),
+          SeatedRow.standard(),
+          Shrugs.standard(),
+          SkullCrusher.standard(),
+          Squat.standard(),
+          TBarRow.standard(),
+          TricepKickback.standard(),
+          TricepPushdown.standard(),
+          UprightRow.standard(),
+          WristCurl.standard(),
+          ZottmanCurl.standard(),
+        ];
 
-  List<Training> getSelectedStandardTainingList(String trainingsTyp)=> allStandardTraining.where((e) => e.maintargetetMuscle==trainingsTyp).toList();
-  
+  List<Training> getSelectedStandardTainingList(String trainingsTyp) =>
+      allStandardTraining
+          .where((e) => e.maintargetetMuscle == trainingsTyp)
+          .toList();
+
   SavedTrainingsday? get todaysTraining {
     if (days.isEmpty) {
       return null;
@@ -129,6 +129,59 @@ class AppState {
     return result;
   }
 
+  DateTime? get firstTrainingDate {
+    if (days.isEmpty) {
+      return null;
+    }
+    return days.first.date;
+  }
+
+  DateTime? get lastTrainingDate {
+    if (days.isEmpty) {
+      return null;
+    }
+    return days.last.date;
+  }
+
+  int get allTrainingDaysNumber => days.length;
+
+  int get allTrainingsNumber {
+    int result = 0;
+    for (var day in days) {
+      result += day.trainings.length;
+    }
+    return result;
+  }
+
+  double get trainingAveragePerDay {
+    if (allTrainingDaysNumber == 0) {
+      return 0;
+    }
+
+    return allTrainingsNumber / allTrainingDaysNumber;
+  }
+
+  List<Training> get allTrainings {
+    List<Training> allTrainings = [];
+    for (var day in days) {
+      allTrainings.addAll(day.trainings);
+    }
+    return allTrainings;
+  }
+  List<Training> getListTrainingFromName(String name) {
+
+    return allTrainings.where((element) => element.name == name).toList();
+  }
+
+  double get bestDensityDay{
+    double result = 0;
+    for (var day in days) {
+      if (day.totalDensity > result) {
+        result = day.totalDensity;
+      }
+    }
+    return result;
+  }
 // get allTrainings
 //   List<Training> get allTrainings {
 //     List<Training> allTrainings = [];

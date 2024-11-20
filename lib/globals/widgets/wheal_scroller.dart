@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gym_app/globals/extensionen/size_extension.dart';
-import 'package:gym_app/globals/widgets/my_container.dart';
-import 'package:gym_app/globals/widgets/my_inkwell.dart';
 
 class WhealScroller extends StatefulWidget {
   const WhealScroller({

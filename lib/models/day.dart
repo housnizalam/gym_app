@@ -1,5 +1,4 @@
 import 'package:gym_app/globals/extensionen/map_extension.dart';
-import 'package:gym_app/models/muscle.dart';
 import 'package:gym_app/models/trainings/training.dart';
 
 class Day {

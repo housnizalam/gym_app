@@ -9,14 +9,16 @@ class MyInkwell extends StatelessWidget {
     this.decoration,
     this.height,
     this.width,
+    this.borderRadius,
   });
-  
+
   final Widget? child;
   final VoidCallback? onTap;
   final double opacity;
   final Decoration? decoration;
   final double? height;
   final double? width;
+  final double? borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class MyInkwell extends StatelessWidget {
                     Colors.black,
                   ],
                 ),
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(borderRadius ?? 10.0),
               ),
           child: child,
         ),

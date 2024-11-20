@@ -15,9 +15,11 @@ class AppStateNotifier extends StateNotifier<AppState> {
   }
 
   void replaceDay(Day day) {
+    final index = state.days.indexWhere((element) => element.date == day.date);
     state = AppState(
-      days: [...state.days].replaceAt(state.days.length - 1, day),
+      days: [...state.days].replaceAt(index, day),
     );
+    print('days: ${state.days.length}');
   }
 
   void addSavedDay(SavedTrainingsday savedTrainingsday) {

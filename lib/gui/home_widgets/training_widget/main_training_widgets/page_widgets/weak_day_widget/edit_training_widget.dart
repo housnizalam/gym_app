@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gym_app/globals/extensionen/size_extension.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
 import 'package:gym_app/globals/widgets/my_inkwell.dart';
-import 'package:gym_app/globals/widgets/my_table.dart';
+import 'package:gym_app/globals/widgets/density_table.dart';
 import 'package:gym_app/globals/widgets/wheal_scroller.dart';
 import 'package:gym_app/models/sets.dart';
 import 'package:gym_app/models/trainings/training.dart';
@@ -164,7 +164,9 @@ class EditWeakDayTrainingWidget extends ConsumerWidget {
                       ),
                     ],
                   ),
-                  MyTable(musclDensity: training.musclsDensity, totalDensity: training.totaldensity),
+                  DensityTable(
+                      musclDensity: training.musclsDensity,
+                      totalDensity: training.totaldensity),
                 ],
               ),
             ),

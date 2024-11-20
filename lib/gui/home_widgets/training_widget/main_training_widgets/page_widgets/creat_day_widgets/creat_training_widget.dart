@@ -6,7 +6,7 @@ import 'package:gym_app/globals/extensionen/size_extension.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
 import 'package:gym_app/globals/widgets/my_inkwell.dart';
 import 'package:gym_app/globals/widgets/my_scafold.dart';
-import 'package:gym_app/globals/widgets/my_table.dart';
+import 'package:gym_app/globals/widgets/density_table.dart';
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/add_saved_day.dart';
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/add_traininig_widget/choose_training_widget/choose_training_widget.dart';
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/edit_training_widget/edit_training_widget.dart';
@@ -41,7 +41,6 @@ class CreatTrainingWidget extends ConsumerWidget {
         );
       },
       onleftTitel: () {
-        print('Add this training');
         if (days.contains(day.date.formattedDate)) {
           showModalBottomSheet(
               context: context,
@@ -81,6 +80,7 @@ class CreatTrainingWidget extends ConsumerWidget {
                         onTap: () {
                           ref.read(appStateProvider.notifier).replaceDay(day);
                           context.pop();
+                          print('replace');
                           return;
                         },
                         child: Text(
@@ -92,9 +92,10 @@ class CreatTrainingWidget extends ConsumerWidget {
                   ),
                 );
               });
+        } else {
+          ref.read(appStateProvider.notifier).addDay(day);
+          return;
         }
-        ref.read(appStateProvider.notifier).addDay(day);
-        return;
       },
       onRightTitel: () {
         showModalBottomSheet(
@@ -188,7 +189,7 @@ class CreatTrainingWidget extends ConsumerWidget {
                         ],
                       ),
                     ),
-                  MyTable(
+                  DensityTable(
                       musclDensity: musclDensity,
                       totalDensity: day.totalDensity),
                   SizedBox(
