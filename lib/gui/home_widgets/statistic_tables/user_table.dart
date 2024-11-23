@@ -120,7 +120,7 @@ class UserTable extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                appState.bestDensityDay.toStringAsFixed(1),
+                'Density: ${appState.bestDensityDay.toStringAsFixed(1)} kg',
                 style: const TextStyle(color: Colors.white),
               ),
             ),

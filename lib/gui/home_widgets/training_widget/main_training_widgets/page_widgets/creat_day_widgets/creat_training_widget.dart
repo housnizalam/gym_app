@@ -11,6 +11,7 @@ import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/p
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/add_traininig_widget/choose_training_widget/choose_training_widget.dart';
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/edit_training_widget/edit_training_widget.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
+import 'package:gym_app/riverpod/calender_providers.dart';
 import 'package:gym_app/riverpod/temp_day_provider.dart';
 
 class CreatTrainingWidget extends ConsumerWidget {
@@ -23,10 +24,11 @@ class CreatTrainingWidget extends ConsumerWidget {
         ))
         .map((e) => e.date.formattedDate)
         .toList();
-    final day = ref.watch(creatTempDayProvider);
+    final selectedDay = ref.watch(selectedDayProvider);
+    final day = ref.watch(creatTempDayProvider).copyWith(date: selectedDay);
     final trainingsDay = day.trainings;
     final musclDensity = day.totalMuscleDensityMap;
-    print(days.isEmpty);
+    print(day.date.formattedDate);
 
     return MyScaffold(
       leftTitel: 'Save & add',
@@ -63,6 +65,8 @@ class CreatTrainingWidget extends ConsumerWidget {
                         width: context.width * 0.5,
                         onTap: () {
                           ref.read(appStateProvider.notifier).addDay(day);
+                          ref.invalidate(creatTempDayProvider);
+
                           context.pop();
                           return;
                         },
@@ -79,6 +83,8 @@ class CreatTrainingWidget extends ConsumerWidget {
                         width: context.width * 0.5,
                         onTap: () {
                           ref.read(appStateProvider.notifier).replaceDay(day);
+                          ref.invalidate(creatTempDayProvider);
+
                           context.pop();
                           print('replace');
                           return;
@@ -94,6 +100,7 @@ class CreatTrainingWidget extends ConsumerWidget {
               });
         } else {
           ref.read(appStateProvider.notifier).addDay(day);
+          ref.invalidate(creatTempDayProvider);
           return;
         }
       },
@@ -112,6 +119,7 @@ class CreatTrainingWidget extends ConsumerWidget {
       body: Stack(
         children: [
           MyContainer(
+            width: context.width,
             height: context.height,
             child: SingleChildScrollView(
               child: Column(
@@ -179,9 +187,15 @@ class CreatTrainingWidget extends ConsumerWidget {
                           Expanded(
                               child: InkWell(
                             onTap: () {
-                              ref
-                                  .read(creatTempDayProvider.notifier)
-                                  .removeTraining(training);
+                              if (trainingsDay.length == 1) {
+                                ref.invalidate(creatTempDayProvider);
+                                print('invalidate');
+                              } else {
+                                print('remove');
+                                ref
+                                    .read(creatTempDayProvider.notifier)
+                                    .removeTraining(training);
+                              }
                             },
                             child: const Icon(Icons.delete,
                                 color: Colors.white, size: 25),

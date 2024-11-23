@@ -6,6 +6,13 @@ class Day {
   final List<Training> trainings;
   const Day({required this.date, required this.trainings});
 
+  Day copyWith({DateTime? date, List<Training>? trainings}) {
+    return Day(
+      date: date ?? this.date,
+      trainings: trainings ?? this.trainings,
+    );
+  }
+
   //#############################################################All#############################################################
   double get totalDensity {
     double result = 0;

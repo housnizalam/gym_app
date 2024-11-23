@@ -6,8 +6,9 @@ import 'package:gym_app/riverpod/appstate_provider.dart';
 import 'package:gym_app/riverpod/calender_providers.dart';
 
 class DayWidget extends ConsumerWidget {
-  const DayWidget({super.key, required this.date});
+  const DayWidget({super.key, required this.date, required this.controller});
   final DateTime date;
+  final ScrollController controller;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,6 +34,11 @@ class DayWidget extends ConsumerWidget {
             ref.read(selectedDayProvider.notifier).state = date;
             ref.read(focusNodeProvider.notifier).state = date;
             ref.read(calenderSelectedTeainingsDay.notifier).state = day;
+            if (day != null && controller.initialScrollOffset == 0) {
+              controller.animateTo(300,
+                  duration: Duration(milliseconds: 300), curve: Curves.easeOut);
+              print('scroller');
+            }
           },
           opacity: !date.isSameDay(selectedDay) ? 1 : 0.7,
           decoration: !date.isSameDay(selectedDay)
@@ -67,9 +73,10 @@ class DayWidget extends ConsumerWidget {
           const Positioned(
               bottom: 5,
               left: 8,
-              child: CircleAvatar(
-                backgroundColor: Colors.yellow,
-                radius: 3,
+              child: Icon(
+                Icons.check,
+                color: Colors.yellow,
+                size: 12,
               ))
       ],
     );

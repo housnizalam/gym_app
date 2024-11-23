@@ -133,6 +133,7 @@ class AppState {
     if (days.isEmpty) {
       return null;
     }
+    days.sort((a, b) => a.date.compareTo(b.date));
     return days.first.date;
   }
 
@@ -140,6 +141,7 @@ class AppState {
     if (days.isEmpty) {
       return null;
     }
+    days.sort((a, b) => a.date.compareTo(b.date));
     return days.last.date;
   }
 
@@ -168,12 +170,12 @@ class AppState {
     }
     return allTrainings;
   }
-  List<Training> getListTrainingFromName(String name) {
 
+  List<Training> getListTrainingFromName(String name) {
     return allTrainings.where((element) => element.name == name).toList();
   }
 
-  double get bestDensityDay{
+  double get bestDensityDay {
     double result = 0;
     for (var day in days) {
       if (day.totalDensity > result) {

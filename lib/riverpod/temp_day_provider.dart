@@ -8,6 +8,7 @@ class TempDayNotifier extends StateNotifier<Day> {
   TempDayNotifier([Day? day]) : super(Day(date: DateTime.now(), trainings:day?.trainings?? []));
 
   void addTraining(Training training) {
+    
     state = Day(
       date: state.date,
       trainings: [...state.trainings, training],

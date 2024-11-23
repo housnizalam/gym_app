@@ -45,6 +45,7 @@ class EditWeakDayWidget extends ConsumerWidget {
               context: context,
               builder: (context) {
                 return MyContainer(
+                  width: context.width,
                   height: context.height * 0.5,
                   child: Column(
                     children: [
@@ -99,6 +100,7 @@ class EditWeakDayWidget extends ConsumerWidget {
         print('Save');
       },
       body: MyContainer(
+        width: context.width,
         height: context.height,
         child: SingleChildScrollView(
           child: Column(

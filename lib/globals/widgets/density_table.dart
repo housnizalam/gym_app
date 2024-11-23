@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_app/globals/extensionen/size_extension.dart';
 
 class DensityTable extends StatelessWidget {
   const DensityTable(
@@ -8,55 +9,73 @@ class DensityTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:
-          const EdgeInsets.only(left: 8.0, bottom: 20.0, right: 8.0, top: 08.0),
-      child: Table(
-        border: TableBorder.all(color: Colors.white),
-        columnWidths: const {
-          0: IntrinsicColumnWidth(),
-          1: FlexColumnWidth(),
-        },
+    return SizedBox(
+      width: context.width * 0.9,
+      child: Column(
         children: [
-          // الصف الخاص بـ Total density
-          TableRow(
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  'Total density',
-                  style: TextStyle(color: Colors.white),
-                ),
+          Container(
+            width: context.width * 0.9,
+            decoration: BoxDecoration(
+              border: Border(
+                left: BorderSide(color: Colors.white, width: 1),
+                right: BorderSide(color: Colors.white, width: 1),
+                top: BorderSide(color: Colors.white, width: 1),
               ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
+            ),
+            child: Center(
                 child: Text(
-                  '${totalDensity.toStringAsFixed(1)} Kg',
-                  style: const TextStyle(color: Colors.white),
+              'Density table',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            )),
+          ),
+          Table(
+            border: TableBorder.all(color: Colors.white),
+            columnWidths: const {
+              0: IntrinsicColumnWidth(),
+              1: FlexColumnWidth(),
+            },
+            children: [
+              // الصف الخاص بـ Total density
+              TableRow(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'Total density',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      '${totalDensity.toStringAsFixed(1)} Kg',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+              // الصفوف الخاصة بـ العضلات والكثافة
+              ...musclDensity.entries.map(
+                (entry) => TableRow(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        entry.key,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        '${entry.value.toStringAsFixed(1)} Kg',
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
-          ),
-          // الصفوف الخاصة بـ العضلات والكثافة
-          ...musclDensity.entries.map(
-            (entry) => TableRow(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    entry.key,
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    '${entry.value.toStringAsFixed(1)} Kg',
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                ),
-              ],
-            ),
           ),
         ],
       ),

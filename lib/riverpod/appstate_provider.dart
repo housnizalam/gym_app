@@ -10,8 +10,9 @@ class AppStateNotifier extends StateNotifier<AppState> {
 
   void addDay(Day day) {
     state = AppState(
-      days: [...state.days, day],
-    );
+        days: [...state.days, day],
+        savedTrainingsdays: state.savedTrainingsdays,
+        user: state.user);
   }
 
   void replaceDay(Day day) {

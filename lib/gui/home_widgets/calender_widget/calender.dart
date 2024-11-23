@@ -3,23 +3,37 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gym_app/globals/extensionen/date_time.dart';
 import 'package:gym_app/globals/extensionen/navigator.dart';
 import 'package:gym_app/globals/extensionen/size_extension.dart';
+import 'package:gym_app/globals/widgets/density_table.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
 import 'package:gym_app/globals/widgets/my_inkwell.dart';
+import 'package:gym_app/globals/widgets/my_table.dart';
+import 'package:gym_app/gui/home_widgets/calender_widget/calender_widgets/calender_add_training_widget.dart';
 import 'package:gym_app/gui/home_widgets/calender_widget/calender_widgets/day_widget.dart';
-import 'package:gym_app/gui/home_widgets/calender_widget/calender_widgets/toda_widget.dart';
-import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/weakday_widget.dart';
+import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/add_traininig_widget/choose_training_widget/choose_training_widget.dart';
+import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/select_saved_training_widget.dart';
+import 'package:gym_app/riverpod/appstate_provider.dart';
 
 import 'package:gym_app/riverpod/calender_providers.dart';
+import 'package:gym_app/riverpod/temp_day_provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class CalenderWidget extends ConsumerWidget {
+class CalenderWidget extends ConsumerStatefulWidget {
   const CalenderWidget({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<CalenderWidget> createState() => _CalenderWidgetState();
+}
+
+class _CalenderWidgetState extends ConsumerState<CalenderWidget> {
+  @override
+  Widget build(BuildContext context) {
+    ref.watch(creatTempDayProvider);
     final selectedDay = ref.watch(selectedDayProvider);
     final focusedDay = ref.watch(focusNodeProvider);
     final day = ref.watch(calenderSelectedTeainingsDay);
+    ref.watch(appStateProvider);
+    ScrollController controller = ScrollController();
+
     final now = DateTime.now();
     return Material(
       child: MyContainer(
@@ -28,6 +42,7 @@ class CalenderWidget extends ConsumerWidget {
         child: Stack(
           children: [
             SingleChildScrollView(
+              controller: controller,
               child: Column(
                 children: [
                   SizedBox(
@@ -42,12 +57,19 @@ class CalenderWidget extends ConsumerWidget {
                         style: TextStyle(color: Colors.white, fontSize: 25)),
                   ),
                   TableCalendar(
+                    // onPageChanged: (date) {
+                    //   ref.read(focusNodeProvider.notifier).state = date;
+                    //   ref.read(selectedDayProvider.notifier).state = date;
+                    // },
                     onHeaderLongPressed: (_) {},
                     startingDayOfWeek: StartingDayOfWeek.monday,
                     calendarBuilders: CalendarBuilders(
-                      todayBuilder: (context, date, focusedDay) =>
-                          TodayWidget(date: date),
+                      todayBuilder: (context, date, focusedDay) => DayWidget(
+                        date: date,
+                        controller: controller,
+                      ),
                       defaultBuilder: (context, date, events) => DayWidget(
+                        controller: controller,
                         date: date,
                       ),
                     ),
@@ -76,14 +98,97 @@ class CalenderWidget extends ConsumerWidget {
                   ),
                   if (day == null)
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (context) {
+                            return CalenderAddTrainingWidget();
+                          },
+                        );
+                      },
                       child: Text(
                         'Add new Trinring',
                         style: TextStyle(
                           color: Colors.white,
                         ),
                       ),
-                    )
+                    ),
+                  if (day != null)
+                    MyTable(
+                        title: Text('Trainings table',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 20)),
+                        columnNumber: 3,
+                        tableRowsList: [
+                          TableRow(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Name',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Center(
+                                  child: Text(
+                                    'Sets',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Center(
+                                  child: Text(
+                                    'Density',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          for (var training in day.trainings)
+                            TableRow(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    training.name,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(
+                                    child: Text(
+                                      training.sets.length.toString(),
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(
+                                    child: Text(
+                                      '${training.totaldensity.toString()} kg',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                        ]),
+                  if (day != null)
+                    SizedBox(
+                      height: 15,
+                    ),
+                  if (day != null)
+                    DensityTable(
+                        musclDensity: day.totalMuscleDensityMap,
+                        totalDensity: day.totalDensity)
                 ],
               ),
             ),
@@ -94,6 +199,7 @@ class CalenderWidget extends ConsumerWidget {
                 height: 30,
                 width: 30,
                 onTap: () {
+                  ref.read(selectedDayProvider.notifier).state = now;
                   context.pop();
                 },
                 child: Padding(
