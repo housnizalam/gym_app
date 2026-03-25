@@ -40,6 +40,12 @@ class AppStateNotifier extends StateNotifier<AppState> {
         ..removeWhere((element) => element.name == savedTrainingsday.name),
     );
   }
+
+  void addStanderdTraining(Training training) {
+    final newState = state;
+    newState.allStandardTraining.add(training);
+    state = newState;
+  }
 }
 
 final appStateProvider =

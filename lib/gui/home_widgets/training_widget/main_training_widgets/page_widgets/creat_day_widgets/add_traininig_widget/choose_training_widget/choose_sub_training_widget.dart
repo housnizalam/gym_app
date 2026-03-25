@@ -4,12 +4,14 @@ import 'package:gym_app/globals/extensionen/navigator.dart';
 import 'package:gym_app/globals/extensionen/size_extension.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
 import 'package:gym_app/globals/widgets/my_inkwell.dart';
+import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/add_traininig_widget/choose_training_widget/create_new_training_widget.dart';
 import 'package:gym_app/models/trainings/training.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
 import 'package:gym_app/riverpod/temp_day_provider.dart';
 
 class ChooseSubTrainingWidget extends ConsumerWidget {
-  const ChooseSubTrainingWidget({super.key});
+  const ChooseSubTrainingWidget({super.key, required this.pageController});
+  final PageController pageController;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -40,6 +42,18 @@ class ChooseSubTrainingWidget extends ConsumerWidget {
                     },
                   ),
                 ),
+            TextButton(
+              onPressed: () {
+                pageController.nextPage(
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.easeIn);
+                // context.pop();
+              },
+              child: Text(
+                'Create new training',
+                style: TextStyle(color: Colors.blue),
+              ),
+            )
           ],
         ),
       ),

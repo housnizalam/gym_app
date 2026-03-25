@@ -7,6 +7,7 @@ import 'package:gym_app/globals/widgets/density_table.dart';
 import 'package:gym_app/globals/widgets/wheal_scroller.dart';
 import 'package:gym_app/models/sets.dart';
 import 'package:gym_app/models/trainings/training.dart';
+import 'package:gym_app/riverpod/bodyWeight.dart';
 import 'package:gym_app/riverpod/temp_day_provider.dart';
 
 class EditWeakDayTrainingWidget extends ConsumerWidget {
@@ -16,6 +17,8 @@ class EditWeakDayTrainingWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final Training training = ref.watch(selectedTraining);
     final List<Sets> sets = training.sets;
+        final int bodyWeight = ref.watch(bodyWeightProvider);
+
 
     print('real Value ${sets.first.weight}');
     return Material(
@@ -179,9 +182,9 @@ class EditWeakDayTrainingWidget extends ConsumerWidget {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  ref
-                      .read(weakdayTempDayProvider.notifier)
-                      .saveTraining(training);
+                             ref
+                      .read(creatTempDayProvider.notifier)
+                      .saveTraining(training.copyWith(bodyWeight: bodyWeight));
                   Navigator.pop(context);
                 },
               ),

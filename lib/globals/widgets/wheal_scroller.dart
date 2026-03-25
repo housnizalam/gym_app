@@ -55,7 +55,7 @@ class _WhealScrollerState extends State<WhealScroller> {
               height: widget.height,
               width: widget.width,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.vertical(
+                borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(8),
                   bottom: Radius.circular(8),
                 ),
@@ -83,7 +83,6 @@ class _WhealScrollerState extends State<WhealScroller> {
                   setState(() {
                     selectedValue = value;
                   });
-                  print('selectedValue $selectedValue');
                 },
                 squeeze: 1.5,
                 physics: const FixedExtentScrollPhysics(),

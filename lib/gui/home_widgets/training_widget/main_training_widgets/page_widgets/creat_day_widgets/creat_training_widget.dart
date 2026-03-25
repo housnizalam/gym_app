@@ -10,6 +10,7 @@ import 'package:gym_app/globals/widgets/density_table.dart';
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/add_saved_day.dart';
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/add_traininig_widget/choose_training_widget/choose_training_widget.dart';
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/edit_training_widget/edit_training_widget.dart';
+import 'package:gym_app/models/trainings/created_trining.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
 import 'package:gym_app/riverpod/calender_providers.dart';
 import 'package:gym_app/riverpod/temp_day_provider.dart';
@@ -149,39 +150,49 @@ class CreatTrainingWidget extends ConsumerWidget {
                                     training;
                                 context.navigatePushTo(EditTrainingWidget());
                               },
-                              child: Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        right: 8.0, left: 8.0),
-                                    child: Hero(
-                                      tag: AssetImage(training.image),
-                                      child: Container(
-                                        height: 50,
-                                        width: 50,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(50),
-                                          image: DecorationImage(
-                                            image: AssetImage(training.image),
-                                            fit: BoxFit.fill,
+                              child: training is CreatedTrining
+                                  ? Center(
+                                      child: Text(
+                                        training.name,
+                                        overflow: TextOverflow.clip,
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                      ),
+                                    )
+                                  : Row(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              right: 8.0, left: 8.0),
+                                          child: Hero(
+                                            tag: AssetImage(training.image),
+                                            child: Container(
+                                              height: 50,
+                                              width: 50,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                                image: DecorationImage(
+                                                  image: AssetImage(
+                                                      training.image),
+                                                  fit: BoxFit.fill,
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
+                                        SizedBox(
+                                          width: context.width * 0.5,
+                                          child: Text(
+                                            training.name,
+                                            overflow: TextOverflow.clip,
+                                            style: const TextStyle(
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                        Expanded(child: SizedBox()),
+                                      ],
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: context.width * 0.5,
-                                    child: Text(
-                                      training.name,
-                                      overflow: TextOverflow.clip,
-                                      style:
-                                          const TextStyle(color: Colors.white),
-                                    ),
-                                  ),
-                                  Expanded(child: SizedBox()),
-                                ],
-                              ),
                             ),
                           ),
                           Expanded(

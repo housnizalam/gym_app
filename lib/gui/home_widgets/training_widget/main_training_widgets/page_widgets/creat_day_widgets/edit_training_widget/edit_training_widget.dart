@@ -6,7 +6,9 @@ import 'package:gym_app/globals/widgets/my_inkwell.dart';
 import 'package:gym_app/globals/widgets/density_table.dart';
 import 'package:gym_app/globals/widgets/wheal_scroller.dart';
 import 'package:gym_app/models/sets.dart';
+import 'package:gym_app/models/trainings/created_trining.dart';
 import 'package:gym_app/models/trainings/training.dart';
+import 'package:gym_app/riverpod/bodyWeight.dart';
 import 'package:gym_app/riverpod/temp_day_provider.dart';
 
 class EditTrainingWidget extends ConsumerWidget {
@@ -16,6 +18,7 @@ class EditTrainingWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final Training training = ref.watch(selectedTraining);
     final List<Sets> sets = training.sets;
+    final int bodyWeight = ref.watch(bodyWeightProvider);
 
     print('real Value ${sets.first.weight}');
     return Material(
@@ -37,22 +40,27 @@ class EditTrainingWidget extends ConsumerWidget {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Hero(
-                      tag: AssetImage(training.image),
-                      child: Container(
-                        height: 200,
-                        width: 200,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(training.image),
-                            fit: BoxFit.fill,
+                  if (training is! CreatedTrining)
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Hero(
+                        tag: AssetImage(training.image),
+                        child: Container(
+                          height: 200,
+                          width: 200,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(training.image),
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
+                  if (training is CreatedTrining)
+                    SizedBox(
+                      height: 50,
+                    ),
                   for (int i = 0; i < sets.length; i++)
                     Column(
                       children: [
@@ -181,7 +189,7 @@ class EditTrainingWidget extends ConsumerWidget {
                 onPressed: () {
                   ref
                       .read(creatTempDayProvider.notifier)
-                      .saveTraining(training);
+                      .saveTraining(training.copyWith(bodyWeight: bodyWeight));
                   Navigator.pop(context);
                 },
               ),

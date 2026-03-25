@@ -2,6 +2,7 @@ import 'dart:core';
 
 import 'package:gym_app/globals/extensionen/date_time.dart';
 import 'package:gym_app/models/day.dart';
+import 'package:gym_app/models/muscle.dart';
 import 'package:gym_app/models/saved_trainingsday.dart';
 import 'package:gym_app/models/trainings/back_trainings.dart';
 import 'package:gym_app/models/trainings/biceps_training.dart';
@@ -183,6 +184,30 @@ class AppState {
       }
     }
     return result;
+  }
+
+  List<Muscle> get allMuscles {
+    return [
+      UpperChestMuscle.standard(),
+      LowerChestMuscle.standard(),
+      MiddleChestMuscle.standard(),
+      UpperBackMuscle.standard(),
+      LowerBackMuscle.standard(),
+      MiddleBackMuscle.standard(),
+      Lats.standard(),
+      FrontShoulderMuscle.standard(),
+      SideShoulderMuscle.standard(),
+      RearShoulderMuscle.standard(),
+      BicepsMuscle.standard(),
+      TricepMuscle.standard(),
+      Glutes.standard(),
+      Hamstring.standard(),
+      Quads.standard(),
+      Calves.standard(),
+      Core.standard(),
+      ForArm.standard(),
+
+    ];
   }
 // get allTrainings
 //   List<Training> get allTrainings {

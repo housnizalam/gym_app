@@ -5,10 +5,10 @@ import 'package:gym_app/models/trainings/training.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
 
 class TempDayNotifier extends StateNotifier<Day> {
-  TempDayNotifier([Day? day]) : super(Day(date: DateTime.now(), trainings:day?.trainings?? []));
+  TempDayNotifier([Day? day])
+      : super(Day(date: DateTime.now(), trainings: day?.trainings ?? []));
 
   void addTraining(Training training) {
-    
     state = Day(
       date: state.date,
       trainings: [...state.trainings, training],
@@ -16,6 +16,7 @@ class TempDayNotifier extends StateNotifier<Day> {
   }
 
   void saveTraining(Training training) {
+    print('body weight: ${training.bodyWeight}');
     int index =
         state.trainings.indexWhere((element) => element.id == training.id);
     state = Day(
@@ -33,8 +34,8 @@ class TempDayNotifier extends StateNotifier<Day> {
     );
   }
 
-  void replaceAll(Day day){
-    state=day;
+  void replaceAll(Day day) {
+    state = day;
   }
 }
 
@@ -44,7 +45,7 @@ final creatTempDayProvider = StateNotifierProvider<TempDayNotifier, Day>((ref) {
 
 final weakdayTempDayProvider =
     StateNotifierProvider<TempDayNotifier, Day>((ref) {
-      final day=ref.watch(appStateProvider).thisWeakDay;
+  final day = ref.watch(appStateProvider).thisWeakDay;
   return TempDayNotifier(day);
 });
 

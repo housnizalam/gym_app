@@ -1,9 +1,7 @@
-
-
-class User{
-  String name;
-  String email;
-  String password;
-  User({required this.name, required this.email, required this.password});
-  
+class User {
+  final String name;
+  final String email;
+  final String password;
+  final int bodyWeight;
+  const User({required this.name, required this.email, required this.password, required this.bodyWeight});
 }
