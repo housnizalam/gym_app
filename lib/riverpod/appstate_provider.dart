@@ -4,47 +4,82 @@ import 'package:gym_app/models/appstate.dart';
 import 'package:gym_app/models/day.dart';
 import 'package:gym_app/models/saved_trainingsday.dart';
 import 'package:gym_app/models/trainings/training.dart';
+import 'package:gym_app/storage/hive_main.dart';
 
 class AppStateNotifier extends StateNotifier<AppState> {
-  AppStateNotifier() : super(AppState(days: []));
+  AppStateNotifier()
+      : super(AppState(
+          days: HiveService.loadDays(),           // قراءة الأيام من Hive
+          savedTrainingsdays: HiveService.loadSavedDays(), // قراءة المحفوظات
+        ));
 
   void addDay(Day day) {
+    final newDays = [...state.days, day];
     state = AppState(
-        days: [...state.days, day],
-        savedTrainingsdays: state.savedTrainingsdays,
-        user: state.user);
+      days: newDays,
+      savedTrainingsdays: state.savedTrainingsdays,
+      user: state.user,
+    );
+    HiveService.saveDays(newDays); // حفظ تلقائي
+  }
+
+  void mergToDays(Day day){
+    final index = state.days.indexWhere(
+      (element) => element.date.year == day.date.year &&
+          element.date.month == day.date.month &&
+          element.date.day == day.date.day,
+    );
+    if (index == -1) {
+      addDay(day);
+      return;
+    }
+    final today=state.days[index];
+    final mergedDay = Day( 
+      date: today.date,
+      trainings: [...today.trainings, ...day.trainings],
+    );
+    replaceDay(mergedDay);
+   HiveService.saveDays(state.days); // حفظ تلقائي  
   }
 
   void replaceDay(Day day) {
-    final index = state.days.indexWhere((element) => element.date == day.date);
-    state = AppState(
-      days: [...state.days].replaceAt(index, day),
+    final index = state.days.indexWhere(
+      (element) => element.date.year == day.date.year &&
+          element.date.month == day.date.month &&
+          element.date.day == day.date.day,
     );
-    print('days: ${state.days.length}');
+    final newDays = [...state.days].replaceAt(index, day);
+    state = AppState(
+      days: newDays,
+      savedTrainingsdays: state.savedTrainingsdays,
+      user: state.user,
+    );
+    HiveService.saveDays(newDays); // حفظ تلقائي
   }
 
   void addSavedDay(SavedTrainingsday savedTrainingsday) {
+    final newSavedDays =<SavedTrainingsday> [...state.savedTrainingsdays ?? [], savedTrainingsday];
     state = AppState(
       days: state.days,
-      savedTrainingsdays: [
-        ...state.savedTrainingsdays ?? [],
-        savedTrainingsday
-      ],
+      savedTrainingsdays: newSavedDays,
     );
+    HiveService.saveSavedDays(newSavedDays); // حفظ تلقائي
   }
 
   void deleteSavedDay(SavedTrainingsday savedTrainingsday) {
+    final newSavedDays =<SavedTrainingsday> [...state.savedTrainingsdays ?? []]
+      ..removeWhere((element) => element.name == savedTrainingsday.name);
     state = AppState(
       days: state.days,
-      savedTrainingsdays: [...state.savedTrainingsdays ?? []]
-        ..removeWhere((element) => element.name == savedTrainingsday.name),
+      savedTrainingsdays: newSavedDays,
     );
+    HiveService.saveSavedDays(newSavedDays); // حفظ تلقائي
   }
 
   void addStanderdTraining(Training training) {
-    final newState = state;
-    newState.allStandardTraining.add(training);
-    state = newState;
+    // هذا يحتاج إصلاح - لا تعدّل state مباشرة
+    state.allStandardTraining.add(training);
+    // إذا أردت حفظ التدريبات المخصصة لاحقاً نضيف هنا
   }
 }
 
@@ -54,6 +89,5 @@ final appStateProvider =
 });
 
 final selectedSavedTraining = StateProvider<SavedTrainingsday?>((ref) => null);
-
 final selectedStandardTrainingsList =
     StateProvider<List<Training>>((ref) => []);

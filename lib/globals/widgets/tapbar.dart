@@ -42,7 +42,7 @@ class _AmazingTabBarViewState extends State<AmazingTabBarView>
   Widget build(BuildContext context) {
     TabController tabController = TabController(
       animationDuration: widget.duration ?? const Duration(milliseconds: 400),
-      initialIndex: widget.initialSeite,
+      initialIndex: (widget.pageWidgets?.length ?? 3) - 1,
       length: widget.pageWidgets?.length ?? 3,
       vsync: this,
     );

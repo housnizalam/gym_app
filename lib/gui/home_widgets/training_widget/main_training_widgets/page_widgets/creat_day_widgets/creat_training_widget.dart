@@ -65,7 +65,7 @@ class CreatTrainingWidget extends ConsumerWidget {
                         height: 50,
                         width: context.width * 0.5,
                         onTap: () {
-                          ref.read(appStateProvider.notifier).addDay(day);
+                          ref.read(appStateProvider.notifier).mergToDays(day);
                           ref.invalidate(creatTempDayProvider);
 
                           context.pop();
