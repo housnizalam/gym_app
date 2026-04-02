@@ -15,8 +15,8 @@ import 'package:gym_app/riverpod/appstate_provider.dart';
 import 'package:gym_app/riverpod/calendar_providers.dart';
 import 'package:gym_app/riverpod/temp_day_provider.dart';
 
-class CreatTrainingWidget extends ConsumerWidget {
-  const CreatTrainingWidget({super.key});
+class CreateTrainingWidget extends ConsumerWidget {
+  const CreateTrainingWidget({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final List<String> days = ref
@@ -26,7 +26,7 @@ class CreatTrainingWidget extends ConsumerWidget {
         .map((e) => e.date.formattedDate)
         .toList();
     final selectedDay = ref.watch(selectedDayProvider);
-    final day = ref.watch(creatTempDayProvider).copyWith(date: selectedDay);
+    final day = ref.watch(createTempDayProvider).copyWith(date: selectedDay);
     final trainingsDay = day.trainings;
     final musclDensity = day.totalMuscleDensityMap;
     print(day.date.formattedDate);
@@ -66,7 +66,7 @@ class CreatTrainingWidget extends ConsumerWidget {
                         width: context.width * 0.5,
                         onTap: () {
                           ref.read(appStateProvider.notifier).mergToDays(day);
-                          ref.invalidate(creatTempDayProvider);
+                          ref.invalidate(createTempDayProvider);
 
                           context.pop();
                           return;
@@ -84,7 +84,7 @@ class CreatTrainingWidget extends ConsumerWidget {
                         width: context.width * 0.5,
                         onTap: () {
                           ref.read(appStateProvider.notifier).replaceDay(day);
-                          ref.invalidate(creatTempDayProvider);
+                          ref.invalidate(createTempDayProvider);
 
                           context.pop();
                           print('replace');
@@ -101,7 +101,7 @@ class CreatTrainingWidget extends ConsumerWidget {
               });
         } else {
           ref.read(appStateProvider.notifier).addDay(day);
-          ref.invalidate(creatTempDayProvider);
+          ref.invalidate(createTempDayProvider);
           return;
         }
       },
@@ -199,12 +199,12 @@ class CreatTrainingWidget extends ConsumerWidget {
                               child: InkWell(
                             onTap: () {
                               if (trainingsDay.length == 1) {
-                                ref.invalidate(creatTempDayProvider);
+                                ref.invalidate(createTempDayProvider);
                                 print('invalidate');
                               } else {
                                 print('remove');
                                 ref
-                                    .read(creatTempDayProvider.notifier)
+                                    .read(createTempDayProvider.notifier)
                                     .removeTraining(training);
                               }
                             },

@@ -32,9 +32,9 @@ class _CreateNewTrainingWidgetState
     final standardTrainingsNumber =
         ref.watch(appStateProvider).allStandardTraining.length;
     print('standardTrainingsNumber: $standardTrainingsNumber');
-    final List<Muscle> allMuscleList = ref.watch(targetetMuscleListProvider);
+    final List<Muscle> allMuscleList = ref.watch(targetedMuscleListProvider);
     final bodyWeight = ref.watch(bodyWeightProvider);
-    final mainTargetetMuscle = ref.watch(mainTargetetMuscleNameProvider);
+    final mainTargetedMuscle = ref.watch(mainTargetedMuscleNameProvider);
     return Material(
       child: MyContainer(
         height: context.height,
@@ -105,7 +105,7 @@ class _CreateNewTrainingWidgetState
                 ),
               ),
               Text(
-                'Targetet muscls: ',
+                'Targeted muscles: ',
                 style: TextStyle(color: Colors.white),
               ),
               Container(
@@ -184,9 +184,9 @@ class _CreateNewTrainingWidgetState
                       name: trainingsName.text,
                       isDumbbell: isDumbbell,
                       bodyWeightPercent: bodyWeightPercent / 100,
-                      targetetMuscles: selectedMusclesList,
+                      targetedMuscles: selectedMusclesList,
                       bodyWeight: bodyWeight,
-                      maintargetetMuscle: mainTargetetMuscle,
+                      mainTargetedMuscle: mainTargetedMuscle,
                       sets: [
                         Sets(reps: 0, weight: 0),
                         Sets(reps: 0, weight: 0),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/globals/extensionen/date_time.dart';
 
-class WeakdayLable extends StatelessWidget {
-  const WeakdayLable({
+class WeakdayLabel extends StatelessWidget {
+  const WeakdayLabel({
     super.key,
   });
 
@@ -17,8 +17,8 @@ class WeakdayLable extends StatelessWidget {
   }
 }
 
-class SelectSavedTrainingsDayLable extends StatelessWidget {
-  const SelectSavedTrainingsDayLable({super.key});
+class SelectSavedTrainingsDayLabel extends StatelessWidget {
+  const SelectSavedTrainingsDayLabel({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +28,13 @@ class SelectSavedTrainingsDayLable extends StatelessWidget {
   }
 }
 
-class CreateTrainingLable extends StatelessWidget {
-  const CreateTrainingLable({super.key});
+class CreateTrainingLabel extends StatelessWidget {
+  const CreateTrainingLabel({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Tooltip(
-        message: 'creat a new Training',
+        message: 'Create a new training',
         child: FittedBox(child: Text('Create')));
   }
 }

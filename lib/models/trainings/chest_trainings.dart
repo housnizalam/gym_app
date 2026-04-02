@@ -10,14 +10,14 @@ class BenshPressSubTraining extends Training {
   }) : super(
           image: TrainingImages.benchPress,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             UpperChestMuscle(traningsdensity: 0.5),
             LowerChestMuscle(traningsdensity: 0.15),
             TricepMuscle(traningsdensity: 0.15),
             FrontShoulderMuscle(traningsdensity: 0.2),
           ],
           name: 'Bench Press',
-          maintargetetMuscle: 'Chest',
+          mainTargetedMuscle: 'Chest',
         );
 
   factory BenshPressSubTraining.standard() {
@@ -39,14 +39,14 @@ class InclineBenchPress extends Training {
   }) : super(
           image: TrainingImages.inclineBenchPress,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             UpperChestMuscle(traningsdensity: 0.5),
             LowerChestMuscle(traningsdensity: 0.15),
             TricepMuscle(traningsdensity: 015),
             FrontShoulderMuscle(traningsdensity: 0.2)
           ],
           name: 'Incline Bench Press',
-          maintargetetMuscle: 'Chest',
+          mainTargetedMuscle: 'Chest',
         );
 
   factory InclineBenchPress.standard() {
@@ -68,14 +68,14 @@ class DeclineBenchPress extends Training {
   }) : super(
           image: TrainingImages.declineBenchPress,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             LowerChestMuscle(traningsdensity: 0.5),
             MiddleBackMuscle(traningsdensity: 0.25),
             TricepMuscle(traningsdensity: 0.15),
             FrontShoulderMuscle(traningsdensity: 0.1)
           ],
           name: 'Decline Bench Press',
-          maintargetetMuscle: 'Chest',
+          mainTargetedMuscle: 'Chest',
         );
 
   factory DeclineBenchPress.standard() {
@@ -97,13 +97,13 @@ class DumbbellFly extends Training {
   }) : super(
           image: TrainingImages.dumbbellFly,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             MiddleBackMuscle(traningsdensity: 0.6),
             UpperBackMuscle(traningsdensity: 0.25),
             FrontShoulderMuscle(traningsdensity: 0.15),
           ],
           name: 'Dumbbell Fly',
-          maintargetetMuscle: 'Chest',
+          mainTargetedMuscle: 'Chest',
         );
 
   factory DumbbellFly.standard() {
@@ -125,14 +125,14 @@ class CableFly extends Training {
   }) : super(
           image: TrainingImages.cableFly,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             MiddleChestMuscle(traningsdensity: 0.5),
             UpperChestMuscle(traningsdensity: 0.25),
             LowerChestMuscle(traningsdensity: 0.15),
             FrontShoulderMuscle(traningsdensity: 0.15),
           ],
           name: 'Cable Fly',
-          maintargetetMuscle: 'Chest',
+          mainTargetedMuscle: 'Chest',
         );
 
   factory CableFly.standard() {
@@ -154,13 +154,13 @@ class Dips extends Training {
   }) : super(
           image: TrainingImages.dips,
           bodyWeight: 80,
-          targetetMuscles: [
+          targetedMuscles: [
             LowerChestMuscle(traningsdensity: 0.5),
             TricepMuscle(traningsdensity: 0.3),
             FrontShoulderMuscle(traningsdensity: 0.2),
           ],
           name: 'Dips',
-          maintargetetMuscle: 'Chest',
+          mainTargetedMuscle: 'Chest',
         );
 
   factory Dips.standard() {

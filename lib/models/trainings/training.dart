@@ -5,16 +5,16 @@ class Training {
   final String image;
   final int bodyWeight;
   final String name;
-  final String maintargetetMuscle;
+  final String mainTargetedMuscle;
   final List<Sets> sets;
-  final List<Muscle> targetetMuscles;
+  final List<Muscle> targetedMuscles;
   final DateTime date;
   const Training({
     required this.bodyWeight,
     required this.name,
-    required this.maintargetetMuscle,
+    required this.mainTargetedMuscle,
     required this.sets,
-    required this.targetetMuscles,
+    required this.targetedMuscles,
     required this.date,
     required this.image,
   });
@@ -29,7 +29,7 @@ class Training {
 
   Map<String, double> get musclsDensity {
     Map<String, double> result = {};
-    for (var muscle in targetetMuscles) {
+    for (var muscle in targetedMuscles) {
       double muscleDensity = muscle.traningsdensity * totaldensity;
 
       result.addAll({muscle.name: muscleDensity / 2});
@@ -40,17 +40,17 @@ class Training {
   Training copyWith({
     int? bodyWeight,
     String? name,
-    String? maintargetetMuscle,
+    String? mainTargetedMuscle,
     List<Sets>? sets,
-    List<Muscle>? targetetMuscles,
+    List<Muscle>? targetedMuscles,
     DateTime? date,
   }) {
     return Training(
       bodyWeight: bodyWeight ?? this.bodyWeight,
       name: name ?? this.name,
-      maintargetetMuscle: maintargetetMuscle ?? this.maintargetetMuscle,
+      mainTargetedMuscle: mainTargetedMuscle ?? this.mainTargetedMuscle,
       sets: sets ?? this.sets,
-      targetetMuscles: targetetMuscles ?? this.targetetMuscles,
+      targetedMuscles: targetedMuscles ?? this.targetedMuscles,
       date: date ?? this.date,
       image: image,
     );
@@ -64,7 +64,7 @@ class Training {
 //   const ChestSubTraining({
 //     required super.name,
 //     required super.sets,
-//     required super.targetetMuscles,
+//     required super.targetedMuscles,
 //     required super.date,
 //   });
 // }
@@ -75,7 +75,7 @@ class Training {
 //   const BackSubTraining({
 //     required super.name,
 //     required super.sets,
-//     required super.targetetMuscles,
+//     required super.targetedMuscles,
 //     required super.date,
 //   });
 // }
@@ -84,7 +84,7 @@ class Training {
 //   const ShoulderSubTraining({
 //     required super.name,
 //     required super.sets,
-//     required super.targetetMuscles,
+//     required super.targetedMuscles,
 //     required super.date,
 //   });
 // }
@@ -93,7 +93,7 @@ class Training {
 //   const BicepsSubTraining({
 //     required super.name,
 //     required super.sets,
-//     required super.targetetMuscles,
+//     required super.targetedMuscles,
 //     required super.date,
 //   });
 // }
@@ -102,7 +102,7 @@ class Training {
 //   const TricepSubTraining({
 //     required super.name,
 //     required super.sets,
-//     required super.targetetMuscles,
+//     required super.targetedMuscles,
 //     required super.date,
 //   });
 // }
@@ -111,7 +111,7 @@ class Training {
 //   const ForArmSubTraining({
 //     required super.name,
 //     required super.sets,
-//     required super.targetetMuscles,
+//     required super.targetedMuscles,
 //     required super.date,
 //   });
 // }
@@ -120,7 +120,7 @@ class Training {
 //   const LegSubTraining({
 //     required super.name,
 //     required super.sets,
-//     required super.targetetMuscles,
+//     required super.targetedMuscles,
 //     required super.date,
 //   });
 // }
@@ -129,7 +129,7 @@ class Training {
 //   const AbbsSubTraining({
 //     required super.name,
 //     required super.sets,
-//     required super.targetetMuscles,
+//     required super.targetedMuscles,
 //     required super.date,
 //   });
 // }

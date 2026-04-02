@@ -63,7 +63,7 @@ class Day {
   // int get chestDensity {
   //   double chestDensity = 0;
   //   for (var training in allSubTrainings) {
-  //     for (var targetedMuscle in training.targetetMuscles) {
+  //     for (var targetedMuscle in training.targetedMuscles) {
   //       if (targetedMuscle.name == 'Chest') {
   //         double trainingDensity = 0;
   //         for (var set in training.sets) {
@@ -92,7 +92,7 @@ class Day {
   // int get backDensity {
   //   double backDensity = 0;
   //   for (var training in allSubTrainings) {
-  //     for (var targetedMuscle in training.targetetMuscles) {
+  //     for (var targetedMuscle in training.targetedMuscles) {
   //       if (targetedMuscle.name == 'Back') {
   //         double trainingDensity = 0;
   //         for (var set in training.sets) {
@@ -121,7 +121,7 @@ class Day {
 //   int get shoulderDensity {
 //     double shoulderDensity = 0;
 //     for (var training in allSubTrainings) {
-//       for (var targetedMuscle in training.targetetMuscles) {
+//       for (var targetedMuscle in training.targetedMuscles) {
 //         if (targetedMuscle.name == 'Shoulder') {
 //           double trainingDensity = 0;
 //           for (var set in training.sets) {
@@ -149,7 +149,7 @@ class Day {
 //   int get bicepsDensity {
 //     double bicepsDensity = 0;
 //     for (var training in allSubTrainings) {
-//       for (var targetedMuscle in training.targetetMuscles) {
+//       for (var targetedMuscle in training.targetedMuscles) {
 //         if (targetedMuscle.name == 'Biceps') {
 //           double trainingDensity = 0;
 //           for (var set in training.sets) {
@@ -178,7 +178,7 @@ class Day {
 //   int get tricepsDensity {
 //     double tricepsDensity = 0;
 //     for (var training in allSubTrainings) {
-//       for (var targetedMuscle in training.targetetMuscles) {
+//       for (var targetedMuscle in training.targetedMuscles) {
 //         if (targetedMuscle.name == 'Triceps') {
 //           double trainingDensity = 0;
 //           for (var set in training.sets) {
@@ -207,7 +207,7 @@ class Day {
 //   int get forArmDensity {
 //     double forArmDensity = 0;
 //     for (var training in allSubTrainings) {
-//       for (var targetedMuscle in training.targetetMuscles) {
+//       for (var targetedMuscle in training.targetedMuscles) {
 //         if (targetedMuscle.name == 'ForArm') {
 //           double trainingDensity = 0;
 //           for (var set in training.sets) {
@@ -235,7 +235,7 @@ class Day {
 //   int get legDensity {
 //     double legDensity = 0;
 //     for (var training in allSubTrainings) {
-//       for (var targetedMuscle in training.targetetMuscles) {
+//       for (var targetedMuscle in training.targetedMuscles) {
 //         if (targetedMuscle.name == 'Leg') {
 //           double trainingDensity = 0;
 //           for (var set in training.sets) {
@@ -262,7 +262,7 @@ class Day {
 //   int get abbsDensity {
 //     double abbsDensity = 0;
 //     for (var training in allSubTrainings) {
-//       for (var targetedMuscle in training.targetetMuscles) {
+//       for (var targetedMuscle in training.targetedMuscles) {
 //         if (targetedMuscle.name == 'Abbs') {
 //           double trainingDensity = 0;
 //           for (var set in training.sets) {

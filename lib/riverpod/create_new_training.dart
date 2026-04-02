@@ -2,13 +2,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gym_app/models/muscle.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
 
-final mainTargetetMuscleNameProvider = Provider<String>((ref) {
+final mainTargetedMuscleNameProvider = Provider<String>((ref) {
   final result =
-      ref.watch(selectedStandardTrainingsList).first.maintargetetMuscle;
+      ref.watch(selectedStandardTrainingsList).first.mainTargetedMuscle;
   return result;
 });
 
-final targetetMuscleListProvider = StateProvider<List<Muscle>>(
+final targetedMuscleListProvider = StateProvider<List<Muscle>>(
   (ref) {
     return [
       UpperChestMuscle.standard(),

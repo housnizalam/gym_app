@@ -25,7 +25,7 @@ class CalenderWidget extends ConsumerStatefulWidget {
 class _CalenderWidgetState extends ConsumerState<CalenderWidget> {
   @override
   Widget build(BuildContext context) {
-    ref.watch(creatTempDayProvider);
+    ref.watch(createTempDayProvider);
     final selectedDay = ref.watch(selectedDayProvider);
     final focusedDay = ref.watch(focusNodeProvider);
     final day = ref.watch(calenderSelectedTeainingsDay);

@@ -60,7 +60,7 @@ class _AmazingTabBarViewState extends State<AmazingTabBarView>
                       SelectSavedTrainingWidget(
                         controller: tabController,
                       ),
-                      CreatTrainingWidget()
+                      CreateTrainingWidget()
                     ],
               ),
             ),
@@ -101,7 +101,7 @@ class _AmazingTabBarViewState extends State<AmazingTabBarView>
                       SelectSavedTrainingWidget(
                         controller: tabController,
                       ),
-                      CreatTrainingWidget()
+                      CreateTrainingWidget()
                     ],
               ),
             ),

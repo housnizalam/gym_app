@@ -10,13 +10,13 @@ class Crunch extends Training {
     required super.date,
   }) : super(
           image: TrainingImages.crunch,
-          targetetMuscles: [
+          targetedMuscles: [
             Core(traningsdensity: 0.75),
             LowerBackMuscle(traningsdensity: 0.15),
             Glutes(traningsdensity: 0.1)
           ],
           name: 'Crunch',
-          maintargetetMuscle: 'Core',
+          mainTargetedMuscle: 'Core',
         );
 
   factory Crunch.standard() {
@@ -48,14 +48,14 @@ class LegRaise extends Training {
     required super.date,
   }) : super(
           image: TrainingImages.legRaise,
-          targetetMuscles: [
+          targetedMuscles: [
             Core(traningsdensity: 0.6),
             Glutes(traningsdensity: 0.2),
             Quads(traningsdensity: 0.1),
             LowerBackMuscle(traningsdensity: 0.1),
           ],
           name: 'Leg Raise',
-          maintargetetMuscle: 'Core',
+          mainTargetedMuscle: 'Core',
         );
 
   factory LegRaise.standard() {
@@ -86,13 +86,13 @@ class RussianTwist extends Training {
     required super.date,
   }) : super(
           image: TrainingImages.russianTwist,
-          targetetMuscles: [
+          targetedMuscles: [
             Core(traningsdensity: 0.8),
             Glutes(traningsdensity: 0.1),
             LowerBackMuscle(traningsdensity: 0.1),
           ],
           name: 'Russian Twist',
-          maintargetetMuscle: 'Core',
+          mainTargetedMuscle: 'Core',
         );
   factory RussianTwist.standard() {
     return RussianTwist(
@@ -122,13 +122,13 @@ class BicycleCrunch extends Training {
     required super.date,
   }) : super(
             image: TrainingImages.bicycleCrunch,
-            targetetMuscles: [
+            targetedMuscles: [
               Core(traningsdensity: 0.75),
               LowerBackMuscle(traningsdensity: 0.1),
               Glutes(traningsdensity: 0.15),
             ],
             name: 'Bicycle Crunch',
-            maintargetetMuscle: 'Core');
+            mainTargetedMuscle: 'Core');
 
   factory BicycleCrunch.standard() {
     return BicycleCrunch(
@@ -159,7 +159,7 @@ class MountainClimber extends Training {
     required super.date,
   }) : super(
           image: TrainingImages.mountainClimber,
-          targetetMuscles: [
+          targetedMuscles: [
             Core(traningsdensity: 0.6),
             Glutes(traningsdensity: 0.2),
             LowerBackMuscle(traningsdensity: 0.1),
@@ -167,7 +167,7 @@ class MountainClimber extends Training {
             MiddleChestMuscle(traningsdensity: 0.05),
           ],
           name: 'Mountain Climber',
-          maintargetetMuscle: 'Core',
+          mainTargetedMuscle: 'Core',
         );
 
   factory MountainClimber.standard() {

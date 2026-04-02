@@ -9,17 +9,18 @@ class Deadlift extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.deadlift,
-        
-    targetetMuscles: [
-          LowerBackMuscle(traningsdensity: 0.25),
-          Glutes(traningsdensity: 0.2),
-          Hamstring(traningsdensity: 0.2),
-          Quads(traningsdensity: 0.15),
-          UpperBackMuscle(traningsdensity: 10),
-          ForArm(traningsdensity: 0.05),
-          Core(traningsdensity: 0.05),
-        ], name: 'Deadlift', maintargetetMuscle: 'Legs');
+            image: TrainingImages.deadlift,
+            targetedMuscles: [
+              LowerBackMuscle(traningsdensity: 0.25),
+              Glutes(traningsdensity: 0.2),
+              Hamstring(traningsdensity: 0.2),
+              Quads(traningsdensity: 0.15),
+              UpperBackMuscle(traningsdensity: 10),
+              ForArm(traningsdensity: 0.05),
+              Core(traningsdensity: 0.05),
+            ],
+            name: 'Deadlift',
+            mainTargetedMuscle: 'Legs');
 
   factory Deadlift.standard() {
     return Deadlift(
@@ -40,16 +41,17 @@ class Squat extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    
-    image: TrainingImages.squat,
-    targetetMuscles: [
-          Quads(traningsdensity: 0.35),
-          Glutes(traningsdensity: 0.25),
-          Hamstring(traningsdensity: 0.15),
-          LowerBackMuscle(traningsdensity: 0.1),
-          Calves(traningsdensity: 0.1),
-          Core(traningsdensity: 0.05),
-        ], name: 'Squat', maintargetetMuscle: 'Legs');
+            image: TrainingImages.squat,
+            targetedMuscles: [
+              Quads(traningsdensity: 0.35),
+              Glutes(traningsdensity: 0.25),
+              Hamstring(traningsdensity: 0.15),
+              LowerBackMuscle(traningsdensity: 0.1),
+              Calves(traningsdensity: 0.1),
+              Core(traningsdensity: 0.05),
+            ],
+            name: 'Squat',
+            mainTargetedMuscle: 'Legs');
 
   factory Squat.standard() {
     return Squat(
@@ -69,16 +71,16 @@ class LegPress extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.legPress,
+            image: TrainingImages.legPress,
             bodyWeight: 0,
-            targetetMuscles: [
+            targetedMuscles: [
               Quads(traningsdensity: 0.4),
               Glutes(traningsdensity: 0.25),
               Hamstring(traningsdensity: 0.2),
               Calves(traningsdensity: 0.15),
             ],
             name: 'Leg Press',
-            maintargetetMuscle: 'Legs');
+            mainTargetedMuscle: 'Legs');
 
   factory LegPress.standard() {
     return LegPress(
@@ -98,14 +100,16 @@ class Lunges extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.lunges,
-    targetetMuscles: [
-          Quads(traningsdensity: 0.4),
-          Glutes(traningsdensity: 0.25),
-          Hamstring(traningsdensity: 0.2),
-          Calves(traningsdensity: 0.1),
-          Core(traningsdensity: 0.05),
-        ], name: 'Lunges', maintargetetMuscle: 'Legs');
+            image: TrainingImages.lunges,
+            targetedMuscles: [
+              Quads(traningsdensity: 0.4),
+              Glutes(traningsdensity: 0.25),
+              Hamstring(traningsdensity: 0.2),
+              Calves(traningsdensity: 0.1),
+              Core(traningsdensity: 0.05),
+            ],
+            name: 'Lunges',
+            mainTargetedMuscle: 'Legs');
 
   factory Lunges.standard() {
     return Lunges(
@@ -118,7 +122,7 @@ class Lunges extends Training {
       date: DateTime.now(),
     );
   }
-      @override
+  @override
   double get totaldensity {
     double result = 0;
     for (var set in sets) {
@@ -133,14 +137,14 @@ class FrontLegExtension extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.frontLegExtension,
+            image: TrainingImages.frontLegExtension,
             bodyWeight: 0,
-            targetetMuscles: [
+            targetedMuscles: [
               Quads(traningsdensity: 0.85),
               Glutes(traningsdensity: 0.15),
             ],
             name: 'Front leg extension',
-            maintargetetMuscle: 'Legs');
+            mainTargetedMuscle: 'Legs');
 
   factory FrontLegExtension.standard() {
     return FrontLegExtension(
@@ -159,15 +163,15 @@ class BackLegExtension extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.backLegExtension,
+            image: TrainingImages.backLegExtension,
             bodyWeight: 0,
-            targetetMuscles: [
+            targetedMuscles: [
               Hamstring(traningsdensity: 0.6),
               Glutes(traningsdensity: 0.3),
               LowerBackMuscle(traningsdensity: 0.1),
             ],
             name: 'Back leg extension',
-            maintargetetMuscle: 'Legs');
+            mainTargetedMuscle: 'Legs');
 
   factory BackLegExtension.standard() {
     return BackLegExtension(
@@ -187,11 +191,13 @@ class CalfRaise extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.calfRaise,
-    targetetMuscles: [
-          Calves(traningsdensity: 0.9),
-          Hamstring(traningsdensity: 0.1),
-        ], name: 'Calf Raise', maintargetetMuscle: 'Legs');
+            image: TrainingImages.calfRaise,
+            targetedMuscles: [
+              Calves(traningsdensity: 0.9),
+              Hamstring(traningsdensity: 0.1),
+            ],
+            name: 'Calf Raise',
+            mainTargetedMuscle: 'Legs');
 
   factory CalfRaise.standard() {
     return CalfRaise(

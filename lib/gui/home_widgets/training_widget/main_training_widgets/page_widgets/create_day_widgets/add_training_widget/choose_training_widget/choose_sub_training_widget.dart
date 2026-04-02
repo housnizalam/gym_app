@@ -15,7 +15,7 @@ class ChooseSubTrainingWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final trainingsList = ref.watch(selectedStandardTrainingsList);
-    final tempdayTrainings = ref.watch(creatTempDayProvider).trainings;
+    final tempdayTrainings = ref.watch(createTempDayProvider).trainings;
     return MyContainer(
       child: SingleChildScrollView(
         child: Column(
@@ -34,7 +34,7 @@ class ChooseSubTrainingWidget extends ConsumerWidget {
                         style: const TextStyle(color: Colors.white)),
                     onTap: () {
                       ref
-                          .read(creatTempDayProvider.notifier)
+                          .read(createTempDayProvider.notifier)
                           .addTraining(training);
                       // ref.read(selectedTraining.notifier).state = training;
                       context.pop();

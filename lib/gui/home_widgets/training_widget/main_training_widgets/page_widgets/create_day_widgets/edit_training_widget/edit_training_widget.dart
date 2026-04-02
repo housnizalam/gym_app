@@ -188,7 +188,7 @@ class EditTrainingWidget extends ConsumerWidget {
                 ),
                 onPressed: () {
                   ref
-                      .read(creatTempDayProvider.notifier)
+                      .read(createTempDayProvider.notifier)
                       .saveTraining(training.copyWith(bodyWeight: bodyWeight));
                   Navigator.pop(context);
                 },

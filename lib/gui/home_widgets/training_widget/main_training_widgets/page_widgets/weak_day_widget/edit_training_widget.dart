@@ -17,8 +17,7 @@ class EditWeakDayTrainingWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final Training training = ref.watch(selectedTraining);
     final List<Sets> sets = training.sets;
-        final int bodyWeight = ref.watch(bodyWeightProvider);
-
+    final int bodyWeight = ref.watch(bodyWeightProvider);
 
     print('real Value ${sets.first.weight}');
     return Material(
@@ -182,8 +181,8 @@ class EditWeakDayTrainingWidget extends ConsumerWidget {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                             ref
-                      .read(creatTempDayProvider.notifier)
+                  ref
+                      .read(createTempDayProvider.notifier)
                       .saveTraining(training.copyWith(bodyWeight: bodyWeight));
                   Navigator.pop(context);
                 },

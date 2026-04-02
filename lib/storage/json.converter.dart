@@ -13,6 +13,31 @@ import 'package:gym_app/models/trainings/shoulder_traininga.dart';
 import 'package:gym_app/models/trainings/training.dart';
 import 'package:gym_app/models/trainings/triceps_training.dart';
 
+String _readStringValue(
+  Map<String, dynamic> json,
+  List<String> keys, {
+  String fallback = '',
+}) {
+  for (final key in keys) {
+    final value = json[key];
+    if (value is String && value.isNotEmpty) {
+      return value;
+    }
+  }
+  return fallback;
+}
+
+List<Muscle> _readMusclesList(Map<String, dynamic> json) {
+  final dynamic raw = json['targetedMuscles'] ?? json['targetetMuscles'] ?? [];
+  if (raw is! List) {
+    return [];
+  }
+
+  return raw
+      .map((m) => muscleFromJson(Map<String, dynamic>.from(m as Map)))
+      .toList();
+}
+
 // ==================== SETS ====================
 Map<String, dynamic> setsToJson(Sets sets) => {
       'reps': sets.reps,
@@ -80,9 +105,9 @@ Map<String, dynamic> trainingToJson(Training training) => {
       'type': training.runtimeType.toString(),
       'name': training.name,
       'bodyWeight': training.bodyWeight,
-      'maintargetetMuscle': training.maintargetetMuscle,
+      'mainTargetedMuscle': training.mainTargetedMuscle,
       'sets': training.sets.map(setsToJson).toList(),
-      'targetedMuscles': training.targetetMuscles.map(muscleToJson).toList(),
+      'targetedMuscles': training.targetedMuscles.map(muscleToJson).toList(),
       'date': training.date.toIso8601String(),
       // بيانات إضافية للـ CreatedTrining
       if (training is CreatedTrining) 'isDumbbell': training.isDumbbell,
@@ -91,13 +116,13 @@ Map<String, dynamic> trainingToJson(Training training) => {
     };
 
 Training trainingFromJson(Map<String, dynamic> json) {
-  final String type = json['type'];
+  final String type = _readStringValue(json, ['type']);
   final List<Sets> sets =
-      (json['sets'] as List).map((s) => setsFromJson(s)).toList();
-  final DateTime date = DateTime.parse(json['date']);
-  final int bodyWeight = json['bodyWeight'];
-  final List<Muscle> muscles =
-      (json['targetedMuscles'] as List).map((m) => muscleFromJson(m)).toList();
+      ((json['sets'] as List?) ?? []).map((s) => setsFromJson(s)).toList();
+  final DateTime date =
+      DateTime.tryParse((json['date'] ?? '').toString()) ?? DateTime.now();
+  final int bodyWeight = (json['bodyWeight'] as num?)?.toInt() ?? 0;
+  final List<Muscle> muscles = _readMusclesList(json);
 
   switch (type) {
     // Chest
@@ -205,19 +230,27 @@ Training trainingFromJson(Map<String, dynamic> json) {
       return CreatedTrining(
         isDumbbell: json['isDumbbell'] ?? false,
         bodyWeight: bodyWeight,
-        name: json['name'],
-        maintargetetMuscle: json['maintargetetMuscle'],
-        targetetMuscles: muscles,
+        name: _readStringValue(json, ['name'], fallback: 'Created Training'),
+        mainTargetedMuscle: _readStringValue(
+          json,
+          ['mainTargetedMuscle', 'maintargetedMuscle', 'maintargetetMuscle'],
+          fallback: 'Unknown',
+        ),
+        targetedMuscles: muscles,
         sets: sets,
-        bodyWeightPercent: json['bodyWeightPercent']?.toDouble() ?? 0,
+        bodyWeightPercent: (json['bodyWeightPercent'] as num?)?.toDouble() ?? 0,
       );
     default:
       return Training(
         bodyWeight: bodyWeight,
-        name: json['name'],
-        maintargetetMuscle: json['maintargetetMuscle'],
+        name: _readStringValue(json, ['name'], fallback: 'Unknown Training'),
+        mainTargetedMuscle: _readStringValue(
+          json,
+          ['mainTargetedMuscle', 'maintargetedMuscle', 'maintargetetMuscle'],
+          fallback: 'Unknown',
+        ),
         sets: sets,
-        targetetMuscles: muscles,
+        targetedMuscles: muscles,
         date: date,
         image: '',
       );
@@ -244,8 +277,8 @@ Map<String, dynamic> savedDayToJson(SavedTrainingsday savedDay) => {
 
 SavedTrainingsday savedDayFromJson(Map<String, dynamic> json) =>
     SavedTrainingsday(
-      name: json['name'],
-      day: dayFromJson(json['day']),
+      name: _readStringValue(json, ['name'], fallback: 'Saved training day'),
+      day: dayFromJson(Map<String, dynamic>.from(json['day'] as Map)),
     );
 // Am Ende der Datei hinzufügen:
 
@@ -254,21 +287,25 @@ SavedTrainingsday savedDayFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> createdTriningToJson(CreatedTrining t) => {
       'name': t.name,
       'bodyWeight': t.bodyWeight,
-      'maintargetetMuscle': t.maintargetetMuscle,
+      'mainTargetedMuscle': t.mainTargetedMuscle,
       'isDumbbell': t.isDumbbell,
       'bodyWeightPercent': t.bodyWeightPercent,
       'sets': t.sets.map(setsToJson).toList(),
-      'targetedMuscles': t.targetetMuscles.map(muscleToJson).toList(),
+      'targetedMuscles': t.targetedMuscles.map(muscleToJson).toList(),
     };
 
 CreatedTrining createdTriningFromJson(Map<String, dynamic> json) =>
     CreatedTrining(
-      name: json['name'],
-      bodyWeight: json['bodyWeight'],
-      maintargetetMuscle: json['maintargetetMuscle'],
+      name: _readStringValue(json, ['name'], fallback: 'Created Training'),
+      bodyWeight: (json['bodyWeight'] as num?)?.toInt() ?? 0,
+      mainTargetedMuscle: _readStringValue(
+        json,
+        ['mainTargetedMuscle', 'maintargetedMuscle', 'maintargetetMuscle'],
+        fallback: 'Unknown',
+      ),
       isDumbbell: json['isDumbbell'] ?? false,
       bodyWeightPercent: (json['bodyWeightPercent'] as num?)?.toDouble() ?? 0,
-      sets: (json['sets'] as List).map((s) => setsFromJson(s)).toList(),
-      targetetMuscles:
-          (json['targetedMuscles'] as List).map((m) => muscleFromJson(m)).toList(),
+      sets:
+          ((json['sets'] as List?) ?? []).map((s) => setsFromJson(s)).toList(),
+      targetedMuscles: _readMusclesList(json),
     );

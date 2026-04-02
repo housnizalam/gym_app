@@ -39,7 +39,8 @@ class TempDayNotifier extends StateNotifier<Day> {
   }
 }
 
-final creatTempDayProvider = StateNotifierProvider<TempDayNotifier, Day>((ref) {
+final createTempDayProvider =
+    StateNotifierProvider<TempDayNotifier, Day>((ref) {
   return TempDayNotifier();
 });
 

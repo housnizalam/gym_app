@@ -10,7 +10,7 @@ class PullUps extends Training {
     required super.bodyWeight,
   }) : super(
           image: TrainingImages.pullUps,
-          targetetMuscles: [
+          targetedMuscles: [
             Lats(traningsdensity: 0.45),
             BicepsMuscle(traningsdensity: 0.2),
             MiddleBackMuscle(traningsdensity: 0.15),
@@ -18,7 +18,7 @@ class PullUps extends Training {
             ForArm(traningsdensity: 0.1),
           ],
           name: 'Pull Ups',
-          maintargetetMuscle: 'Back',
+          mainTargetedMuscle: 'Back',
         );
 
   factory PullUps.standard() {
@@ -41,7 +41,7 @@ class ChinUps extends Training {
     required super.date,
   }) : super(
           image: TrainingImages.chinUps,
-          targetetMuscles: [
+          targetedMuscles: [
             Lats(traningsdensity: 0.35),
             BicepsMuscle(traningsdensity: 0.3),
             MiddleBackMuscle(traningsdensity: 0.15),
@@ -49,7 +49,7 @@ class ChinUps extends Training {
             Core(traningsdensity: 0.1)
           ],
           name: 'Chin Ups',
-          maintargetetMuscle: 'Back',
+          mainTargetedMuscle: 'Back',
         );
 
   factory ChinUps.standard() {
@@ -72,7 +72,7 @@ class LatPulldown extends Training {
   }) : super(
           image: TrainingImages.latPulldown,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             Lats(traningsdensity: 0.5),
             MiddleBackMuscle(traningsdensity: 0.2),
             BicepsMuscle(traningsdensity: 0.15),
@@ -80,7 +80,7 @@ class LatPulldown extends Training {
             ForArm(traningsdensity: 0.05),
           ],
           name: 'Lat Pulldown',
-          maintargetetMuscle: 'Back',
+          mainTargetedMuscle: 'Back',
         );
 
   factory LatPulldown.standard() {
@@ -102,7 +102,7 @@ class SeatedRow extends Training {
   }) : super(
           image: TrainingImages.seatedRow,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             Lats(traningsdensity: 0.3),
             MiddleBackMuscle(traningsdensity: 0.25),
             BicepsMuscle(traningsdensity: 0.15),
@@ -111,7 +111,7 @@ class SeatedRow extends Training {
             Core(traningsdensity: 0.05),
           ],
           name: 'Seated Row',
-          maintargetetMuscle: 'Back',
+          mainTargetedMuscle: 'Back',
         );
 
   factory SeatedRow.standard() {
@@ -133,7 +133,7 @@ class BentOverRow extends Training {
   }) : super(
           image: TrainingImages.bentOverRow,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             Lats(traningsdensity: 0.35),
             MiddleBackMuscle(traningsdensity: 0.25),
             BicepsMuscle(traningsdensity: 0.15),
@@ -142,7 +142,7 @@ class BentOverRow extends Training {
             Core(traningsdensity: 0.05),
           ],
           name: 'Bent Over Row',
-          maintargetetMuscle: 'Back',
+          mainTargetedMuscle: 'Back',
         );
 
   factory BentOverRow.standard() {
@@ -164,7 +164,7 @@ class TBarRow extends Training {
   }) : super(
           image: TrainingImages.tBarRow,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             Lats(traningsdensity: 0.4),
             MiddleBackMuscle(traningsdensity: 0.25),
             RearShoulderMuscle(traningsdensity: 0.15),
@@ -173,7 +173,7 @@ class TBarRow extends Training {
             Core(traningsdensity: 0.05),
           ],
           name: 'T Bar Row',
-          maintargetetMuscle: 'Back',
+          mainTargetedMuscle: 'Back',
         );
 
   factory TBarRow.standard() {
@@ -195,13 +195,13 @@ class Shrugs extends Training {
   }) : super(
           image: TrainingImages.shrugs,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             UpperBackMuscle(traningsdensity: 0.7),
             RearShoulderMuscle(traningsdensity: 0.2),
             ForArm(traningsdensity: 0.1),
           ],
           name: 'Shrugs',
-          maintargetetMuscle: 'Back',
+          mainTargetedMuscle: 'Back',
         );
 
   factory Shrugs.standard() {

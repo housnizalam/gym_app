@@ -8,16 +8,16 @@ class BarbellCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.barbellCurl,
+          image: TrainingImages.barbellCurl,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             BicepsMuscle(traningsdensity: 0.7),
             ForArm(traningsdensity: 0.15),
             Core(traningsdensity: 0.1),
             FrontShoulderMuscle(traningsdensity: 0.05),
           ],
           name: 'Barbell Curl',
-          maintargetetMuscle: 'Biceps',
+          mainTargetedMuscle: 'Biceps',
         );
 
   factory BarbellCurl.standard() {
@@ -37,16 +37,16 @@ class DumbbellCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.dumbbellCurl,
+          image: TrainingImages.dumbbellCurl,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             BicepsMuscle(traningsdensity: 0.75),
             ForArm(traningsdensity: 0.1),
             Core(traningsdensity: 0.1),
             FrontShoulderMuscle(traningsdensity: 0.05),
           ],
           name: 'Dumbbell Curl',
-          maintargetetMuscle: 'Biceps',
+          mainTargetedMuscle: 'Biceps',
         );
 
   factory DumbbellCurl.standard() {
@@ -66,15 +66,15 @@ class PreacherCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.preacherCurl,
+          image: TrainingImages.preacherCurl,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             BicepsMuscle(traningsdensity: 0.85),
             ForArm(traningsdensity: 0.1),
             FrontShoulderMuscle(traningsdensity: 0.05),
           ],
           name: 'Preacher Curl',
-          maintargetetMuscle: 'Biceps',
+          mainTargetedMuscle: 'Biceps',
         );
 
   factory PreacherCurl.standard() {
@@ -94,15 +94,15 @@ class HammerCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.hammerCurl,
+          image: TrainingImages.hammerCurl,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             BicepsMuscle(traningsdensity: 0.6),
             ForArm(traningsdensity: 0.35),
             FrontShoulderMuscle(traningsdensity: 0.05),
           ],
           name: 'Hammer Curl',
-          maintargetetMuscle: 'Biceps',
+          mainTargetedMuscle: 'Biceps',
         );
 
   factory HammerCurl.standard() {
@@ -122,14 +122,14 @@ class ConcentrationCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.concentrationCurl,
+          image: TrainingImages.concentrationCurl,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             BicepsMuscle(traningsdensity: 0.9),
             ForArm(traningsdensity: 0.1),
           ],
           name: 'Concentration Curl',
-          maintargetetMuscle: 'Biceps',
+          mainTargetedMuscle: 'Biceps',
         );
 
   factory ConcentrationCurl.standard() {
@@ -149,14 +149,14 @@ class ZottmanCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.zottmanCurl,
+          image: TrainingImages.zottmanCurl,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             BicepsMuscle(traningsdensity: 0.6),
             ForArm(traningsdensity: 0.4),
           ],
           name: 'Zottman Curl',
-          maintargetetMuscle: 'For Arm',
+          mainTargetedMuscle: 'For Arm',
         );
 
   factory ZottmanCurl.standard() {

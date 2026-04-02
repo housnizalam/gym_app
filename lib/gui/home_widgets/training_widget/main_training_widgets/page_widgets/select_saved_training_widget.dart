@@ -73,10 +73,10 @@ class _SelectSavedTrainingWidgetState
                               style: const TextStyle(color: Colors.white)),
                           onTap: () {
                             ref
-                                .read(creatTempDayProvider.notifier)
+                                .read(createTempDayProvider.notifier)
                                 .replaceAll(trainingsday.day);
                             widget.controller.animateTo(2);
-                            // context.animateToAsPush(page: CreatTrainingWidget());
+                            // context.animateToAsPush(page: CreateTrainingWidget());
                           },
                         ),
                         Expanded(

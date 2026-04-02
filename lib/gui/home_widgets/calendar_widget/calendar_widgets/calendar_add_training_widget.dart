@@ -57,9 +57,9 @@ class CalenderAddTrainingWidget extends ConsumerWidget {
             ),
             TextButton(
               onPressed: () {
-                ref.invalidate(creatTempDayProvider);
+                ref.invalidate(createTempDayProvider);
                 context.navigatePushTo(
-                    const Material(child: CreatTrainingWidget()));
+                    const Material(child: CreateTrainingWidget()));
               },
               child: Text('Create new training',
                   style: const TextStyle(color: Colors.blue, fontSize: 20)),

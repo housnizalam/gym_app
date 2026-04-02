@@ -8,9 +8,9 @@ class FacePull extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.facePull,
+          image: TrainingImages.facePull,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             RearShoulderMuscle(traningsdensity: 0.4),
             UpperBackMuscle(traningsdensity: 0.3),
             SideShoulderMuscle(traningsdensity: 0.15),
@@ -18,7 +18,7 @@ class FacePull extends Training {
             BicepsMuscle(traningsdensity: 0.05),
           ],
           name: 'Face Pull',
-          maintargetetMuscle: 'Shoulder',
+          mainTargetedMuscle: 'Shoulder',
         );
 
   factory FacePull.standard() {
@@ -38,9 +38,9 @@ class MilitaryPress extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.militaryPress,
+          image: TrainingImages.militaryPress,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             FrontShoulderMuscle(traningsdensity: 0.4),
             SideShoulderMuscle(traningsdensity: 0.2),
             UpperBackMuscle(traningsdensity: 0.15),
@@ -48,7 +48,7 @@ class MilitaryPress extends Training {
             Core(traningsdensity: 0.1),
           ],
           name: 'Military Press',
-          maintargetetMuscle: 'Shoulder',
+          mainTargetedMuscle: 'Shoulder',
         );
 
   factory MilitaryPress.standard() {
@@ -68,9 +68,9 @@ class ArnoldPress extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.arnoldPress,
+          image: TrainingImages.arnoldPress,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             FrontShoulderMuscle(traningsdensity: 0.35),
             SideShoulderMuscle(traningsdensity: 0.25),
             TricepMuscle(traningsdensity: 0.15),
@@ -79,7 +79,7 @@ class ArnoldPress extends Training {
             Core(traningsdensity: 0.05),
           ],
           name: 'Arnold Press',
-          maintargetetMuscle: 'Shoulder',
+          mainTargetedMuscle: 'Shoulder',
         );
 
   factory ArnoldPress.standard() {
@@ -99,16 +99,16 @@ class LateralRaise extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.lateralRaise,
+          image: TrainingImages.lateralRaise,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             SideShoulderMuscle(traningsdensity: 0.7),
             FrontShoulderMuscle(traningsdensity: 0.1),
             RearShoulderMuscle(traningsdensity: 0.1),
             Core(traningsdensity: 0.05),
           ],
           name: 'Lateral Raise',
-          maintargetetMuscle: 'Shoulder',
+          mainTargetedMuscle: 'Shoulder',
         );
 
   factory LateralRaise.standard() {
@@ -128,16 +128,16 @@ class FrontRaise extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.frontRaise,
+          image: TrainingImages.frontRaise,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             FrontShoulderMuscle(traningsdensity: 0.7),
             SideShoulderMuscle(traningsdensity: 0.1),
             UpperChestMuscle(traningsdensity: 0.1),
             Core(traningsdensity: 0.1),
           ],
           name: 'Front Raise',
-          maintargetetMuscle: 'Shoulder',
+          mainTargetedMuscle: 'Shoulder',
         );
 
   factory FrontRaise.standard() {
@@ -157,16 +157,16 @@ class RearDeltFly extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.rearDeltFly,
+          image: TrainingImages.rearDeltFly,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             RearShoulderMuscle(traningsdensity: 0.6),
             UpperBackMuscle(traningsdensity: 0.2),
             SideShoulderMuscle(traningsdensity: 0.1),
             Core(traningsdensity: 0.1),
           ],
           name: 'Rear Delt Fly',
-          maintargetetMuscle: 'Shoulder',
+          mainTargetedMuscle: 'Shoulder',
         );
 
   factory RearDeltFly.standard() {
@@ -186,19 +186,17 @@ class UprightRow extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.uprightRow,
+          image: TrainingImages.uprightRow,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             SideShoulderMuscle(traningsdensity: 0.4),
             UpperBackMuscle(traningsdensity: 0.35),
             FrontShoulderMuscle(traningsdensity: 0.15),
             BicepsMuscle(traningsdensity: 0.1),
           ],
           name: 'Upright Row',
-          maintargetetMuscle: 'Shoulder',
+          mainTargetedMuscle: 'Shoulder',
         );
-
-        
 
   factory UprightRow.standard() {
     return UprightRow(

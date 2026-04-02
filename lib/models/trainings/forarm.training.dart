@@ -8,15 +8,15 @@ class ReverseCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.reverseCurl,
+          image: TrainingImages.reverseCurl,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             ForArm(traningsdensity: 0.6),
             BicepsMuscle(traningsdensity: 0.3),
             FrontShoulderMuscle(traningsdensity: 0.05),
           ],
           name: 'Reverse Curl',
-          maintargetetMuscle: 'For Arm',
+          mainTargetedMuscle: 'For Arm',
         );
 
   factory ReverseCurl.standard() {
@@ -36,14 +36,14 @@ class WristCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.wristCurl,
+          image: TrainingImages.wristCurl,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             ForArm(traningsdensity: 0.9),
             BicepsMuscle(traningsdensity: 0.1),
           ],
           name: 'Wrist Curl',
-          maintargetetMuscle: 'For Arm',
+          mainTargetedMuscle: 'For Arm',
         );
 
   factory WristCurl.standard() {
@@ -63,14 +63,14 @@ class ReverseWristCurl extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.reverseWristCurl,
+          image: TrainingImages.reverseWristCurl,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             ForArm(traningsdensity: 0.9),
             BicepsMuscle(traningsdensity: 0.1),
           ],
           name: 'Reverse Wrist Curl',
-          maintargetetMuscle: 'For Arm',
+          mainTargetedMuscle: 'For Arm',
         );
 
   factory ReverseWristCurl.standard() {

@@ -13,7 +13,7 @@ import 'package:gym_app/models/trainings/leg_trainings.dart';
 import 'package:gym_app/models/trainings/shoulder_traininga.dart';
 import 'package:gym_app/models/trainings/training.dart';
 import 'package:gym_app/models/trainings/triceps_training.dart';
-import 'package:gym_app/models/uer.dart';
+import 'package:gym_app/models/user.dart';
 
 import 'trainings/core_trainings.dart';
 
@@ -55,10 +55,9 @@ class AppState {
     this.user,
     this.subTrainings,
     this.savedTrainingsdays,
-      List<CreatedTrining>? createdTrainings,
-  }) : createdTrainings = createdTrainings ?? [],
-  
-   allStandardTraining = [
+    List<CreatedTrining>? createdTrainings,
+  })  : createdTrainings = createdTrainings ?? [],
+        allStandardTraining = [
           ArnoldPress.standard(),
           BackLegExtension.standard(),
           BarbellCurl.standard(),
@@ -109,7 +108,7 @@ class AppState {
 
   List<Training> getSelectedStandardTainingList(String trainingsTyp) =>
       allStandardTraining
-          .where((e) => e.maintargetetMuscle == trainingsTyp)
+          .where((e) => e.mainTargetedMuscle == trainingsTyp)
           .toList();
 
   SavedTrainingsday? get todaysTraining {
@@ -211,7 +210,6 @@ class AppState {
       Calves.standard(),
       Core.standard(),
       ForArm.standard(),
-
     ];
   }
 // get allTrainings

@@ -8,16 +8,16 @@ class CloseGripBenchPress extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.closeGripBenchPress,
+          image: TrainingImages.closeGripBenchPress,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             TricepMuscle(traningsdensity: 0.6),
             FrontShoulderMuscle(traningsdensity: 0.2),
             UpperChestMuscle(traningsdensity: 0.1),
             Core(traningsdensity: 0.1),
           ],
           name: 'Close Grip Bench Press',
-          maintargetetMuscle: 'Shoulder',
+          mainTargetedMuscle: 'Shoulder',
         );
 
   factory CloseGripBenchPress.standard() {
@@ -37,16 +37,16 @@ class SkullCrusher extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.skullCrusher,
+            image: TrainingImages.skullCrusher,
             bodyWeight: 0,
-            targetetMuscles: [
+            targetedMuscles: [
               TricepMuscle(traningsdensity: 0.6),
               FrontShoulderMuscle(traningsdensity: 0.2),
               UpperChestMuscle(traningsdensity: 0.1),
               Core(traningsdensity: 0.1),
             ],
             name: 'Skull Crusher',
-            maintargetetMuscle: 'Triceps');
+            mainTargetedMuscle: 'Triceps');
 
   factory SkullCrusher.standard() {
     return SkullCrusher(
@@ -65,15 +65,15 @@ class TricepPushdown extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.tricepsPushdown,
+          image: TrainingImages.tricepsPushdown,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             TricepMuscle(traningsdensity: 0.8),
             ForArm(traningsdensity: 0.1),
             FrontShoulderMuscle(traningsdensity: 0.1),
           ],
           name: 'Tricep Pushdown',
-          maintargetetMuscle: 'Triceps',
+          mainTargetedMuscle: 'Triceps',
         );
 
   factory TricepPushdown.standard() {
@@ -93,15 +93,15 @@ class OverheadTricepExtension extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.tricepsOverheadExtension,
+          image: TrainingImages.tricepsOverheadExtension,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             TricepMuscle(traningsdensity: 0.8),
             ForArm(traningsdensity: 0.1),
             FrontShoulderMuscle(traningsdensity: 0.1),
           ],
           name: 'Overhead Tricep Extension',
-          maintargetetMuscle: 'Triceps',
+          mainTargetedMuscle: 'Triceps',
         );
 
   factory OverheadTricepExtension.standard() {
@@ -121,15 +121,15 @@ class TricepKickback extends Training {
     required super.sets,
     required super.date,
   }) : super(
-    image: TrainingImages.kickBack,
+          image: TrainingImages.kickBack,
           bodyWeight: 0,
-          targetetMuscles: [
+          targetedMuscles: [
             TricepMuscle(traningsdensity: 0.85),
             RearShoulderMuscle(traningsdensity: 0.1),
             ForArm(traningsdensity: 0.05),
           ],
           name: 'Tricep Kickback',
-          maintargetetMuscle: 'Triceps',
+          mainTargetedMuscle: 'Triceps',
         );
 
   factory TricepKickback.standard() {
