@@ -33,15 +33,31 @@ class ChooseTrainingWidget extends ConsumerWidget {
                         child: Text(trainingType,
                             style: const TextStyle(color: Colors.white)),
                         onTap: () {
+                          // Standard-Trainings der gewählten Kategorie
+                          final standardList = ref
+                              .read(appStateProvider)
+                              .getSelectedStandardTainingList(trainingType);
+
+                          // Vom Benutzer erstellte Trainings der gleichen Kategorie
+                          final createdList = ref
+                              .read(appStateProvider)
+                              .createdTrainings
+                              .where(
+                                  (t) => t.maintargetetMuscle == trainingType)
+                              .toList();
+
+                          // Beide zusammen in den Provider laden
                           ref
-                                  .read(selectedStandardTrainingsList.notifier)
-                                  .state =
-                              ref
-                                  .watch(appStateProvider)
-                                  .getSelectedStandardTainingList(trainingType);
+                              .read(selectedStandardTrainingsList.notifier)
+                              .state = [
+                            ...standardList,
+                            ...createdList,
+                          ];
+
                           pageController.nextPage(
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.easeIn);
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeIn,
+                          );
                         },
                       ),
                     ),

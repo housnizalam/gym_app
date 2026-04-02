@@ -7,6 +7,7 @@ import 'package:gym_app/models/saved_trainingsday.dart';
 import 'package:gym_app/models/trainings/back_trainings.dart';
 import 'package:gym_app/models/trainings/biceps_training.dart';
 import 'package:gym_app/models/trainings/chest_trainings.dart';
+import 'package:gym_app/models/trainings/created_trining.dart';
 import 'package:gym_app/models/trainings/forarm.training.dart';
 import 'package:gym_app/models/trainings/leg_trainings.dart';
 import 'package:gym_app/models/trainings/shoulder_traininga.dart';
@@ -47,13 +48,17 @@ class AppState {
   final List<Training>? subTrainings;
   final User? user;
   final List<Training> allStandardTraining;
+  final List<CreatedTrining> createdTrainings;
 
   AppState({
     required this.days,
     this.user,
     this.subTrainings,
     this.savedTrainingsdays,
-  }) : allStandardTraining = [
+      List<CreatedTrining>? createdTrainings,
+  }) : createdTrainings = createdTrainings ?? [],
+  
+   allStandardTraining = [
           ArnoldPress.standard(),
           BackLegExtension.standard(),
           BarbellCurl.standard(),
@@ -363,7 +368,19 @@ class AppState {
     return null;
   }
 
-  AppState copyWith({List<Day>? days}) {
-    return AppState(days: days ?? this.days);
+  AppState copyWith({
+    List<Day>? days,
+    List<SavedTrainingsday>? savedTrainingsdays,
+    List<Training>? subTrainings,
+    User? user,
+    List<CreatedTrining>? createdTrainings,
+  }) {
+    return AppState(
+      days: days ?? this.days,
+      savedTrainingsdays: savedTrainingsdays ?? this.savedTrainingsdays,
+      subTrainings: subTrainings ?? this.subTrainings,
+      user: user ?? this.user,
+      createdTrainings: createdTrainings ?? this.createdTrainings,
+    );
   }
 }

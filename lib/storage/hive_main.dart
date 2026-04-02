@@ -1,52 +1,71 @@
 import 'dart:convert';
+import 'package:gym_app/models/trainings/created_trining.dart';
 import 'package:gym_app/storage/json.converter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:gym_app/models/day.dart';
 import 'package:gym_app/models/saved_trainingsday.dart';
 
 class HiveService {
-  static const String _daysBoxName = 'days_box';
-  static const String _savedDaysBoxName = 'saved_days_box';
-  static const String _daysKey = 'days';
-  static const String _savedDaysKey = 'saved_days';
+  static const String _daysBoxName         = 'days_box';
+  static const String _savedDaysBoxName     = 'saved_days_box';
+  static const String _createdTrainingsBoxName = 'created_trainings_box'; // NEU
+
+  static const String _daysKey             = 'days';
+  static const String _savedDaysKey        = 'saved_days';
+  static const String _createdTrainingsKey = 'created_trainings'; // NEU
 
   static late Box _daysBox;
   static late Box _savedDaysBox;
+  static late Box _createdTrainingsBox; // NEU
 
-  // تهيئة Hive
+  /// Hive initialisieren und alle Boxen öffnen.
   static Future<void> init() async {
     await Hive.initFlutter();
-    _daysBox = await Hive.openBox(_daysBoxName);
-    _savedDaysBox = await Hive.openBox(_savedDaysBoxName);
+    _daysBox             = await Hive.openBox(_daysBoxName);
+    _savedDaysBox        = await Hive.openBox(_savedDaysBoxName);
+    _createdTrainingsBox = await Hive.openBox(_createdTrainingsBoxName); // NEU
   }
 
-  // حفظ الأيام
+  // ── Days ──────────────────────────────────────────────────────────────────
+
   static Future<void> saveDays(List<Day> days) async {
-    final List<Map<String, dynamic>> daysJson =
-        days.map((day) => dayToJson(day)).toList();
-    await _daysBox.put(_daysKey, jsonEncode(daysJson));
+    final json = days.map((d) => dayToJson(d)).toList();
+    await _daysBox.put(_daysKey, jsonEncode(json));
   }
 
-  // قراءة الأيام
   static List<Day> loadDays() {
-    final String? daysString = _daysBox.get(_daysKey);
-    if (daysString == null) return [];
-    final List<dynamic> daysJson = jsonDecode(daysString);
-    return daysJson.map((json) => dayFromJson(json)).toList();
+    final String? raw = _daysBox.get(_daysKey);
+    if (raw == null) return [];
+    return (jsonDecode(raw) as List).map((j) => dayFromJson(j)).toList();
   }
 
-  // حفظ الأيام المحفوظة
+  // ── SavedDays ─────────────────────────────────────────────────────────────
+
   static Future<void> saveSavedDays(List<SavedTrainingsday> savedDays) async {
-    final List<Map<String, dynamic>> savedDaysJson =
-        savedDays.map((day) => savedDayToJson(day)).toList();
-    await _savedDaysBox.put(_savedDaysKey, jsonEncode(savedDaysJson));
+    final json = savedDays.map((d) => savedDayToJson(d)).toList();
+    await _savedDaysBox.put(_savedDaysKey, jsonEncode(json));
   }
 
-  // قراءة الأيام المحفوظة
   static List<SavedTrainingsday> loadSavedDays() {
-    final String? savedDaysString = _savedDaysBox.get(_savedDaysKey);
-    if (savedDaysString == null) return [];
-    final List<dynamic> savedDaysJson = jsonDecode(savedDaysString);
-    return savedDaysJson.map((json) => savedDayFromJson(json)).toList();
+    final String? raw = _savedDaysBox.get(_savedDaysKey);
+    if (raw == null) return [];
+    return (jsonDecode(raw) as List).map((j) => savedDayFromJson(j)).toList();
+  }
+
+  // ── CreatedTrinings ───────────────────────────────────────────────────────
+
+  /// Speichert alle benutzerdefinierten Trainings als JSON.
+  static Future<void> saveCreatedTrainings(List<CreatedTrining> trainings) async {
+    final json = trainings.map((t) => createdTriningToJson(t)).toList();
+    await _createdTrainingsBox.put(_createdTrainingsKey, jsonEncode(json));
+  }
+
+  /// Lädt alle benutzerdefinierten Trainings aus Hive.
+  static List<CreatedTrining> loadCreatedTrainings() {
+    final String? raw = _createdTrainingsBox.get(_createdTrainingsKey);
+    if (raw == null) return [];
+    return (jsonDecode(raw) as List)
+        .map((j) => createdTriningFromJson(j))
+        .toList();
   }
 }
