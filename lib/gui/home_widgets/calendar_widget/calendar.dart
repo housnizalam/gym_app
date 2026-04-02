@@ -9,8 +9,6 @@ import 'package:gym_app/globals/widgets/my_inkwell.dart';
 import 'package:gym_app/globals/widgets/my_table.dart';
 import 'package:gym_app/gui/home_widgets/calendar_widget/calendar_widgets/calendar_add_training_widget.dart';
 import 'package:gym_app/gui/home_widgets/calendar_widget/calendar_widgets/day_widget.dart';
-import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/add_traininig_widget/choose_training_widget/choose_training_widget.dart';
-import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/select_saved_training_widget.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
 
 import 'package:gym_app/riverpod/calendar_providers.dart';

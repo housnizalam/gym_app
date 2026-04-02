@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gym_app/globals/extensionen/size_extension.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
 import 'package:gym_app/globals/widgets/my_inkwell.dart';
-import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/add_traininig_widget/choose_training_widget/choose_sub_training_widget.dart';
-import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/add_traininig_widget/choose_training_widget/create_new_training_widget.dart';
+import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/add_training_widget/choose_training_widget/choose_sub_training_widget.dart';
+import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/create_day_widgets/add_training_widget/choose_training_widget/create_new_training_widget.dart';
 import 'package:gym_app/models/appstate.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
 

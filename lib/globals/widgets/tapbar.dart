@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/creat_training_widget.dart';
+import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/create_day_widgets/create_training_widget.dart';
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/select_saved_training_widget.dart';
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/weakday_widget.dart';
 
