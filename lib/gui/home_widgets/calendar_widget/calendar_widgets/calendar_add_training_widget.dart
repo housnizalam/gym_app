@@ -8,7 +8,7 @@ import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/p
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/creat_day_widgets/creat_training_widget.dart';
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/select_saved_training_widget.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
-import 'package:gym_app/riverpod/calender_providers.dart';
+import 'package:gym_app/riverpod/calendar_providers.dart';
 import 'package:gym_app/riverpod/temp_day_provider.dart';
 
 class CalenderAddTrainingWidget extends ConsumerWidget {

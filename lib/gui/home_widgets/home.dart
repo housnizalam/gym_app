@@ -5,7 +5,7 @@ import 'package:gym_app/globals/extensionen/size_extension.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
 import 'package:gym_app/globals/widgets/my_inkwell.dart';
 import 'package:gym_app/globals/widgets/my_scafold.dart';
-import 'package:gym_app/gui/home_widgets/calender_widget/calender.dart';
+import 'package:gym_app/gui/home_widgets/calendar_widget/calendar.dart';
 import 'package:gym_app/gui/home_widgets/statistic_tables/user_table.dart';
 import 'package:gym_app/gui/home_widgets/training_widget/main_training_widget.dart';
 

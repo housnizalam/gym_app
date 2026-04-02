@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gym_app/globals/extensionen/date_time.dart';
-import 'package:gym_app/riverpod/calender_providers.dart';
+import 'package:gym_app/riverpod/calendar_providers.dart';
 
 class TodayWidget extends ConsumerWidget {
   const TodayWidget({super.key, required this.date});
