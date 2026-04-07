@@ -51,6 +51,12 @@ class AppStateNotifier extends StateNotifier<AppState> {
           element.date.month == day.date.month &&
           element.date.day == day.date.day,
     );
+
+    if (index == -1) {
+      addDay(day);
+      return;
+    }
+
     final newDays = [...state.days].replaceAt(index, day);
     state = state.copyWith(days: newDays);
     HiveService.saveDays(newDays); // حفظ تلقائي

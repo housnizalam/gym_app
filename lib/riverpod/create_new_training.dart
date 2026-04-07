@@ -3,9 +3,11 @@ import 'package:gym_app/models/muscle.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
 
 final mainTargetedMuscleNameProvider = Provider<String>((ref) {
-  final result =
-      ref.watch(selectedStandardTrainingsList).first.mainTargetedMuscle;
-  return result;
+  final trainings = ref.watch(selectedStandardTrainingsList);
+  if (trainings.isEmpty) {
+    return '';
+  }
+  return trainings.first.mainTargetedMuscle;
 });
 
 final targetedMuscleListProvider = StateProvider<List<Muscle>>(
