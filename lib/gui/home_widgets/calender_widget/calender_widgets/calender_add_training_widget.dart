@@ -4,7 +4,6 @@ import 'package:gym_app/globals/extensionen/navigator.dart';
 import 'package:gym_app/globals/extensionen/size_extension.dart';
 import 'package:gym_app/globals/widgets/my_container.dart';
 import 'package:gym_app/globals/widgets/my_inkwell.dart';
-import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/create_day_widgets/create_training_widget.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
 import 'package:gym_app/riverpod/calendar_providers.dart';
 import 'package:gym_app/riverpod/temp_day_provider.dart';
@@ -57,12 +56,11 @@ class CalenderAddTrainingWidget extends ConsumerWidget {
             ),
             TextButton(
               onPressed: () {
-                ref.invalidate(createTempDayProvider);
-                context.navigatePushTo(
-                    const Material(child: CreateTrainingWidget()));
+    ref.invalidate(createTempDayProvider);
+    Navigator.pop(context, 'create_new_training');
               },
-              child: Text('Create new training',
-                  style: const TextStyle(color: Colors.blue, fontSize: 20)),
+              child: const Text('Create new training',
+                  style: TextStyle(color: Colors.blue, fontSize: 20)),
             ),
           ],
         ),

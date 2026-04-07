@@ -33,7 +33,7 @@ class WeakdayWidget extends ConsumerWidget {
               ],
             ),
           ),
-        if (thisWeakDay != null) EditWeakDayWidget(),
+        if (thisWeakDay != null) const EditWeakDayWidget(),
         Positioned(
           left: 5,
           top: 5,

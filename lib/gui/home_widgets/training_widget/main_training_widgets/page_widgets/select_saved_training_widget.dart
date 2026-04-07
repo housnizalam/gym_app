@@ -26,7 +26,7 @@ class _SelectSavedTrainingWidgetState
     return Stack(
       children: [
         if (savedTrainingsDays == null || savedTrainingsDays.isEmpty)
-          MyContainer(
+          const MyContainer(
             child: Column(
               children: [
                 SizedBox(
@@ -35,7 +35,7 @@ class _SelectSavedTrainingWidgetState
                 Center(
                   child: Text(
                     'You have no saved Trainings',
-                    style: const TextStyle(
+                    style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -52,9 +52,9 @@ class _SelectSavedTrainingWidgetState
                   SizedBox(
                     height: context.height * 0.02,
                   ),
-                  Text(
+                  const Text(
                     'Select a saved Training',
-                    style: const TextStyle(
+                    style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -63,7 +63,7 @@ class _SelectSavedTrainingWidgetState
                   for (var trainingsday in savedTrainingsDays)
                     Row(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         MyInkwell(
@@ -79,7 +79,7 @@ class _SelectSavedTrainingWidgetState
                             // context.animateToAsPush(page: CreateTrainingWidget());
                           },
                         ),
-                        Expanded(
+                        const Expanded(
                           child: SizedBox(),
                         ),
                         InkWell(
@@ -94,7 +94,7 @@ class _SelectSavedTrainingWidgetState
                                 .deleteSavedDay(trainingsday);
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         )
                       ],

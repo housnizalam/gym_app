@@ -9,7 +9,7 @@ import 'package:gym_app/models/muscle.dart';
 import 'package:gym_app/models/sets.dart';
 import 'package:gym_app/models/trainings/created_trining.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
-import 'package:gym_app/riverpod/bodyWeight.dart';
+import 'package:gym_app/riverpod/body_weight.dart';
 import 'package:gym_app/riverpod/create_new_training.dart';
 
 class CreateNewTrainingWidget extends ConsumerStatefulWidget {
@@ -29,9 +29,6 @@ class _CreateNewTrainingWidgetState
   // final createdTraining = CreatedTrining.standard();
   @override
   Widget build(BuildContext context) {
-    final standardTrainingsNumber =
-        ref.watch(appStateProvider).allStandardTraining.length;
-    print('standardTrainingsNumber: $standardTrainingsNumber');
     final List<Muscle> allMuscleList = ref.watch(targetedMuscleListProvider);
     final bodyWeight = ref.watch(bodyWeightProvider);
     final mainTargetedMuscle = ref.watch(mainTargetedMuscleNameProvider);
@@ -66,10 +63,10 @@ class _CreateNewTrainingWidgetState
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Row(
                   children: [
-                    Text(
+                    const Text(
                       'Dumbbell ?',
                       style: TextStyle(color: Colors.white),
                     ),
@@ -84,8 +81,8 @@ class _CreateNewTrainingWidgetState
                         });
                       },
                     ),
-                    Expanded(child: SizedBox()),
-                    Text(
+                    const Expanded(child: SizedBox()),
+                    const Text(
                       'Body weight %',
                       style: TextStyle(color: Colors.white),
                     ),
@@ -104,7 +101,7 @@ class _CreateNewTrainingWidgetState
                   ],
                 ),
               ),
-              Text(
+              const Text(
                 'Targeted muscles: ',
                 style: TextStyle(color: Colors.white),
               ),
@@ -157,11 +154,9 @@ class _CreateNewTrainingWidgetState
                             setState(() {
                               selectedMusclesList[i] =
                                   selectedMusclesList[i].copyWith(value / 100);
-                              print(
-                                  '${selectedMusclesList[i].name} : ${selectedMusclesList[i].traningsdensity}');
                             });
                           }),
-                      Expanded(child: SizedBox()),
+                      const Expanded(child: SizedBox()),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: InkWell(
@@ -170,7 +165,7 @@ class _CreateNewTrainingWidgetState
                               selectedMusclesList.removeAt(i);
                             });
                           },
-                          child: Icon(Icons.delete, color: Colors.red),
+                          child: const Icon(Icons.delete, color: Colors.red),
                         ),
                       ),
                     ],
@@ -188,9 +183,9 @@ class _CreateNewTrainingWidgetState
                       bodyWeight: bodyWeight,
                       mainTargetedMuscle: mainTargetedMuscle,
                       sets: [
-                        Sets(reps: 0, weight: 0),
-                        Sets(reps: 0, weight: 0),
-                        Sets(reps: 0, weight: 0),
+                        const Sets(reps: 0, weight: 0),
+                        const Sets(reps: 0, weight: 0),
+                        const Sets(reps: 0, weight: 0),
                       ],
                     );
 
@@ -198,18 +193,17 @@ class _CreateNewTrainingWidgetState
                         .read(appStateProvider.notifier)
                         .addStanderdTraining(training);
 
-                    print('standardTrainingsNumber: $standardTrainingsNumber');
                     context.pop();
                   },
-                  child: Text(
-                    'Save',
-                    style: const TextStyle(color: Colors.white, fontSize: 20),
-                  ),
                   height: 40,
                   width: context.width * 0.3,
+                  child: const Text(
+                    'Save',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
             ],

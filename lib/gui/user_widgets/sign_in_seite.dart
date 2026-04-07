@@ -13,7 +13,7 @@ class SignInWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
+        preferredSize: const Size.fromHeight(60),
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -25,8 +25,8 @@ class SignInWidget extends ConsumerWidget {
             // iconTheme: const IconThemeData(color: Colors.white),
             backgroundColor: Colors.transparent,
             centerTitle: true,
-            title: Text('Sign in',
-                style: const TextStyle(
+            title: const Text('Sign in',
+                style: TextStyle(
                     color: Colors.white, fontWeight: FontWeight.bold)),
           ),
         ),

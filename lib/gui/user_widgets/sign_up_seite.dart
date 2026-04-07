@@ -8,13 +8,13 @@ class SignUpWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final TextEditingController _emailController = TextEditingController();
-    final TextEditingController _passwordController = TextEditingController();
-    final TextEditingController _firstNameController = TextEditingController();
-    final TextEditingController _lastNameController = TextEditingController();
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+    final TextEditingController firstNameController = TextEditingController();
+    final TextEditingController lastNameController = TextEditingController();
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
+        preferredSize: const Size.fromHeight(60),
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -26,8 +26,8 @@ class SignUpWidget extends ConsumerWidget {
             iconTheme: const IconThemeData(color: Colors.white),
             backgroundColor: Colors.transparent,
             centerTitle: true,
-            title: Text('Sign up',
-                style: const TextStyle(
+            title: const Text('Sign up',
+                style: TextStyle(
                     color: Colors.white, fontWeight: FontWeight.bold)),
           ),
         ),
@@ -36,7 +36,7 @@ class SignUpWidget extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(),
+            const SizedBox(),
             SizedBox(
               height: 50,
               child: Row(
@@ -46,7 +46,7 @@ class SignUpWidget extends ConsumerWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         autofocus: true,
-                        controller: _firstNameController,
+                        controller: firstNameController,
                         decoration: const InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderRadius:
@@ -63,7 +63,7 @@ class SignUpWidget extends ConsumerWidget {
                           labelText: 'First Name',
                           labelStyle: TextStyle(color: Colors.white),
                         ),
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                       ),
                     ),
                   ),
@@ -71,7 +71,7 @@ class SignUpWidget extends ConsumerWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
-                        controller: _lastNameController,
+                        controller: lastNameController,
                         decoration: const InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderRadius:
@@ -88,7 +88,7 @@ class SignUpWidget extends ConsumerWidget {
                           labelText: 'Last Name',
                           labelStyle: TextStyle(color: Colors.white),
                         ),
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                       ),
                     ),
                   )
@@ -98,7 +98,7 @@ class SignUpWidget extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
-                controller: _emailController,
+                controller: emailController,
                 decoration: const InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(40.0)),
@@ -110,13 +110,13 @@ class SignUpWidget extends ConsumerWidget {
                     ),
                     labelText: 'Email',
                     labelStyle: TextStyle(color: Colors.white)),
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
-                controller: _passwordController,
+                controller: passwordController,
                 decoration: const InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(40.0)),
@@ -129,7 +129,7 @@ class SignUpWidget extends ConsumerWidget {
                   labelText: 'Password',
                   labelStyle: TextStyle(color: Colors.white),
                 ),
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
               ),
             ),
             Padding(
@@ -150,9 +150,9 @@ class SignUpWidget extends ConsumerWidget {
                 ),
               ),
             ),
-            SizedBox(),
-            SizedBox(),
-            SizedBox(),
+            const SizedBox(),
+            const SizedBox(),
+            const SizedBox(),
           ],
         ),
       ),

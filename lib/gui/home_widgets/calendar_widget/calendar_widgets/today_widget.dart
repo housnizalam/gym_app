@@ -18,7 +18,7 @@ class TodayWidget extends ConsumerWidget {
         duration: const Duration(milliseconds: 400),
         decoration: !date.isSameDay(selectedDay)
             ? BoxDecoration(
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.blue,
                     blurRadius: 2.0,
@@ -36,7 +36,7 @@ class TodayWidget extends ConsumerWidget {
                 borderRadius: BorderRadius.circular(10.0),
               )
             : BoxDecoration(
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.yellow,
                     blurRadius: 10.0,
@@ -72,7 +72,7 @@ class TodayWidget extends ConsumerWidget {
                       Colors.black,
                     ],
                   ),
-                  shape: StarBorder(
+                  shape: const StarBorder(
                     points: 8,
                   ),
                 )
@@ -92,7 +92,7 @@ class TodayWidget extends ConsumerWidget {
                       Colors.black,
                     ],
                   ),
-                  shape: StarBorder(
+                  shape: const StarBorder(
                     points: 8,
                   ),
                 ),

@@ -6,13 +6,17 @@ import 'package:gym_app/globals/widgets/my_inkwell.dart';
 import 'package:gym_app/globals/widgets/density_table.dart';
 import 'package:gym_app/globals/widgets/wheal_scroller.dart';
 import 'package:gym_app/models/sets.dart';
-import 'package:gym_app/models/trainings/created_trining.dart';
 import 'package:gym_app/models/trainings/training.dart';
-import 'package:gym_app/riverpod/bodyWeight.dart';
+import 'package:gym_app/riverpod/body_weight.dart';
 import 'package:gym_app/riverpod/temp_day_provider.dart';
 
 class EditTrainingWidget extends ConsumerWidget {
-  const EditTrainingWidget({super.key});
+  final bool enableImageHero;
+
+  const EditTrainingWidget({
+    super.key,
+    this.enableImageHero = true,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,7 +24,6 @@ class EditTrainingWidget extends ConsumerWidget {
     final List<Sets> sets = training.sets;
     final int bodyWeight = ref.watch(bodyWeightProvider);
 
-    print('real Value ${sets.first.weight}');
     return Material(
       child: MyContainer(
         height: context.height,
@@ -40,27 +43,43 @@ class EditTrainingWidget extends ConsumerWidget {
                       ),
                     ),
                   ),
-                  if (training is! CreatedTrining)
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Hero(
-                        tag: AssetImage(training.image),
-                        child: Container(
-                          height: 200,
-                          width: 200,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(training.image),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: enableImageHero
+                        ? Hero(
+                            tag: training.id,
+                            child: SizedBox(
+                              height: 200,
+                              width: 200,
+                              child: Image.asset(
+                                training.image.isNotEmpty
+                                    ? training.image
+                                    : 'assets/images/1000011614.jpg',
+                                fit: BoxFit.fill,
+                                errorBuilder: (context, error, stackTrace) =>
+                                    Image.asset(
+                                  'assets/images/1000011614.jpg',
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
+                          )
+                        : SizedBox(
+                            height: 200,
+                            width: 200,
+                            child: Image.asset(
+                              training.image.isNotEmpty
+                                  ? training.image
+                                  : 'assets/images/1000011614.jpg',
                               fit: BoxFit.fill,
+                              errorBuilder: (context, error, stackTrace) =>
+                                  Image.asset(
+                                'assets/images/1000011614.jpg',
+                                fit: BoxFit.fill,
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    ),
-                  if (training is CreatedTrining)
-                    SizedBox(
-                      height: 50,
-                    ),
+                  ),
                   for (int i = 0; i < sets.length; i++)
                     Column(
                       children: [
@@ -187,10 +206,15 @@ class EditTrainingWidget extends ConsumerWidget {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  ref
-                      .read(createTempDayProvider.notifier)
-                      .saveTraining(training.copyWith(bodyWeight: bodyWeight));
+                  final notifier = ref.read(createTempDayProvider.notifier);
+                  final updatedTraining =
+                      training.copyWith(bodyWeight: bodyWeight);
+
                   Navigator.pop(context);
+
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    notifier.saveTraining(updatedTraining);
+                  });
                 },
               ),
             ),

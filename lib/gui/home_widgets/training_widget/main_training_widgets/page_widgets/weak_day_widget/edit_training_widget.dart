@@ -7,7 +7,7 @@ import 'package:gym_app/globals/widgets/density_table.dart';
 import 'package:gym_app/globals/widgets/wheal_scroller.dart';
 import 'package:gym_app/models/sets.dart';
 import 'package:gym_app/models/trainings/training.dart';
-import 'package:gym_app/riverpod/bodyWeight.dart';
+import 'package:gym_app/riverpod/body_weight.dart';
 import 'package:gym_app/riverpod/temp_day_provider.dart';
 
 class EditWeakDayTrainingWidget extends ConsumerWidget {
@@ -19,7 +19,6 @@ class EditWeakDayTrainingWidget extends ConsumerWidget {
     final List<Sets> sets = training.sets;
     final int bodyWeight = ref.watch(bodyWeightProvider);
 
-    print('real Value ${sets.first.weight}');
     return Material(
       child: MyContainer(
         height: context.height,
@@ -42,13 +41,18 @@ class EditWeakDayTrainingWidget extends ConsumerWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Hero(
-                      tag: AssetImage(training.image),
-                      child: Container(
+                      tag: training.id,
+                      child: SizedBox(
                         height: 200,
                         width: 200,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(training.image),
+                        child: Image.asset(
+                          training.image.isNotEmpty
+                              ? training.image
+                              : 'assets/images/1000011614.jpg',
+                          fit: BoxFit.fill,
+                          errorBuilder: (context, error, stackTrace) =>
+                              Image.asset(
+                            'assets/images/1000011614.jpg',
                             fit: BoxFit.fill,
                           ),
                         ),

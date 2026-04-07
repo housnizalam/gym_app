@@ -50,7 +50,7 @@ class MyTable extends StatelessWidget {
               border: TableBorder.all(color: Colors.white, width: 3),
               columnWidths: {
                 for (int i = 0; i < columnNumber; i++)
-                  i: i == 0 ? IntrinsicColumnWidth() : FlexColumnWidth(1),
+                  i: i == 0 ? const IntrinsicColumnWidth() : const FlexColumnWidth(1),
               },
               children: [
                 for (var tableRow in tableRowsList) tableRow,

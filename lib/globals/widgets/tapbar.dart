@@ -56,11 +56,11 @@ class _AmazingTabBarViewState extends State<AmazingTabBarView>
                 controller: tabController,
                 children: widget.pageWidgets ??
                     [
-                      WeakdayWidget(),
+                      const WeakdayWidget(),
                       SelectSavedTrainingWidget(
                         controller: tabController,
                       ),
-                      CreateTrainingWidget()
+                      const CreateTrainingWidget()
                     ],
               ),
             ),
@@ -97,11 +97,11 @@ class _AmazingTabBarViewState extends State<AmazingTabBarView>
                 controller: tabController,
                 children: widget.pageWidgets ??
                     [
-                      WeakdayWidget(),
+                      const WeakdayWidget(),
                       SelectSavedTrainingWidget(
                         controller: tabController,
                       ),
-                      CreateTrainingWidget()
+                      const CreateTrainingWidget()
                     ],
               ),
             ),

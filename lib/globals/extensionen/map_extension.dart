@@ -1,8 +1,10 @@
 
 
+// ignore_for_file: unnecessary_this
+
 extension MapSorting on Map<String, double> {
   Map<String, double> sortByValue() {
-    if(this.isEmpty){
+    if(isEmpty){
       return {};
     }
     if(this.length==1){

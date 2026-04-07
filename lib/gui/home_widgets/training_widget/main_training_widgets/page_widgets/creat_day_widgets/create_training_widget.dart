@@ -29,7 +29,6 @@ class CreateTrainingWidget extends ConsumerWidget {
     final day = ref.watch(createTempDayProvider).copyWith(date: selectedDay);
     final trainingsDay = day.trainings;
     final musclDensity = day.totalMuscleDensityMap;
-    print(day.date.formattedDate);
 
     return MyScaffold(
       leftTitel: 'Save & add',
@@ -76,7 +75,7 @@ class CreateTrainingWidget extends ConsumerWidget {
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       MyInkwell(
@@ -87,10 +86,9 @@ class CreateTrainingWidget extends ConsumerWidget {
                           ref.invalidate(createTempDayProvider);
 
                           context.pop();
-                          print('replace');
                           return;
                         },
-                        child: Text(
+                        child: const Text(
                           'Replace it',
                           style: TextStyle(color: Colors.white),
                         ),
@@ -138,7 +136,7 @@ class CreateTrainingWidget extends ConsumerWidget {
                   ),
                   for (var training in trainingsDay)
                     Padding(
-                      padding: EdgeInsets.only(top: 8.0, left: 8),
+                      padding: const EdgeInsets.only(top: 8.0, left: 8),
                       child: Row(
                         children: [
                           Expanded(
@@ -148,7 +146,7 @@ class CreateTrainingWidget extends ConsumerWidget {
                               onTap: () {
                                 ref.read(selectedTraining.notifier).state =
                                     training;
-                                context.navigatePushTo(EditTrainingWidget());
+                                context.navigatePushTo(const EditTrainingWidget());
                               },
                               child: training is CreatedTrining
                                   ? Center(
@@ -165,17 +163,31 @@ class CreateTrainingWidget extends ConsumerWidget {
                                           padding: const EdgeInsets.only(
                                               right: 8.0, left: 8.0),
                                           child: Hero(
-                                            tag: AssetImage(training.image),
+                                            tag: training.id,
                                             child: Container(
                                               height: 50,
                                               width: 50,
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(50),
-                                                image: DecorationImage(
-                                                  image: AssetImage(
-                                                      training.image),
+                                              ),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                                child: Image.asset(
+                                                  training.image.isNotEmpty
+                                                      ? training.image
+                                                      : 'assets/images/1000011614.jpg',
                                                   fit: BoxFit.fill,
+                                                  errorBuilder: (
+                                                    context,
+                                                    error,
+                                                    stackTrace,
+                                                  ) =>
+                                                      Image.asset(
+                                                    'assets/images/1000011614.jpg',
+                                                    fit: BoxFit.fill,
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -190,7 +202,7 @@ class CreateTrainingWidget extends ConsumerWidget {
                                                 color: Colors.white),
                                           ),
                                         ),
-                                        Expanded(child: SizedBox()),
+                                        const Expanded(child: SizedBox()),
                                       ],
                                     ),
                             ),
@@ -200,9 +212,7 @@ class CreateTrainingWidget extends ConsumerWidget {
                             onTap: () {
                               if (trainingsDay.length == 1) {
                                 ref.invalidate(createTempDayProvider);
-                                print('invalidate');
                               } else {
-                                print('remove');
                                 ref
                                     .read(createTempDayProvider.notifier)
                                     .removeTraining(training);

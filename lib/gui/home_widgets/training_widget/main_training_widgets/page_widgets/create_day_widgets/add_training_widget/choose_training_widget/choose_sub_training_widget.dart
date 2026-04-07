@@ -48,7 +48,7 @@ class ChooseSubTrainingWidget extends ConsumerWidget {
                     curve: Curves.easeIn);
                 // context.pop();
               },
-              child: Text(
+              child: const Text(
                 'Create new training',
                 style: TextStyle(color: Colors.blue),
               ),

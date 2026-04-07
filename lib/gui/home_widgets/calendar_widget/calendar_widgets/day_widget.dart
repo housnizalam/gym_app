@@ -36,8 +36,7 @@ class DayWidget extends ConsumerWidget {
             ref.read(calenderSelectedTeainingsDay.notifier).state = day;
             if (day != null && controller.initialScrollOffset == 0) {
               controller.animateTo(300,
-                  duration: Duration(milliseconds: 300), curve: Curves.easeOut);
-              print('scroller');
+                  duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
             }
           },
           opacity: !date.isSameDay(selectedDay) ? 1 : 0.7,

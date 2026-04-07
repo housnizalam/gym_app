@@ -46,7 +46,7 @@ class ChooseWeakdayTrainingWidget extends ConsumerWidget {
               ),
             ),
           ),
-          ChooseSubTrainingWeakdayWidget(),
+          const ChooseSubTrainingWeakdayWidget(),
         ],
       ),
     );

@@ -16,7 +16,6 @@ class TempDayNotifier extends StateNotifier<Day> {
   }
 
   void saveTraining(Training training) {
-    print('body weight: ${training.bodyWeight}');
     int index =
         state.trainings.indexWhere((element) => element.id == training.id);
     state = Day(

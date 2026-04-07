@@ -17,7 +17,7 @@ class _AddTrainingWidgetState extends ConsumerState<AddTrainingWidget> {
       isScrollControlled: true,
       context: context,
       builder: (context) {
-        return ChooseTrainingWidget();
+        return const ChooseTrainingWidget();
       },
     );
   }

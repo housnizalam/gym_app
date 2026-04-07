@@ -9,6 +9,7 @@ import 'package:gym_app/globals/widgets/my_inkwell.dart';
 import 'package:gym_app/globals/widgets/my_table.dart';
 import 'package:gym_app/gui/home_widgets/calendar_widget/calendar_widgets/day_widget.dart';
 import 'package:gym_app/gui/home_widgets/calender_widget/calender_widgets/calender_add_training_widget.dart';
+import 'package:gym_app/gui/home_widgets/training_widget/main_training_widgets/page_widgets/create_day_widgets/create_training_widget.dart';
 import 'package:gym_app/riverpod/appstate_provider.dart';
 import 'package:gym_app/riverpod/calendar_providers.dart';
 
@@ -43,7 +44,7 @@ class _CalenderWidgetState extends ConsumerState<CalenderWidget> {
               controller: controller,
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   TextButton(
@@ -52,7 +53,7 @@ class _CalenderWidgetState extends ConsumerState<CalenderWidget> {
                       ref.read(selectedDayProvider.notifier).state = now;
                     },
                     child: Text(selectedDay.formattedDate,
-                        style: TextStyle(color: Colors.white, fontSize: 25)),
+                        style: const TextStyle(color: Colors.white, fontSize: 25)),
                   ),
                   TableCalendar(
                     // onPageChanged: (date) {
@@ -72,7 +73,7 @@ class _CalenderWidgetState extends ConsumerState<CalenderWidget> {
                       ),
                     ),
                     daysOfWeekHeight: 23,
-                    daysOfWeekStyle: DaysOfWeekStyle(
+                    daysOfWeekStyle: const DaysOfWeekStyle(
                         weekdayStyle: TextStyle(color: Colors.white),
                         weekendStyle: TextStyle(color: Colors.white)),
                     calendarStyle: const CalendarStyle(),
@@ -91,21 +92,33 @@ class _CalenderWidgetState extends ConsumerState<CalenderWidget> {
                     focusedDay: focusedDay,
                     pageAnimationEnabled: true,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   if (day == null)
                     TextButton(
-                      onPressed: () {
-                        showModalBottomSheet(
+                      onPressed: () async {
+                        final result = await showModalBottomSheet<String>(
                           isScrollControlled: true,
                           context: context,
                           builder: (context) {
-                            return CalenderAddTrainingWidget();
+                            return const CalenderAddTrainingWidget();
                           },
                         );
+
+                        if (result == 'create_new_training' && mounted) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => const Material(
+                                child: CreateTrainingWidget(
+                                  enableImageHero: false,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
                       },
-                      child: Text(
+                      child: const Text(
                         'Add new Trinring',
                         style: TextStyle(
                           color: Colors.white,
@@ -114,22 +127,22 @@ class _CalenderWidgetState extends ConsumerState<CalenderWidget> {
                     ),
                   if (day != null)
                     MyTable(
-                        title: Text('Trainings table',
+                        title: const Text('Trainings table',
                             style:
                                 TextStyle(color: Colors.white, fontSize: 20)),
                         columnNumber: 3,
                         tableRowsList: [
-                          TableRow(
+                          const TableRow(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Text(
                                   'Name',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Center(
                                   child: Text(
                                     'Sets',
@@ -138,7 +151,7 @@ class _CalenderWidgetState extends ConsumerState<CalenderWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Center(
                                   child: Text(
                                     'Density',
@@ -155,7 +168,7 @@ class _CalenderWidgetState extends ConsumerState<CalenderWidget> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     training.name,
-                                    style: TextStyle(color: Colors.white),
+                                    style: const TextStyle(color: Colors.white),
                                   ),
                                 ),
                                 Padding(
@@ -163,7 +176,7 @@ class _CalenderWidgetState extends ConsumerState<CalenderWidget> {
                                   child: Center(
                                     child: Text(
                                       training.sets.length.toString(),
-                                      style: TextStyle(color: Colors.white),
+                                      style: const TextStyle(color: Colors.white),
                                     ),
                                   ),
                                 ),
@@ -172,7 +185,7 @@ class _CalenderWidgetState extends ConsumerState<CalenderWidget> {
                                   child: Center(
                                     child: Text(
                                       '${training.totaldensity.toString()} kg',
-                                      style: TextStyle(color: Colors.white),
+                                      style: const TextStyle(color: Colors.white),
                                     ),
                                   ),
                                 ),
@@ -180,7 +193,7 @@ class _CalenderWidgetState extends ConsumerState<CalenderWidget> {
                             )
                         ]),
                   if (day != null)
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                   if (day != null)
@@ -200,8 +213,8 @@ class _CalenderWidgetState extends ConsumerState<CalenderWidget> {
                   ref.read(selectedDayProvider.notifier).state = now;
                   context.pop();
                 },
-                child: Padding(
-                  padding: const EdgeInsets.all(4),
+                child: const Padding(
+                  padding: EdgeInsets.all(4),
                   child: Icon(
                     Icons.arrow_back,
                     color: Colors.white,

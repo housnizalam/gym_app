@@ -61,70 +61,73 @@ class MyScaffold extends StatelessWidget {
               child: const Icon(Icons.add, color: Colors.white),
             ),
           ),
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 0,
+      bottomNavigationBar: Container(
         color: Colors.black,
         height: context.height * 0.1,
-        child: Row(
-          children: [
-            Expanded(
-              child: lefBottomWidget ??
-                  TextButton(
-                    onPressed: () {
-                      if (onleftTitel != null) {
-                        onleftTitel!();
-                      }
-                    },
-                    child: Text(
-                      leftTitel ?? '',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        shadows: [
-                          Shadow(
-                            color: Colors.blue,
-                            blurRadius: 1,
-                            offset: Offset(-1.5, 1.5),
-                          ),
-                        ],
+        child: SafeArea(
+          top: false,
+          child: Row(
+            children: [
+              Expanded(
+                child: lefBottomWidget ??
+                    TextButton(
+                      onPressed: () {
+                        if (onleftTitel != null) {
+                          onleftTitel!();
+                        }
+                      },
+                      child: Text(
+                        leftTitel ?? '',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          shadows: [
+                            Shadow(
+                              color: Colors.blue,
+                              blurRadius: 1,
+                              offset: Offset(-1.5, 1.5),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-            ),
-            Container(
-              width: 5,
-              decoration: const BoxDecoration(boxShadow: [
-                BoxShadow(
-                  color: Colors.blue,
-                  blurRadius: 10,
-                  spreadRadius: 5,
+              ),
+              Container(
+                width: 5,
+                decoration: const BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.blue,
+                      blurRadius: 10,
+                      spreadRadius: 5,
+                    ),
+                  ],
                 ),
-              ]),
-            ),
-            Expanded(
-              child: rightBottomWidget ??
-                  TextButton(
-                    onPressed: () {
-                      if (onRightTitel != null) {
-                        onRightTitel!();
-                      }
-                    },
-                    child: Text(
-                      rightTitel ?? '',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        shadows: [
-                          Shadow(
-                            color: Colors.blue,
-                            blurRadius: 1,
-                            offset: Offset(1.5, 1.5),
-                          ),
-                        ],
+              ),
+              Expanded(
+                child: rightBottomWidget ??
+                    TextButton(
+                      onPressed: () {
+                        if (onRightTitel != null) {
+                          onRightTitel!();
+                        }
+                      },
+                      child: Text(
+                        rightTitel ?? '',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          shadows: [
+                            Shadow(
+                              color: Colors.blue,
+                              blurRadius: 1,
+                              offset: Offset(1.5, 1.5),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
       body: body,

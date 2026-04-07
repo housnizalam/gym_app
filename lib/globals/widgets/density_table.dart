@@ -15,14 +15,14 @@ class DensityTable extends StatelessWidget {
         children: [
           Container(
             width: context.width * 0.9,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               border: Border(
                 left: BorderSide(color: Colors.white, width: 1),
                 right: BorderSide(color: Colors.white, width: 1),
                 top: BorderSide(color: Colors.white, width: 1),
               ),
             ),
-            child: Center(
+            child: const Center(
                 child: Text(
               'Density table',
               style: TextStyle(color: Colors.white, fontSize: 20),
@@ -46,7 +46,7 @@ class DensityTable extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Text(
                       '${totalDensity.toStringAsFixed(1)} Kg',
                       style: const TextStyle(color: Colors.white),
@@ -59,14 +59,14 @@ class DensityTable extends StatelessWidget {
                 (entry) => TableRow(
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
                         entry.key,
                         style: const TextStyle(color: Colors.white),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
                         '${entry.value.toStringAsFixed(1)} Kg',
                         style: const TextStyle(color: Colors.white),

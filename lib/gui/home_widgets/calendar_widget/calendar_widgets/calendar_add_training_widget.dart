@@ -61,8 +61,8 @@ class CalenderAddTrainingWidget extends ConsumerWidget {
                 context.navigatePushTo(
                     const Material(child: CreateTrainingWidget()));
               },
-              child: Text('Create new training',
-                  style: const TextStyle(color: Colors.blue, fontSize: 20)),
+              child: const Text('Create new training',
+                  style: TextStyle(color: Colors.blue, fontSize: 20)),
             ),
           ],
         ),

@@ -6,7 +6,7 @@ import 'package:gym_app/storage/hive_main.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await HiveService.init(); // تهيئة Hive قبل تشغيل التطبيق
-  runApp(ProviderScope(child: const MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

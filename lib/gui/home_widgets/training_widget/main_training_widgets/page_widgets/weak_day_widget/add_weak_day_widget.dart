@@ -71,7 +71,7 @@ class EditWeakDayWidget extends ConsumerWidget {
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       MyInkwell(
@@ -82,7 +82,7 @@ class EditWeakDayWidget extends ConsumerWidget {
                           context.pop();
                           return;
                         },
-                        child: Text(
+                        child: const Text(
                           'Replace it',
                           style: TextStyle(color: Colors.white),
                         ),
@@ -93,11 +93,9 @@ class EditWeakDayWidget extends ConsumerWidget {
               });
         }
         ref.read(appStateProvider.notifier).addDay(day);
-        print('Add this training');
         return;
       },
       onRightTitel: () {
-        print('Save');
       },
       body: MyContainer(
         width: context.width,
@@ -111,14 +109,14 @@ class EditWeakDayWidget extends ConsumerWidget {
               Text(
                 '${DateTime.now().todayAsWeakday}s Training',
                 style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: context.height * 0.04,
               ),
               for (var training in trainingsDay)
                 Padding(
-                  padding: EdgeInsets.only(top: 8.0, left: 8),
+                  padding: const EdgeInsets.only(top: 8.0, left: 8),
                   child: Row(
                     children: [
                       Expanded(
@@ -137,15 +135,26 @@ class EditWeakDayWidget extends ConsumerWidget {
                                 padding: const EdgeInsets.only(
                                     right: 8.0, left: 8.0),
                                 child: Hero(
-                                  tag: AssetImage(training.image),
+                                  tag: training.id,
                                   child: Container(
                                     height: 50,
                                     width: 50,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
-                                      image: DecorationImage(
-                                        image: AssetImage(training.image),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(50),
+                                      child: Image.asset(
+                                        training.image.isNotEmpty
+                                            ? training.image
+                                            : 'assets/images/1000011614.jpg',
                                         fit: BoxFit.fill,
+                                        errorBuilder:
+                                            (context, error, stackTrace) =>
+                                                Image.asset(
+                                          'assets/images/1000011614.jpg',
+                                          fit: BoxFit.fill,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -159,7 +168,7 @@ class EditWeakDayWidget extends ConsumerWidget {
                                   style: const TextStyle(color: Colors.white),
                                 ),
                               ),
-                              Expanded(child: SizedBox()),
+                              const Expanded(child: SizedBox()),
                             ],
                           ),
                         ),

@@ -68,7 +68,7 @@ class ChooseTrainingWidget extends ConsumerWidget {
           ChooseSubTrainingWidget(
             pageController: pageController,
           ),
-          CreateNewTrainingWidget(),
+          const CreateNewTrainingWidget(),
         ],
       ),
     );
