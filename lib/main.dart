@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gym_app/gui/user_widgets/sign_in_seite.dart';
@@ -5,6 +6,11 @@ import 'package:gym_app/storage/hive_main.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  if (kReleaseMode) {
+    await HiveService.clearAllDataOnceForRelease();
+  }
+
   await HiveService.init(); // تهيئة Hive قبل تشغيل التطبيق
   runApp(const ProviderScope(child: MyApp()));
 }

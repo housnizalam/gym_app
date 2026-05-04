@@ -6,12 +6,13 @@ import 'package:gym_app/models/day.dart';
 import 'package:gym_app/models/saved_trainingsday.dart';
 
 class HiveService {
-  static const String _daysBoxName         = 'days_box';
-  static const String _savedDaysBoxName     = 'saved_days_box';
+  static const String _daysBoxName = 'days_box';
+  static const String _savedDaysBoxName = 'saved_days_box';
   static const String _createdTrainingsBoxName = 'created_trainings_box'; // NEU
+  static const String _metaBoxName = 'app_meta_box';
 
-  static const String _daysKey             = 'days';
-  static const String _savedDaysKey        = 'saved_days';
+  static const String _daysKey = 'days';
+  static const String _savedDaysKey = 'saved_days';
   static const String _createdTrainingsKey = 'created_trainings'; // NEU
 
   static late Box _daysBox;
@@ -21,9 +22,43 @@ class HiveService {
   /// Hive initialisieren und alle Boxen öffnen.
   static Future<void> init() async {
     await Hive.initFlutter();
-    _daysBox             = await Hive.openBox(_daysBoxName);
-    _savedDaysBox        = await Hive.openBox(_savedDaysBoxName);
+    _daysBox = await Hive.openBox(_daysBoxName);
+    _savedDaysBox = await Hive.openBox(_savedDaysBoxName);
     _createdTrainingsBox = await Hive.openBox(_createdTrainingsBoxName); // NEU
+  }
+
+  /// Löscht alle App-Daten in Hive (z. B. vor einem Release ohne Testdaten).
+  static Future<void> clearAllData() async {
+    await Hive.initFlutter();
+
+    if (Hive.isBoxOpen(_daysBoxName)) {
+      await Hive.box(_daysBoxName).close();
+    }
+    if (Hive.isBoxOpen(_savedDaysBoxName)) {
+      await Hive.box(_savedDaysBoxName).close();
+    }
+    if (Hive.isBoxOpen(_createdTrainingsBoxName)) {
+      await Hive.box(_createdTrainingsBoxName).close();
+    }
+
+    await Hive.deleteBoxFromDisk(_daysBoxName);
+    await Hive.deleteBoxFromDisk(_savedDaysBoxName);
+    await Hive.deleteBoxFromDisk(_createdTrainingsBoxName);
+  }
+
+  /// Löscht vorhandene Testdaten genau einmal in Release-Builds.
+  static Future<void> clearAllDataOnceForRelease({
+    String wipeVersion = '2026_04_release_wipe',
+  }) async {
+    await Hive.initFlutter();
+
+    final metaBox = await Hive.openBox(_metaBoxName);
+    final markerKey = 'release_wipe_done_$wipeVersion';
+    final alreadyWiped = metaBox.get(markerKey, defaultValue: false) as bool;
+    if (alreadyWiped) return;
+
+    await clearAllData();
+    await metaBox.put(markerKey, true);
   }
 
   // ── Days ──────────────────────────────────────────────────────────────────
@@ -55,7 +90,8 @@ class HiveService {
   // ── CreatedTrinings ───────────────────────────────────────────────────────
 
   /// Speichert alle benutzerdefinierten Trainings als JSON.
-  static Future<void> saveCreatedTrainings(List<CreatedTrining> trainings) async {
+  static Future<void> saveCreatedTrainings(
+      List<CreatedTrining> trainings) async {
     final json = trainings.map((t) => createdTriningToJson(t)).toList();
     await _createdTrainingsBox.put(_createdTrainingsKey, jsonEncode(json));
   }
