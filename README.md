@@ -98,11 +98,25 @@ All data is stored locally on the device — no account or internet connection r
 
 ## 📱 Screenshots
 
-> _Screenshots coming soon — run the app locally to see it in action._
+Explore the training workflow in three screens, from planning a session to tracking individual muscle loads. All images are screenshots of GimUp in use.
 
-| Home & Statistics | Calendar View | Training Density Table |
-|---|---|---|
-| ![home](assets/images/screenshot_home.png) | ![calendar](assets/images/screenshot_calendar.png) | ![density](assets/images/screenshot_density.png) |
+### 1. Training Calendar & History
+
+The interactive calendar highlights completed workout days and lets users inspect previous sessions. Each day's training table summarises exercises, set counts and total training volume, while the muscle-density table shows how the workload is distributed.
+
+![GimUp training calendar and workout history](docs/screenshots/01-calendar-history.webp)
+
+### 2. Workout Builder
+
+Build a session by selecting exercises from the library, arranging the day's workout, and viewing the calculated muscle-load distribution before saving.
+
+![GimUp workout builder with selected exercises](docs/screenshots/02-workout-builder.webp)
+
+### 3. Exercise Details, Sets & Muscle Density
+
+An illustrated exercise screen lets users record weight and repetitions for multiple sets. GimUp calculates the exercise's total training load and distributes it across the involved muscle groups using predefined engagement percentages.
+
+![GimUp exercise details with sets, reps and density breakdown](docs/screenshots/03-exercise-sets-density.webp)
 
 ---
 
